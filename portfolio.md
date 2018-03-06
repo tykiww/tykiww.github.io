@@ -8,11 +8,8 @@ Take a look at some of my projects below!
 
 
 
-# Timeseries 
-#![](../img/arima12.png)
-
+# [ [Timeseries](http://www.disturbancesinthewash.net/journal/2012/8/11/how-to-add-an-image-with-link-in-markdown.html) ]
 [![](../img/arima12.png)](http://www.disturbancesinthewash.net/journal/2012/8/11/how-to-add-an-image-with-link-in-markdown.html)
-
 
 # Tree Models
 ![](../img/Narrative phylogeny.png)
