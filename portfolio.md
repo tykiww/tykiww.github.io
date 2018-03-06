@@ -8,13 +8,13 @@ Take a look at some of my projects below!
 
 
 
-# [ [Timeseries](http://www.disturbancesinthewash.net/journal/2012/8/11/how-to-add-an-image-with-link-in-markdown.html) ]
-[![](../img/arima12.png)](http://www.disturbancesinthewash.net/journal/2012/8/11/how-to-add-an-image-with-link-in-markdown.html)
+# [Timeseries](tykiww.github.io/404.html)
+[![](../img/arima12.png)](tykiww.github.io/404.html)
 
-# Tree Models
-![](../img/Narrative phylogeny.png)
-# Regression Models
-![](../img/slr.png)
-# Cluster Models
-![](../img/gopro.jpg)
+# [Tree Models](tykiww.github.io/404.html)
+[![](../img/Narrative phylogeny.png)](tykiww.github.io/404.html)
+# [Regression Models](tykiww.github.io/404.html)
+[![](../img/slr.png)](tykiww.github.io/404.html)
+# [Cluster Models](tykiww.github.io/404.html)
+[![](../img/gopro.jpg)](tykiww.github.io/404.html)
 
