@@ -31,7 +31,7 @@ Year	RecreationVisitors	TotalRecreationVisitors
 ```
 The **tail()** shows a quick look at what we just read in. Now, to perform an analysis, these strings need to be numeric and we can plot the data to take a look.
 
-``` r																											
+``` r												
 Yos$RecreationVisitors <- as.numeric(gsub(",","",Yos$RecreationVisitors)) #Gsub all the commas with no spaces.
 Yos$RecreationVisitors <- Yos$RecreationVisitors/10^6
 
@@ -45,7 +45,7 @@ plot(RecreationVisitors~Year,
 From this data, we can see the multiplicative curvature of the graph. This is difficult to fit an ARIMA model (or any model) as the analysis uses additive data to predict future values. Fortunately, this is a simple fix. By performing a log transformation, we can see how the data becomes more readable.
 
 
-``` r																										
+``` r											
 Yos$lnvisitors <- log(Yos$RecreationVisitors) #Log transformation
 plot(lnvisitors~Year,
      data=Yos,
@@ -61,7 +61,7 @@ How simple! The graph appears to be additive from 1930s to present, but has a di
 
 Yet, this makes the data unusable! So we will need to subset the data to after 1945. By subsetting, we notice a more additive model that suggests less if not any changes in behavior or policy from year to year. With this subsetted data, we can see a more constant mean change that reflects future Yosemite tourism demand.
 
-```r																																																						
+```r							
 Yos[Yos$Year==1945,] #Subset to after 1945
 Yos46 <- Yos[-(1:40),]
 
@@ -69,19 +69,35 @@ Yos46 <- Yos[-(1:40),]
 plot(lnvisitors~Year,
      data=Yos46,
      type="b",
-     ylab= "Yosemite Log Annual Visitors (In millions)")																														
-																														
+     ylab= "Yosemite Log Annual Visitors (In millions)")								
 ```
 
 ![](tykiww.github.io/img/arima111/yos3.png)
 
 Everything looks great! now that we have an additive model subsetted to the recent past, we can continue with the forecasting.
 
-Now let's take look at the arima model. You might need to install the asta package. (This portion is commented out.) The sarima model links all of the past datapoints and gives us parameter estimates. At first you are going to see a list of graphics that show the residual for the 1,1,1 model. We're going to ignore this as it has no relevance to our question.
+Now let's take look at the arima model. You might need to install the asta package. The asta package was created by Stoffer and information on time series analysis is on his [website](http://www.stat.pitt.edu/stoffer/tsa4/index.html) The sarima model links all of the past datapoints and gives us parameter estimates. At first you are going to see a list of graphics that show the residual for the 1,1,1 model. We're going to ignore this as it has no relevance to our question.
 
 The output ar1, ma1, and constant are the names for phi, epsilon, and mu. This information tells us the parameter estimate mu, and the standard errors. 
 
 The more interesting and applicable portion is done using the function **sarima.for()**. This is prediction element. You can see in Yos46.future how **_easy_** it is to fit the arima model. The first element denoting the log visitors, n.ahead being the number of years to forecast, and 1,1,1 coming from the arima function. Immediately, a graphic appears with the prediction values and 95 percent confidence estimates. Of course, these are logged values so we need to make sure to finish by creating an unlogged graph that meets publication quality!
+
+``` r
+library("astsa")
+
+Yos46.out <- sarima(Yos46$lnvisitors,1,1,1)
+Yos46.out$ttable[1:3,1]      #Find Parameter values
+
+# Compute predictions for the next 5 years by fitting in an ARIMA(1,1,1) and make a graph
+LogYosemiteVisitors <- Yos46$lnvisitors
+
+Yos46.future <- sarima.for(LogYosemiteVisitors,n.ahead=5,1,1,1)
+abline(v=71, col = "blue")   #up to 2016
+
+
+exp(Yos46.future$pred)       #The unlogged prediction values for the next 5 years.
+Yos46.yhat <- exp(Yos46.future$pred)
+```
 
 Parameter estimates (ar1, ma1, mu)
 
