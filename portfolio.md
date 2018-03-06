@@ -8,18 +8,12 @@ Take a look at some of my projects below!
 
 
 
-# Timeseries          |        # Tree Models
-![](../img/disco.jpg) | ![](../img/disco.jpg)
-
-
-
-
-
-
+# Timeseries 
+![](../img/arima12.png)
+# Tree Models
+![](../img/Narrative phylogeny.png)
 # Regression Models
-
-
-
+![](../img/slr.png)
 # Cluster Models
-
+![](../img/gopro.jpg)
 
