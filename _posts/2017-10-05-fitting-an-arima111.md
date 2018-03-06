@@ -8,6 +8,8 @@ tags: [asta, arima, base R, vizualization]
 
 How many visitors can we expect to see in Yosemite National park for the next 5 years? One of my most desired go-tos has always been Yosemite National Park. I’ve never been! Yet, I have always been allured by the incredible photography of the snow-capped mountains. 
 
+![](https://cdn.shopify.com/s/files/1/0272/4781/files/summer-sunset-over-half-dome-from-glacier-point-yosemite.jpg?1089)
+
 My first entry is a simple timeseries model of an ARIMA(1,1,1). The Arima model, also known as the Box Jenkins method is the most general class of autoregressive model for forecasting a time series. Simply, the 1,1,1 stands for (last period's change,year to year change, moving average). These details can be fine tuned according to how the data looks, but as a general guideline, the ARIMA(1,1,1) is beneficial and accurate for most cases. If you are curious, visit this [link](https://irma.nps.gov/Stats/SSRSReports/Park%20Specific%20Reports/Annual%20Park%20Recreation%20Visitation%20(1904%20-%20Last%20Calendar%20Year)?Park=YOSE).
 
 That's enough of the stats lessons. Let's actually try fitting the model to the Yosemite data!
