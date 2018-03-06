@@ -43,7 +43,7 @@ author:
   name: Tyki Wada
   email: "tyki@byu.net"
   facebook: yourname  
-  github: tykiww  
+  github: tykiww/projectpage  
   twitter: yourname
   reddit: yourname    
   google-plus: +yourname   
@@ -61,7 +61,7 @@ author:
 
 # Select which links to show in the footer
 footer-links-active:
-  rss: true
+  rss: false
   facebook: false
   email: true
   twitter: false
@@ -82,9 +82,9 @@ footer-links-active:
 
 # Select which share links to show in posts
 share-links-active:
-  twitter: false
-  facebook: false
-  google: false
+  twitter: true
+  facebook: true
+  google: true
   linkedin: true
 
 # How to display the link to the website in the footer
