@@ -4,7 +4,7 @@
 # baseurl is the website's URL without the hostname
 
 # If you are building a simple GitHub user page (http://username.github.io) then use these settings:
-url: "http://Ryo-N7.github.io"
+url: "http://tykiww.github.io"
 baseurl: ""
 
 # If you are building a GitHub project page then use these settings:
@@ -25,11 +25,11 @@ description: Ryo's personal Github user page!
 navbar-links:
   Home: "index"
   About Me: "aboutme"
-  Projects: "http://github.com/Ryo-N7"
+  Projects: "https://github.com/tykiww/projectpage"
 
 # Image to show in the navigation bar - image must be a square (width = height)
 # Remove this parameter if you don't want an image in the navbar
-avatar: "/img/profile_big.jpg"
+avatar: "/img/avatar.png"
 
 # If you want to have an image logo in the top-left corner instead of the title text,
 # then specify the following parameter
@@ -40,14 +40,14 @@ avatar: "/img/profile_big.jpg"
 # Change all these values or delete the ones you don't want.
 # Important: you must keep the "name" parameter, everything else you can remove
 author:
-  name: Ryo Nakagawara
-  email: "ryonakagawara@gmail.com"
+  name: Tyki Wada
+  email: "tyki@byu.net"
   facebook: yourname  
-  github: Ryo-N7    
-  twitter: "@R_by_Ryo" 
+  github: tykiww  
+  twitter: yourname
   reddit: yourname    
   google-plus: +yourname   
-  linkedin: RyoNakagawara  
+  linkedin: taiki-wada 
   xing: yourname      
   stackoverflow: yourlink  # eg. "3943160/daattali"
   snapchat: yourname  
@@ -64,7 +64,7 @@ footer-links-active:
   rss: true
   facebook: false
   email: true
-  twitter: true
+  twitter: false
   google-plus: false
   github: true
   reddit: false
@@ -82,8 +82,8 @@ footer-links-active:
 
 # Select which share links to show in posts
 share-links-active:
-  twitter: true
-  facebook: true
+  twitter: false
+  facebook: false
   google: false
   linkedin: true
 
@@ -93,10 +93,10 @@ share-links-active:
 
 # --- Misc --- #
 # Fill in your Disqus shortname (NOT the userid) if you want to support Disqus comments
-disqus: "r-by-ryo"
+# disqus: "r-by-ryo"
 
 # Fill in your Google Analytics ID to track your website using GA
-google_analytics: "UA-108574832-1"
+# google_analytics: "UA-108574832-1"
 
 # Google Tag Manager ID
 #gtm: ""
