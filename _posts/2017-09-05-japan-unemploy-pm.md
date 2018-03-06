@@ -1,223 +1,157 @@
 ---
 layout: post
-title: "Unemployment and Japanese Prime Ministers: Simple visualizations with ggplot2"
-fb-img: https://ryo-n7.github.io/assets/2017-09-05-japan-unemploy-pm_files/plot-again-1.png
-tags: [politics, economics, japan, ggplot2]
+title: "Fitting a simple timeseries: Arima (1,1,1)"
+fb-img: https://tykiww.github.io/img/arima111/yosemite.png
+tags: [asta, arima, base R, vizualization]
 ---
 
-I was flipping through Hadley Wickham's *ggplot2* book the other day when I came across this (I added axis labels and title for clarity):
 
-![](../assets/2017-09-05-japan-unemploy-pm_files/hadleys-plot-1.png)
+How many visitors can we expect to see in Yosemite National park for the next 5 years? One of my most desired go-tos has always been Yosemite National Park. I’ve never been! Yet, I have always been allured by the incredible photography of the snow-capped mountains. 
 
-Which shows the unemployment data for the USA from 1967 to 2015 along with the Presidents in power during those periods (and their respective political parties). A very simple but poignant graph that (with added historical narrative) can tell us a lot about different stories about the US economy and the politics driving them! Motivated by this I set out to make a similar graph but with data from my birth country, Japan.
+My first entry is a simple timeseries model of an ARIMA(1,1,1). The Arima model, also known as the Box Jenkins method is the most general class of autoregressive model for forecasting a time series. Simply, the 1,1,1 stands for (last period's change,year to year change, moving average). These details can be fine tuned according to how the data looks, but as a general guideline, the ARIMA(1,1,1) is beneficial and accurate for most cases. If you are curious, visit this [link](https://irma.nps.gov/Stats/SSRSReports/Park%20Specific%20Reports/Annual%20Park%20Recreation%20Visitation%20(1904%20-%20Last%20Calendar%20Year)?Park=YOSE).
 
-For the unemployment data, I was able to download a dataset from the [Federal Reserve Bank of St. Louis](https://fred.stlouisfed.org/series/LRHUTTTTJPM156S) website. It's a really fantastic source with loads of raw data from around the world that you can download (in Excel, .csv, .png, PowerPoint, and .pdf formats), I will definitely be coming back here for other articles! This dataset comprises of the harmonized monthly unemployment rate for ALL persons in Japan. There was another dataset for Aged 15-64 however that one only went back to January of 1970. I wanted to go back to 1960 (or better 1945) for a better look at Japan's post-war history and economic recovery so I went with this one instead. For a more in-depth analysis I would hunt down some Japanese sources but for today we are just focusing on the simple **ggplot2** graph.
+That's enough of the stats lessons. Let's actually try fitting the model to the Yosemite data!
 
-For the dataset about the Prime Ministers of Japan I went to Wikipedia, a source that's pretty reliable and easy to use. Normally, I would web-scrape the information using the **rvest** package however, wrangling it to a regular table was very difficult as the Prime Ministers were divided into individual tables according to the reigning Emperor, many headers were spread across multiple columns, among other headaches. 
+For the annual visitors data, I was able to download a dataset from the National Park's service [STATS](https://www.datascience.com/blog/introduction-to-forecasting-with-arima-in-r-learn-data-science-tutorials) website. The information spans from the inception of the park up until the last calendar year, and since it's only the beginning of 2018, the data runs until 2016. Might be fun to see how accurate these next predictions will be once the 2017 data comes out!
 
-``` r
-library(rvest)
-library(stringr)
-library(dplyr)
+For a more in-depth analysis, I would hunt for park event details but for today we are just focusing on the simple Rbase graphs and the statistical model. Normally, I would web-scrape the information using the rvest package yet the data was so small so I just downloaded the csv and copied it in through a simple read.table.
 
-url <- "https://en.wikipedia.org/wiki/List_of_Prime_Ministers_of_Japan"
-
-PMs <- url %>% 
-  read_html() %>% 
-  html_table(fill = TRUE)
-
-showa_era <- PMs %>% .[[4]]    # table for Prime Ministers in Showa Era
-heisei_era <- PMs %>% .[[5]]   # table for Prime Ministers in Heisei Era
-```
-
-Here is a picture of the raw scraped table:
-
-![](../assets/2017-09-05-japan-unemploy-pm_files/PM_webscrape_ugh.JPG)
-
-It was going to take too much time to clean for an article of this size so I created the data set manually. Thankfully this didn't take too long!
-
-``` r
-prime_ministers <- data.frame(
-  name = c("Tetsu Katayama", "Hitoshi Ashida", "Shigeru Yoshida", "Ichiro Hatoyama", "Tanzan Ishibashi",
-           "Nobusuke Kishi", "Hayato Ikeda", "Eisaku Sato", "Kakuei Tanaka", "Takeo Miki",
-           "Takeo Fukuda", "Masayoshi Ohira", "Zenko Suzuki", "Yasuhiro Nakasone", "Noboru Takeshita",
-           "Sosuke Uno", "Toshiki Kaifu", "Kiichi Miyazawa", "Morihiro Hosokawa", "Tsutomu Hata",
-           "Tomiichi Murayama", "Ryutaro Hashimoto", "Keizo Obuchi", "Yoshiro Mori", "Junichiro Koizumi",
-           "Shinzo Abe (1)", "Yasuo Fukuda", "Taro Aso", "Yukio Hatoyama", "Naoto Kan",
-           "Yoshihiko Noda", "Shinzo Abe (2)"),
-  
-  start = as.Date(c("1947-05-24", "1948-03-10", "1948-10-15", "1954-12-10", "1956-12-23",
-                    "1957-02-25", "1960-07-19", "1964-11-09", "1972-07-07", "1974-12-09",
-                    "1976-12-24", "1978-12-07", "1980-07-17", "1982-11-27", "1987-11-06",
-                    "1989-06-03", "1989-08-10", "1991-11-05", "1993-08-09", "1994-04-28",
-                    "1994-06-30", "1996-01-11", "1998-06-30", "2000-04-05", "2001-04-26",
-                    "2006-09-26", "2007-09-26", "2008-09-24", "2009-09-16", "2010-06-08",
-                    "2011-09-02", "2012-12-26")),
-  
-  end = as.Date(c("1948-03-10", "1948-10-15", "1954-12-10", "1956-12-23", "1957-02-25",
-                  "1960-07-19", "1964-11-09", "1972-07-07", "1974-12-09", "1976-12-24",
-                  "1978-12-07", "1980-07-17", "1982-11-27", "1987-11-06", "1989-06-03",
-                  "1989-08-10", "1991-11-05", "1993-08-09", "1994-04-28", "1994-06-30",
-                  "1996-01-11", "1998-06-30", "2000-04-05", "2001-04-26", "2006-09-26",
-                  "2007-09-26", "2008-09-24", "2009-09-16", "2010-06-08", "2011-09-02",
-                  "2012-12-26", "2017-01-01")),
-  stringsAsFactors = FALSE
+``` r								
+Yos <- read.table(header = TRUE, text = '
+Year	RecreationVisitors	TotalRecreationVisitors
+1906	5,414	190,404,561
+1907	7,102	190,404,561
+1908	8,850	190,404,561
+1909	13,182	190,404,561
+...
+2014	3,882,642	190,404,561
+2015	4,150,217	190,404,561
+2016	5,028,868	190,404,561'
 )
 ```
+The **tail()** shows a quick look at what we just read in. Now, to perform an analysis, these strings need to be numeric and we can plot the data to take a look.
 
-With that out of the way we can load the unemployment data set and set about tidying the raw data.
+``` r																											
+Yos$RecreationVisitors <- as.numeric(gsub(",","",Yos$RecreationVisitors)) #Gsub all the commas with no spaces.
+Yos$RecreationVisitors <- Yos$RecreationVisitors/10^6
 
-``` r
-# load data ---------------------------------------------------------------
-japan_unemploy <- read.csv("~/R_materials/japan_pm/LRUNTTTTJPM156S.csv", 
-                           header = TRUE, stringsAsFactors = FALSE)
-library(tibble)
-glimpse(japan_unemploy)   # glimpse() is similar to using str() but tidier
+plot(RecreationVisitors~Year,
+     data=Yos,type="b", 
+     ylab = "Yosemite Annual Visitors (In millions)")
 ```
 
-    ## Observations: 689
-    ## Variables: 2
-    ## $ DATE            <chr> "1960-01-01", "1960-02-01", "1960-03-01", "196...
-    ## $ LRUNTTTTJPM156S <dbl> 1.9, 1.7, 1.7, 1.7, 1.7, 1.6, 1.5, 1.6, 1.6, 1...
+![](tykiww.github.io/img/arima111/yos1.png)
 
-We can see here that the dates are in **character** format and that the column names are in all caps. We can convert the dates using the `as.Date()` function included in base R and change the column names to lower case using the `str_lower()` function from the **stringr** package:
+From this data, we can see the multiplicative curvature of the graph. This is difficult to fit an ARIMA model (or any model) as the analysis uses additive data to predict future values. Fortunately, this is a simple fix. By performing a log transformation, we can see how the data becomes more readable.
 
-``` r
-library(stringr)
 
-japan_unemploy$DATE <- as.Date(japan_unemploy$DATE, format = "%Y-%m-%d")
-
-colnames(japan_unemploy) <- japan_unemploy %>% 
-  colnames() %>% 
-  str_to_lower()
-
-glimpse(japan_unemploy)
+``` r																										
+Yos$lnvisitors <- log(Yos$RecreationVisitors) #Log transformation
+plot(lnvisitors~Year,
+     data=Yos,
+     type="b", 
+     ylab = "Yosemite Log Annual Visitors (In millions)")
+abline(v=1941, col="red")
+abline(v=1946, col="red")
 ```
 
-    ## Observations: 689
-    ## Variables: 2
-    ## $ date            <date> 1960-01-01, 1960-02-01, 1960-03-01, 1960-04-0...
-    ## $ lrunttttjpm156s <dbl> 1.9, 1.7, 1.7, 1.7, 1.7, 1.6, 1.5, 1.6, 1.6, 1...
+![](tykiww.github.io/img/arima111/yos2.png)
 
-Now, we need to change the column name for the unemployment data to something more reasonable:
+How simple! The graph appears to be additive from 1930s to present, but has a dip between 1940-1950. Looking closely, Non-constant mean changes occur from 1941 to 1946. The dip seen from 1940-1946 roughly fits the time period of world war 2, so may suggest that wartime may have changed opportunities or interest for individuals. Some other possible causes for the curvature from 1920s to 1946 may be due to an increase in exposure, interest, and transportation. 
 
-``` r
-japan_unemploy <- japan_unemploy %>% rename(unemployed = lrunttttjpm156s)
+Yet, this makes the data unusable! So we will need to subset the data to after 1945. By subsetting, we notice a more additive model that suggests less if not any changes in behavior or policy from year to year. With this subsetted data, we can see a more constant mean change that reflects future Yosemite tourism demand.
 
-glimpse(japan_unemploy)
+```r																																																						
+Yos[Yos$Year==1945,] #Subset to after 1945
+Yos46 <- Yos[-(1:40),]
+
+#plot again to check for additive model
+plot(lnvisitors~Year,
+     data=Yos46,
+     type="b",
+     ylab= "Yosemite Log Annual Visitors (In millions)")																														
+																														
 ```
 
-    ## Observations: 689
-    ## Variables: 2
-    ## $ date       <date> 1960-01-01, 1960-02-01, 1960-03-01, 1960-04-01, 19...
-    ## $ unemployed <dbl> 1.9, 1.7, 1.7, 1.7, 1.7, 1.6, 1.5, 1.6, 1.6, 1.4, 1...
+![](tykiww.github.io/img/arima111/yos3.png)
+
+Everything looks great! now that we have an additive model subsetted to the recent past, we can continue with the forecasting.
+
+Now let's take look at the arima model. You might need to install the asta package. (This portion is commented out.) The sarima model links all of the past datapoints and gives us parameter estimates. At first you are going to see a list of graphics that show the residual for the 1,1,1 model. We're going to ignore this as it has no relevance to our question.
+
+The output ar1, ma1, and constant are the names for phi, epsilon, and mu. This information tells us the parameter estimate mu, and the standard errors. 
+
+The more interesting and applicable portion is done using the function **sarima.for()**. This is prediction element. You can see in Yos46.future how **_easy_** it is to fit the arima model. The first element denoting the log visitors, n.ahead being the number of years to forecast, and 1,1,1 coming from the arima function. Immediately, a graphic appears with the prediction values and 95 percent confidence estimates. Of course, these are logged values so we need to make sure to finish by creating an unlogged graph that meets publication quality!
+
+Parameter estimates (ar1, ma1, mu)
+
+    ##      ar1      ma1 constant 
+    ##  -0.6511   0.5499   0.0291 
+
+Prediction estimate values    
+
+    ## Time Series:
+    ## Start = 72 
+    ## End = 76 
+    ## Frequency = 1 
+    ## [1] 5.096657 5.301227 5.421584 5.606032 5.755369
+ 
+ ![](tykiww.github.io/img/arima111/yos4.png)
+ 
+Now all we need to do is represent the forecast values and the 95% confidence estimates along with a really **_pretty_** looking graph. In my honest opinion, base R doesn't have the prettiest graphics. My go-to is ggplot, but for the sake of functionality, I made it very simple. I'll show you some cool trick with ggplot pretty soon!
 
 ``` r
-glimpse(prime_ministers)
+#Above gives us prediction and standard error, so compute 95% prediction intervals
+t <- qnorm(0.975)
+Yos46.L <- Yos46.future$pred - t* Yos46.future$se
+Yos46.U <- Yos46.future$pred + t* Yos46.future$se
+
+#un-transform the log data back to normal
+
+Yos46.yhat.L <- exp(Yos46.L)
+Yos46.yhat.U <- exp(Yos46.U)
+cbind("parameter" = Yos46.yhat,"lower" = Yos46.yhat.L,"upper" = Yos46.yhat.U)
+
+
+#The *pretty* not so pretty graph
+
+plot(RecreationVisitors~Year,data=Yos,type="o",                        #Data up until the current year
+     ylab="Yearly Visitors (in millions)",
+     xlim=c(1980,2021),
+     ylim=c(0,7),
+     main = "Yosemite National Park Annual Visitors")
+lines(2017:2021,Yos46.yhat.L,col="blue",lty=2)                         #lower bounds
+lines(2017:2021,Yos46.yhat.U,col="blue",lty=2)                         #upper bounds
+polygon(c(2017:2021,rev(2017:2021)),c(Yos46.yhat.L,rev(Yos46.yhat.U)), #Filling in the lines between the upper
+        col = "light gray",                                            #and lower bounds in the prediction.
+        border = NA)
+lines(2017:2021,Yos46.yhat,col="red",type="b",pch=5)
+lines(2017:2021,Yos46.yhat,col="red",type="b",pch=3)
 ```
+Table of the unlogged 95% parameter estimates and CI.
 
-    ## Observations: 32
-    ## Variables: 3
-    ## $ name  <chr> "Tetsu Katayama", "Hitoshi Ashida", "Shigeru Yoshida", "...
-    ## $ start <date> 1947-05-24, 1948-03-10, 1948-10-15, 1954-12-10, 1956-12...
-    ## $ end   <date> 1948-03-10, 1948-10-15, 1954-12-10, 1956-12-23, 1957-02...
+    ## Time Series:
+    ## Start = 72 
+    ## End = 76 
+    ## Frequency = 1 
+    ##    parameter    lower    upper
+    ## 72  5.096657 4.472109 5.808425
+    ## 73  5.301227 4.446741 6.319912
+    ## 74  5.421584 4.366934 6.730940
+    ## 75  5.606032 4.376368 7.181205
+    ## 76  5.755369 4.362865 7.592320
 
-Fantastic! Now we have two tidied data sets that we can use for our graph.
+ ![](tykiww.github.io/img/arima111/yos5.png)
+ 
+ As you can see, we now have both a table with predictions and a good looking graph of those future values. Pretty simple huh? This type of analysis is very handy for forcasting future performance whether it be for marketing trends, or tourism details. **_Yet there is always a catch!_** I probably should have told you at the very beginning, but this type of modelling is not useful for seasonal trends which oscillate during different periods (ie. mapping climate change, airport delay times... I will be doing a different seasonal arima example next.) 
 
-Let's start plotting!
+Some other things to watch out for may include (Arima Model assumptions):
+1.There are no known/suspected predictor variables
+2.There are no deterministic time trends of the form 1,2,3,...,t
+3.There are no one time anomalies (The model parameters are constant over time)
+4.The error process is homoscedastic.
 
-Here we use **ggrepel** package to prevent the labels from overlapping. `geom_vline()` and `geom_hline()` are used to create custom vertical and horizontal lines on the starting and ending dates of each Prime Minister's term and for the mean unemployment rate respectively.
+Since arima is a type of regression using past values (values predicted from year to year), sharp dips and spikes may interfere with the model. This means that arima does not take into consideration any procedural changes, anomalies, or other predictor values that may have actually contributed to any skips in convergence (ie. park closes down, vertical integration of a new financial firm, or even a blizzard that tears through a potato farm).
 
-``` r
-library(ggrepel)  # to help with overlapping labels
-library(scales)   # to help format scales and labels
-
-japan_unemploy %>% 
-  ggplot() +
-  geom_line(
-    aes(date, unemployed/100)
-    ) +
-  geom_vline(
-    data = prime_ministers, 
-    aes(xintercept = as.numeric(start)),
-    color = "blue", alpha = 0.5
-    ) +
-  geom_text_repel(
-    data = prime_ministers %>% filter(start > japan_unemploy$date[1]),
-    aes(x = start, y = 0.015, label = name)
-    ) +
-  scale_y_continuous(
-    labels = percent_format()
-    ) +
-  geom_hline(
-    yintercept = mean(japan_unemploy$unemployed/100), color = "red", alpha = 0.5
-    ) +
-  labs(
-    x = "Year", y = "Unemployment Rate (%)"
-    ) +
-  theme_bw()
-```
-
-<img src="../assets/2017-09-05-japan-unemploy-pm_files/first-plot-1.png" style="display: block; margin: auto;" />
-
-Looking at this graph, even with using `geom_text_repel()` there are too many Prime Ministers for it to look nice. This speaks for the highly turbulent "revolving door" of politics in Japan, especially in times of economic downturns such as in the 1990s and early 2000s (although many were caught in unrelated scandals or other kerfluffles too...).
-
-To unclutter our graph, let's only show Prime Ministers whose term exceeded 2 years (730 days to be exact).
-
-``` r
-(prime_ministers$end - prime_ministers$start) %>% head(8)   # only show results from first 8 rows
-```
-
-    ## Time differences in days
-    ## [1]  291  219 2247  744   64 1240 1574 2797
-
-By subtracting the starting dates from end dates we can calculate the length of each Prime Minister's term in days. The PM that lasted **64** days as shown is [Tanzan Ishibashi](https://en.wikipedia.org/wiki/Tanzan_Ishibashi), who unfortunately was incapacitated by stroke. Others such as [Sosuke Uno](https://en.wikipedia.org/wiki/S%C5%8Dsuke_Uno) (**68** days) resigned in more acrimonious terms (allegations of an extramarital affair with a **geisha** leading to a terrible performance in the subsequent election! Details can be read in *Secrets, Sex, and Spectacle: The Rules of Scandal in Japan and the United States* by Mark West if you're **really** curious).
-
-Now we just have to use mutate() to add this data into a new column:
-
-``` r
-prime_ministers <- prime_ministers %>% mutate(pm_term = (end - start))
-```
-
-Now let's try plotting again:
-
-``` r
-# second try!
-
-japan_unemploy %>% 
-  ggplot() +
-  geom_line(
-    aes(date, unemployed/100)) +
-  geom_vline(
-    data = prime_ministers, 
-    aes(xintercept = as.numeric(start)),
-    color = "blue", alpha = 0.5) +
-  scale_x_date(
-    limits = as.Date(c("1960-01-01", "2020-01-01")),
-    date_labels = "%Y"
-  ) +
-  geom_text_repel(
-    data = prime_ministers %>% filter(start > japan_unemploy$date[1], pm_term > 730),
-    aes(x = start, y = 0.06, label = name), 
-    force = 15, arrow = arrow(length = unit(0.01, 'npc'))
-  ) +
-  scale_y_continuous(
-    labels = percent_format(), 
-    limits = c(0.0, 0.07),
-    expand = c(0, 0)) +
-  geom_hline(
-    yintercept = median(japan_unemploy$unemployed/100), color = "red") +
-  labs(
-    x = "Year", y = "Unemployment Rate (%)") +
-  theme_bw()
-```
-
-<img src="../assets/2017-09-05-japan-unemploy-pm_files/plot-again-1.png" style="display: block; margin: auto;" />
-
-Much better! However, the arrows pointing to the start dates aren't ideal... Maybe I could try filling each subsetted Prime Minister's tenure with a different color instead?
-
-I also wanted to fill in the spaces of the terms with the political parties, however, most of the Prime Ministers came from the Liberal Democratic Party or LDP (Jimintō in Japanese) which dominated Japanese politics from 1955 to all the way to 1993! Also with so many segments of PMs it wouldn't look as pretty as Hadley's graph.
-
-Anyways, what I thought would be a quick practice turned out to take a lot longer as I had to fiddle with the aesthetics quite a bit to get everything juuust right. To finish off, I'll leave you with this article, [Japan's unemployment rate falls to 22-year low of 2.8% in Feb. 2017](https://www.japantimes.co.jp/news/2017/03/31/business/economy-business/joblessness-falls-22-year-low-2-8-february/). Under Shinzō Abe, unemployment has decreased significantly, but has it had positive impacts on the Japanese economy in other areas? That's a long debate for another article...!
-
-Any comments or suggestions on how to make this graphic better? Please comment below!
+Regardless, we've done it! The Arima model still continues to be one of the most standard procedures to forecast future values to this day. Maybe because time happens to be amongst the strongest predicting elements of nature.
+Although it is not the best possible model (do we even know what the best model even is?), it is almost like those gloves where one-size fits all.
