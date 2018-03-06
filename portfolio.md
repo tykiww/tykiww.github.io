@@ -8,9 +8,8 @@ Take a look at some of my projects below!
 
 
 
-# [Timeseries](tykiww.github.io/404.html)
-[![](../img/arima12.png)](tykiww.github.io/404.html)
-
+# [Timeseries](https://tykiww.github.io/timeseries.md)
+[![](../img/arima12.png)](https://tykiww.github.io/timeseries.md)
 # [Tree Models](tykiww.github.io/404.html)
 [![](../img/Narrative phylogeny.png)](tykiww.github.io/404.html)
 # [Regression Models](tykiww.github.io/404.html)
