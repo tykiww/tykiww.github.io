@@ -9,13 +9,13 @@ As a dual-native from the US and Japan, I have been richly blessed by many inter
 
 Many of my projects display knee-deep tutorials on how to effectively tune parameters on analytical models. Just warm enough for almost anyone to understand, but complex enough to stretch your brain.
 
-My main interests include futsal, futsal, and futsal. :soccer:
+My main interests include futsal, futsal, and futsal. 
 
 **Connect** with me on [LinkedIn](https://www.linkedin.com/in/taiki-wada)!
 
-**Contact**: tyki@byu.net | phone number and other details upon request
+**Contact**: tyki@byu.net (phone number and other details upon request).
 
-**View** my [Publication:](https://doi.org/10.1016/j.burn.2017.05.003)
+**View** my [Publication project.](https://doi.org/10.1016/j.burn.2017.05.003)
 
 [Download my Resume (PDF)](tykiww.github.io/github rez.pdf)
 
