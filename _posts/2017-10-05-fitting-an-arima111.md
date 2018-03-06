@@ -6,7 +6,7 @@ tags: [asta, arima, base R, vizualization]
 ---
 
 
-How many visitors can we expect to see in Yosemite National park for the next 5 years? One of my most desired go-tos has always been Yosemite National Park. I’ve never been! Yet, I have always been allured by the incredible photography of the snow-capped mountains. 
+How many visitors can we expect to see in Yosemite National park for the next 5 years? One of my most desired go-tos has always been Yosemite National Park. I’ve never been! It's just so dang beautiful.. Maybe one day soon!
 
 ![](https://cdn.shopify.com/s/files/1/0272/4781/files/summer-sunset-over-half-dome-from-glacier-point-yosemite.jpg?1089)
 
