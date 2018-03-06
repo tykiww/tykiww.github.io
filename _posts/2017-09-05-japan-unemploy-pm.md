@@ -40,7 +40,7 @@ plot(RecreationVisitors~Year,
      ylab = "Yosemite Annual Visitors (In millions)")
 ```
 
-![](tykiww.github.io/img/arima111/yos1.png)
+![](https://tykiww.github.io/img/arima111/yos1.png)
 
 From this data, we can see the multiplicative curvature of the graph. This is difficult to fit an ARIMA model (or any model) as the analysis uses additive data to predict future values. Fortunately, this is a simple fix. By performing a log transformation, we can see how the data becomes more readable.
 
@@ -55,7 +55,7 @@ abline(v=1941, col="red")
 abline(v=1946, col="red")
 ```
 
-![](tykiww.github.io/img/arima111/yos2.png)
+![](https://tykiww.github.io/img/arima111/yos2.png)
 
 How simple! The graph appears to be additive from 1930s to present, but has a dip between 1940-1950. Looking closely, Non-constant mean changes occur from 1941 to 1946. The dip seen from 1940-1946 roughly fits the time period of world war 2, so may suggest that wartime may have changed opportunities or interest for individuals. Some other possible causes for the curvature from 1920s to 1946 may be due to an increase in exposure, interest, and transportation. 
 
@@ -72,7 +72,7 @@ plot(lnvisitors~Year,
      ylab= "Yosemite Log Annual Visitors (In millions)")								
 ```
 
-![](tykiww.github.io/img/arima111/yos3.png)
+![](https://tykiww.github.io/img/arima111/yos3.png)
 
 Everything looks great! now that we have an additive model subsetted to the recent past, we can continue with the forecasting.
 
@@ -112,7 +112,7 @@ Prediction estimate values
     ## Frequency = 1 
     ## [1] 5.096657 5.301227 5.421584 5.606032 5.755369
  
- ![](tykiww.github.io/img/arima111/yos4.png)
+![](https://tykiww.github.io/img/arima111/yos4.png)
  
 Now all we need to do is represent the forecast values and the 95% confidence estimates along with a really **_pretty_** looking graph. In my honest opinion, base R doesn't have the prettiest graphics. My go-to is ggplot, but for the sake of functionality, I made it very simple. I'll show you some cool trick with ggplot pretty soon!
 
@@ -157,7 +157,7 @@ Table of the unlogged 95% parameter estimates and CI.
     ## 75  5.606032 4.376368 7.181205
     ## 76  5.755369 4.362865 7.592320
 
- ![](tykiww.github.io/img/arima111/yos5.png)
+![](https://tykiww.github.io/img/arima111/yos5.png)
  
  As you can see, we now have both a table with predictions and a good looking graph of those future values. Pretty simple huh? This type of analysis is very handy for forcasting future performance whether it be for marketing trends, or tourism details. **_Yet there is always a catch!_** I probably should have told you at the very beginning, but this type of modelling is not useful for seasonal trends which oscillate during different periods (ie. mapping climate change, airport delay times... I will be doing a different seasonal arima example next.) 
 
