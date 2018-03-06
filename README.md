@@ -1,4 +1,5 @@
-# Ryo-N7.github.io
-Personal website 2.0
+# tykiww.github.io
 
-Repository for my website!
+Another attempt at learning Github...
+
+Personal Repo
