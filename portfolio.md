@@ -8,10 +8,18 @@ Take a look at some of my projects below!
 
 
 
-# Timeseries
+# Timeseries          |        # Tree Models
+![](../img/disco.jpg) | ![](../img/disco.jpg)
 
-# Tree Models
+
+
+
+
 
 # Regression Models
 
+
+
 # Cluster Models
+
+
