@@ -1,0 +1,11 @@
+,Array,Imperative,Compiled,Concurrent,Curly-Bracket,Interactive,Data-Oriented,Interpreted,Memory type,Embeddable,Metaprogramming,Extention,Object Oriented,Scripting,Procedural
+Java,N,Y,Y,Y,Y,N,N,N,Y,Y,N,N,Y,N,Y
+Python,N,Y,Y,N,N,Y,N,Y,Y,Y,Y,Y,Y,Y,Y
+C,N,Y,Y,N,Y,N,N,N,Y,N,N,N,N,N,Y
+Ruby,N,Y,N,N,N,Y,N,Y,N,Y,Y,Y,Y,Y,N
+Javascript,N,N,N,N,N,Y,N,Y,Y,N,N,Y,N,Y,Y
+C#,N,Y,Y,N,Y,N,N,N,Y,N,N,N,Y,N,Y
+PHP,N,Y,N,N,Y,N,N,Y,N,Y,N,N,Y,Y,N
+Objective-C,N,N,Y,N,N,N,N,N,N,N,N,N,Y,N,Y
+SQL,N,N,N,N,N,N,Y,N,N,N,N,Y,N,N,N
+R,Y,N,N,N,Y,Y,N,Y,N,N,N,N,N,Y,Y
