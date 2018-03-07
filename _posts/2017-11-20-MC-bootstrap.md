@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Bootstrapping with monte carlo error analysis!"
+title: "Sales Strategy Bootstrapping with monte carlo error analysis!"
 fb-img: https://thumbs.gfycat.com/InbornTerrificAvocet-size_restricted.gif
 tags: [Monte Carlo, Bootstrap, base R, Predictive analytics, sales operation, timing R code]
 ---
