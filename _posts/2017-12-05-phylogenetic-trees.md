@@ -183,7 +183,7 @@ I guess there is one thing that I am not completely satisfied with in my code. I
 
 Regardless, the neat thing about this tree is how it it also works with several categorical values. So, in essence, you could categorize each explanatory variable by a subset of the data (I have another example csv right here if you want to try it on your own.).
 
-This is less of an analysis post, but more of a coding project that I created for myself. Regardless, I finally finished after sifting through the internetand piecing together details. This definitely took me a long time to finish and had been put aside for a while. Even after this, I still don't consider myself a great coder but there is a certain satisfaction to know, with invested time, <sub>I<sub/> can figure most things out. I hope you may find this useful!
+This is less of an analysis post, but more of a coding project that I created for myself. Regardless, I finally finished after sifting through the internetand piecing together details. This definitely took me a long time to finish and had been put aside for a while. Even after this, I still don't consider myself a great coder but there is a certain satisfaction to know, with invested time, I<sub/> can figure most things out<sub>. I hope you may find this useful!
 
 [download](https://tykiww.github.io/assets/Phyl/prog.csv) the original matrix
 
