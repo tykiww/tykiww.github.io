@@ -35,7 +35,7 @@ glimpse(diamonds)
     
 We won't be working with that one. Let's take a look at the imbedded large set. The Diamonds dataset is one of the great examples of how powerful R can be using big data. Unfortunately, we're not touching all of it because we are only working a simple linear regression.
 
-Make sure to install the libraries for analysis! Today I'm going to show you an interactive plot using [plotly](https://plot.ly/)! Plotly is an interactive interface that allows for easier labeled vizualization. With it, you can see individual plot points and easily recognize any outliers. Rather impressive, it definitely beats having to use the `identify()` function or `gganimate()` which sometimes is quite a pain. 
+Make sure to install the libraries for analysis! Today I'm going to show you an interactive plot using [plotly](https://plot.ly/)! Plotly is an interactive interface that allows for easier labeled visualization. With it, you can see individual plot points and easily recognize any outliers. Rather impressive, it definitely beats having to use the `identify()` function or `gganimate()` which sometimes is quite a pain. 
 
 ```r
 library(ggplot2)
@@ -138,7 +138,7 @@ log Price of a 1 carat diamond = 8.449 + (1.68)X<sub>i<sub/>
 
 Another important note to look at is the R^2 value for this model. You can see how I manually calculated the R^2 for the non-logged value and the logged one is part of the linear model. The logged values seem to explain more of the variability than for the unlogged one (unlogged = 0.828, logged = 0.933). For those that are not familiar with R^2, this indicates the percentage of variability that is explained by the model. For the most case, the higher, the better as long as the residuals are normally distributed. If you want more information, take a look at this [site](http://statisticsbyjim.com/regression/interpret-r-squared-regression/).
 
-Let' also take a look at the histogram of residuals to see if we have violated any assumptions of normality. We do this by performing a K-S test on the r-studentized residuals (residuals we have transformed to analyze in a normal curve. The standard deviaitons from the mean will match the same distribution). 
+Let' also take a look at the histogram of residuals to see if we have violated any assumptions of normality. We do this by performing a K-S test on the r-studentized residuals (residuals we have transformed to analyze in a normal curve. The standard deviations from the mean will match the same distribution). 
 
 ```r
   # Compute R-studentized residuals
@@ -157,7 +157,7 @@ Let' also take a look at the histogram of residuals to see if we have violated a
 
 Not bad, it looks like we have a roughly normal distribution of errors, which satisfies our assumptions! K-S tests are short for the Kolmogorov–Smirnov test, and is a hypothesis test with Ho: Residuals are not normally distributed. Our p-value from this output shows a p-value of <.001, so we can safely say that the residuals are indeed normally distributed.
 
-Now going back to the summary output, we can see a p-value < 2.2e-16 and F statistic of 7.51e+05 df(1,53938). This corresponds to the Ho: the size of a diamond does NOT have a statistically significant effect on the cost. Therefore, At a p-value less than 0.0001, we have sufficient evidence to reject the null hypothesis and say that there is a statistically significant effect in price from carat to offspring and for a 1% increase in Carat size, we estimate an expected increase in Price of 1.676% in offspring sweet pea diameter (95% CI: 1.672%,1.679%).
+Now going back to the summary output, we can see a p-value < 2.2e-16 and F statistic of 7.51e+05 df(1,53938). This corresponds to the Ho: the size of a diamond does NOT have a statistically significant effect on the cost. Therefore, at a p-value less than 0.0001, we have sufficient evidence to reject the null hypothesis and say that there is a statistically significant effect in price from carat to offspring and for a 1% increase in Carat size, we estimate an expected increase in Price of 1.676% in offspring sweet pea diameter (95% CI: 1.672%,1.679%).
 
 ```r
 confint(out.diamonds)
@@ -213,10 +213,10 @@ Here's the actual plot below with the prediction output.
 
 ![](https://tykiww.github.io/img/slr/slr6.png)
 
-For a one carat diamond, we can expect a price of about 24946.22 with a 95% confidence of (14907.68, 41744.49). These are HUGE bounds.. This is pretty obvious. As the carat amount gets higher, there is so much more variability in price. This means that there is more of a chance for someone to rip you off! Of course, this data is not including the fiting and cutting of the ring, the other C's included (cut, color, clarity), but it is rather relevant information. 
+For a one carat diamond, we can expect a price of about 24946.22 with a 95% confidence of (14907.68, 41744.49). These are HUGE bounds.. This is pretty obvious. As the carat amount gets higher, there is so much more variability in price. This means that there is more of a chance for someone to rip you off! Of course, this data is not including the fitting and cutting of the ring, the other C's included (cut, color, clarity), but it is rather relevant information. 
 
 This research is great as it has a lot of information (data points) to perform a regression. It is also good to note that there is a seemingly strong correlation between size of diamonds and price, so it makes the analysis easier to perform. 
 
 Alternatively, we can tell that this is not a perfect model to predict price. Just one simple linear regression does not tell us all the other information that we are missing! In that way, we can see how picky we need to be about our information whenever performing an analysis. 
 
-Regardless, I hope you can enjoy toying around with regressions and the interactive plots. If you have any futher questions, let me know!
+Regardless, I hope you can enjoy toying around with regressions and the interactive plots. If you have any further questions, let me know!
