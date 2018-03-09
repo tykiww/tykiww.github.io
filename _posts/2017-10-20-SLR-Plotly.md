@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Simple Linear Regression using interactive plots"
-fb-img: 
+fb-img: http://tykiww.github.io/img/slr.png
 tags: [Simple, SLR, Simple Linear Regression, Regression, transofmation, plotly, interactive plots]
 ---
 
