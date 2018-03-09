@@ -5,19 +5,19 @@ fb-img: https://thumbs.gfycat.com/InbornTerrificAvocet-size_restricted.gif
 tags: [Monte Carlo, Bootstrap, base R, Predictive analytics, sales operation, timing R code]
 ---
 
-We oftentimes undermine the power that parameter estimates have in predicting probabilities of outcomes. Sometimes, we just don't have enough data to find out a confidence estimate and interval of an outcome. Other times, we lack information to perform accurate hypothesis tests of statistical significance. These situations usually lead to needing non-parametric methods to figure out likelihood estimates of certain outcomes with the limited information we have!
+We oftentimes undermine the power that parameter estimates have in predicting probabilities of outcomes. Sometimes, we just don't have enough data to find out a confidence estimate and interval of an outcome. Other times, we lack information to perform accurate hypothesis tests of statistical significance. These situations usually lead to needing models to figure out likelihood estimates of certain outcomes with the limited information we have!
 
-Fortunately, we have the monte carlo method to give us a good gist. Monte carlo sampling is a technique that allows for estimates to follow the law of large numbers, creating a central limit distribution. In other words, MC takes a random sample of certain events (estimates) over and over and over and over again to obtain numerical events from uncertainty. 
+Fortunately, we have the monte carlo method to give us a good gist. Monte carlo sampling is a technique that allows for estimates to follow a pattern of the law of large numbers, creating a central limit distribution. In other words, MC takes a random sample of certain events (estimates) over and over and over and over again to obtain numerical events from uncertainty. Monte Carlo sampling is very useful when determining confidence estimates from non-parametric distributions. As long as we are familiar with a 'true' proportion or a tendency of the estimate, we can create confidence estimates.
 
 ![](https://thumbs.gfycat.com/InbornTerrificAvocet-size_restricted.gif)
 
-One type of monte carlo sampling is the bootstrap technique (this is something that I will go over in-depth when I cover random forest models in a couple of months). Bootstrapping is one of the most useful procedures in determining confidence interval parameter estimates and is a sampling technique with replacement. This means, that every time an object is sampled, it is replaced back with the same probability of independant occurance. This is especially useful when we have known/estimated probabilities of certain outcomes and we are testing with limited amounts of data. Bootstrapping has been known to be valuable in dealing with optimization when there may be heteroscedacity (errors are not normally distributed) and distributional assumptions may not be met.
+One type of monte carlo sampling is the bootstrap technique (this is something that I went deeper when I covered [random forest models](https://tykiww.github.io/2017-11-20-rf-model/) in the past). Bootstrapping is one of the most useful procedures in determining confidence interval parameter estimates and is a sampling technique with replacement. This means, that every time an object is sampled, it is replaced back with the same probability of independant occurance. This is especially useful when we have known/estimated probabilities of certain outcomes and we are testing with limited amounts of data. Bootstrapping has been known to be valuable in dealing with optimization when there may be heteroscedacity (errors are not normally distributed) and distributional assumptions may not be met.
 
 In short, it's a ridiculously useful technique to create more data when we have just partial information. Well then, let's take a look at some coding!
 
 ===================================
 
-At first, I was going to take a look at some true/false outcomes (ie. poisson distribution), but I thought it might be nicer to look at more complex situations.
+At first, I was going to take a look at some success/failure outcomes (ie. binomial distribution), but I thought it might be nicer to look at more complex situations.
 
 
 
@@ -27,7 +27,7 @@ Here's a hypothetical situation where the bootstrap & monte carlo technique may 
 
   - With phone rates being 2 cents a call, the manager was worried that their area selections are becoming obsolete and that they are going to lose revenue.
 
-  - Because past data has shown that at least 4 percent of people who answer calls buy your product (On average, one sale makes about $199), the manager has decided that they wanted to reevaluate how costly each phone call would be and see how many calls it will take to get at least one of every single area to respond. 
+  - Because past data has shown that at least 4 percent of people who answer calls buy your product (On average, one sale makes about $199), the manager has decided that they wanted to re-evaluate how costly each phone call would be and see how many calls it will take to get at least one of every single area to respond. 
 
   - After repeated data collection, we have observed that each division has respective probabilities of c("A" = 0.10,"B" = 0.25,"C" = 0.25,"D" = 0.40) people answering phone calls. These all happen to add up to one, but they don't have to.
 
@@ -38,7 +38,7 @@ Here's a hypothetical situation where the bootstrap & monte carlo technique may 
 
 **Is this a valid measure of area performance?**
 
-Alright, let's get going already. First, I'll call out the beloved `dplyr` package to help me with this function. I honestly don't need it, but it makes this code a little more fun to work with. Well, since we are looking at how many tries it takes until we succeed on getting at least one call from each area. This is a great example of a compounded version of a negative binomial! For this problem, Instead of starting off each individual area and performing an rnbinom, I decided to stick them all into one sample and bootstrap it. I decided to do this because I wanted to see what the estimated profit per call was if we were calling each area at once. One large flaw with this technique is that all areas comprise the whole sample space and do not account for the compliment of the intersect of all values. Nevertheless, bootstrapping actually allows us to resample, indepdndently, without replacement, thus bringing the probability of getting at least one of each call closer to the true values (0.10, 0.25, 0.25, 0.40). 
+Alright, let's get going already. First, I'll call out the beloved `dplyr` package to help me with this function. I honestly don't need it, but it makes this code a little more fun to work with. Well, since we are looking at how many tries it takes until we succeed on getting at least one call from each area. This is a great example of testing out four different geometric distributions! For this problem, Instead of starting off each individual area and performing an rnbinom, I decided to stick them all into one sample and bootstrap it. I decided to do this because I wanted to see what the estimated profit per call was if we were calling each area at once. One large flaw with this technique is that all areas comprise the whole sample space and do not account for the compliment of the intersect of all values. Nevertheless, bootstrapping actually allows us to resample, indepdndently, without replacement, thus bringing the probability of getting at least one of each call closer to the true values (0.10, 0.25, 0.25, 0.40). 
 
 I also toyed with changing the boolean *TRUE* to a character and character matching twice -once with `grepl` to produce the T, second by using `matches` to match the TRUE with itself. These were marked with a counter until the while loop marked every area as TRUE.
 
@@ -77,6 +77,7 @@ tha.calls # about 40
 hist(numcall4(), main = "Histogram of Bootstrapped Calls")
 c("mean # of calls" = mean(numcall4()))
 ```
+
 ![](https://tykiww.github.io/img/boot/boot1.png)
 
 Output
@@ -95,7 +96,7 @@ nReps <- 100 # number of repetitions
 
 ```
 
-I previously tried this with 1000 bootstrap samples with 1000 monte carlo repetitions, but I soon realized that this was going to take way too long and I had to end the code early. More points are always nice for bootstrap sampling as our n increases, our p(power to reject the null | Ho) increases.
+I previously tried this with 1000 bootstrap samples with 1000 monte carlo repetitions, but I realized that this was going to take way too long and I had to end the code early. More points are always nice for bootstrap sampling as our n increases, our p(power to reject the null | Ho) increases.
 I put in a timer to see how long it would take with just 100x100. It should roughly be 100 times shorter than what I was trying before!
 
 ```r
@@ -120,9 +121,9 @@ c("mean calls t/s"=mean(av_calls), "mean short-profit t/s"=mean(check))
       ## mean calls t/s mean short-profit t/s 
       ##      39.9690              317.3539 
       
-Oh good, it only took about 30 seconds. That's not bad. No wonder 1000x1000 took me forever: That would have taken me about 100*30/60 which would be roughly 50 min. I have a rather nice mac that runs fairly fast. I wonder how my CPU really compares with other machines.
+Oh good, it only took about 30 seconds. That's not bad. No wonder 1000x1000 took me forever: That would have taken me about (100)30/60 which would be roughly 50 min. I have a rather nice mac that runs fairly fast. I wonder how my CPU really compares with other machines.
 
-Each check value corresponds to a monte carlo element of the short-term profit that we would earn taking into account the average revenue minus the price per call. It seems like, on average, we make about 316 dollars after successfully getting at least one call from  each of the four areas. Now, dividing that by the average number of calls gives us about 7.94 dollars on average per-call.
+Each `check` value corresponds to a monte carlo element of the short-term profit that we would earn taking into account the average revenue minus the price per call. It seems like, on average, we make about 316 dollars after successfully getting at least one call from  each of the four areas. Now, dividing that by the average number of calls gives us about 7.94 dollars on average per-call.
 
 ```r
 ave_calls <- mean(av_calls)
@@ -134,7 +135,7 @@ c("prof/call" = short_profit/ave_calls )
     ## prof/call 
     ## 7.94 
     
-So, in essence, if we were trying to make sure to randomly hit all 4 areas, we would expect to make 7.94 per call that goes through and 316 dollars on average if they made at least (about) 39, calls trying to randomly hit all 4 areas. 
+So, in essence, if we were trying to make sure to randomly hit all 4 areas, we would expect to make $7.94 per call that goes through and 316 dollars on average if they made at least (about) 39, calls trying to randomly hit all 4 areas. 
 
 Let's take a look at how confident we are about this estimate.
 
@@ -159,8 +160,8 @@ Depending on the time, focus, and energy of the employees we could make an impor
 
 I guess there were a few things that I could have done better from this analysis. This is NOT by all means a procedure that accurately predicts the exact profits that will be gained by the company. I guess this model is more of a prescriptive measure than a predictive measure. Yet, if we have data enough to compare different set groups, we will be able to make important and informed decisions for what to do. Another important thing to consider, is that this model is probably **_only useful when the probabilities of certain areas are very similar and hard to decipher just by intuition_**. If area D had a probability of .80 for calls received, I would most definitely drop A and possibly B and/or C.
 
-Next time, I would probably take into account the compliment of all values (maybe a value "E") which would account better for probability of calls not going through. I'll probably tweak it a bit for it to be more useful, but these aren't hard fixes. 
+Next time, I would probably take into account the average compliment of all values (maybe a value "E") which would account better for probability of calls not going through. I'll probably tweak it a bit for it to be more useful, but these aren't hard fixes. 
 
-I hope this reflects, at least, some of my abilities of effective data use in an applied setting. I just realized that I am enjoying this way too much... I am turning into a nerd. I still haven't done any of my homework.
+I hope this reflects, at least, some of my abilities of effective data use in an applied setting. I just realized that I am enjoying this way too much... I still haven't done any of my homework.
 
 Thank you for patiently reading (:
