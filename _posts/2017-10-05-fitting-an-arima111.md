@@ -6,17 +6,17 @@ tags: [asta, arima, base R, vizualization]
 ---
 
 
-How many visitors can we expect to see in Yosemite National park for the next 5 years? One of my most desired go-tos has always been Yosemite National Park. I’ve never been! It's just so beautiful.. Maybe one day soon!
+How many visitors can we expect to see in Yosemite National park for the next 5 years? One of my most desired bucketlist places has always been Yosemite National Park. I’ve never been! It's just so beautiful.. Maybe one day soon!
 
 ![](https://cdn.shopify.com/s/files/1/0272/4781/files/summer-sunset-over-half-dome-from-glacier-point-yosemite.jpg?1089)
 
-My first entry is a simple timeseries model of an ARIMA(1,1,1). The Arima model, also known as the Box Jenkins method is the most general class of autoregressive model for forecasting a time series. Simply, the 1,1,1 stands for (last period's change,year to year change, moving average). These details can be fine tuned according to how the data looks, but as a general guideline, the ARIMA(1,1,1) is beneficial and accurate for most cases. If you are curious, visit this [link](https://www.datascience.com/blog/introduction-to-forecasting-with-arima-in-r-learn-data-science-tutorials).
+My first entry is a simple timeseries model of an ARIMA(1,1,1). The Arima model, also known as the Box Jenkins method is the most general class of autoregressive model for forecasting a time series. Simply, the 1,1,1 stands for (last period's change, year to year change, moving average). These details can be fine tuned according to how the data looks, but as a general guideline, the ARIMA(1,1,1) is beneficial and accurate for most cases. If you are curious, visit this [link](https://www.datascience.com/blog/introduction-to-forecasting-with-arima-in-r-learn-data-science-tutorials).
 
 That's enough of the stats lessons. Let's actually try fitting the model to the Yosemite data!
 
 For the annual visitors data, I was able to download a dataset from the National Park's service [STATS](https://irma.nps.gov/Stats/SSRSReports/Park%20Specific%20Reports/Annual%20Park%20Recreation%20Visitation%20(1904%20-%20Last%20Calendar%20Year)?Park=YOSE) website. The information spans from the inception of the park up until the last calendar year, and since it's only the beginning of 2018, the data runs until 2016. Might be fun to see how accurate these next predictions will be once the 2017 data comes out!
 
-For a more in-depth analysis, I would hunt for park event details but for today we are just focusing on the simple Rbase graphs and the statistical model. Normally, I would scrape the information using the rvest package yet the data was so small, I just downloaded the csv and copied it in through a simple read.table.
+For a more in-depth analysis, I would hunt for park event details but for today we are just focusing on the simple Rbase graphs and the statistical model. Normally, I would scrape the information using the rvest package yet the data was so small, I just downloaded the csv and copied it in through a simple `read.table()`.
 
 ``` r								
 Yos <- read.table(header = TRUE, text = '
@@ -58,9 +58,9 @@ abline(v=1946, col="red")
 
 ![](https://tykiww.github.io/img/arima111/yos2.png)
 
-How simple! The graph appears to be additive from 1930s to present, but has a dip between 1940-1950. Looking closely, Non-constant mean changes occur from 1941 to 1946. The dip seen from 1940-1946 roughly fits the time period of world war 2. This may suggest that wartime may have changed opportunities or interest of individuals. Some other possible causes for the curvature from 1920s to 1946 may be due to an increase in exposure, interest, and transportation. Good to think about.
+How simple! The graph appears to be additive from 1930s to present but has a dip between 1940-1950. Looking closely, Non-constant mean changes occur from 1941 to 1946. The dip seen from 1940-1946 roughly fits the time period of world war 2. This may suggest that wartime may have changed opportunities or interest of individuals. Some other possible causes for the curvature from 1920s to 1946 may be due to an increase in exposure, interest, and transportation. Good to think about.
 
-Yet, this makes the data unusable! So we will need to subset the data to after 1945. By subsetting, we notice a more additive model that suggests less if not any changes in behavior or policy from year to year. With this subsetted data, we can see a more constant mean change that reflects future Yosemite tourism demand.
+Yet, this makes the data unusable! So, we will need to subset the data to after 1945. By subsetting, we notice a more additive model that suggests less if not any changes in behavior or policy from year to year. With this subsetted data, we can see a more constant mean change that reflects future Yosemite tourism demand.
 
 ```r							
 Yos[Yos$Year==1945,] #Subset to after 1945
@@ -81,7 +81,7 @@ Now let's take look at the arima model. You might need to install the asta packa
 
 The output ar1, ma1, and constant are the names for phi, epsilon, and mu. This information tells us the parameter estimate mu, and the standard errors. 
 
-The more interesting and applicable portion is done using the function `sarima.for()`. This is prediction element. You can see in Yos46.future how **_easy_** it is to fit the arima model. The first element denoting the log visitors, n.ahead being the number of years to forecast, and 1,1,1 coming from the arima function. Immediately, a graphic appears with the prediction values and 95 percent confidence estimates. Of course, these are logged values so we need to make sure to finish by creating an unlogged graph that meets publication quality!
+The more interesting and applicable portion is done using the function `sarima.for()`. This is prediction element. You can see in Yos46.future how **_easy_** it is to fit the arima model. The first element denoting the log visitors, n.ahead being the number of years to forecast, and 1,1,1 coming from the arima function. Immediately, a graphic appears with the prediction values and 95 percent confidence estimates. Of course, these are logged values, so we need to make sure to finish by creating an unlogged graph that meets publication quality!
 
 ``` r
 library("astsa")
@@ -160,7 +160,7 @@ Table of the unlogged 95% parameter estimates and CI.
 
 ![](https://tykiww.github.io/img/arima111/yos5.png)
  
-As you can see, we now have both a table with predictions and a good looking graph of those future values. Pretty simple huh? This type of analysis is very handy for forcasting future performance whether it be for marketing trends, or tourism details. **_Yet there is always a catch!_** I probably should have told you at the very beginning, but this type of modelling is not useful for seasonal trends which oscillate during different periods (ie. mapping climate change, airport delay times... I will be doing a different seasonal arima example next.) 
+As you can see, we now have both a table with predictions and a good-looking graph of those future values. Pretty simple huh? This type of analysis is very handy for forecasting future performance whether it be for marketing trends, or tourism details. **_Yet there is always a catch!_** I probably should have told you at the very beginning, but this type of modelling is not useful for seasonal trends which oscillate during different periods (ie. mapping climate change, airport delay times... I will be doing a different seasonal arima example next.) 
 
 Some other things to watch out for may include (Arima Model assumptions):
 1.There are no known/suspected predictor variables
