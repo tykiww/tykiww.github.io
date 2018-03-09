@@ -9,7 +9,7 @@ tags: [asta, arima, base R, big data, vizualization,]
 
 ![](http://needtoknow.nas.edu/energy/media/media_browser_uploads/images/item_1_.jpg)
 
-In on of my last posts I went through a non-seasonal ARIMA, looking at annual values, _but what if the values I am looking for are not annual, but monthly?_
+In one of my last posts I went through a non-seasonal ARIMA, looking at annual values, _but what if the values I am looking for are not annual, but monthly?_
 
   **No problem! Just change the y limits and gather monthly datapoints. Pretty simple, right?
   Well, not really..**
@@ -49,7 +49,7 @@ plot(energy,
 
 Well, how odd! (not really, if you catch my sarcasm..) the values seem like they move in a seasonal pattern with a periodical movement. I wonder why? Most likely due to seasonal consumption of energy. The two peaks might be explained by the energy used to heat homes in the winter and air conditioning during the summer. Otherwise, the plot doesn't seem to have any abnormalities.
 
-Next, we can do a similar process in identifying the parameter estimate and errors. But wait.. What are all these ones doing and what does this twelve mean? Well, if you have time, you might want to take a look at the explanations under the [arima(1,1,1)](https://tykiww.github.io/2017-10-05-fitting-an-arima111/) for the first component. The next (1,1,1)_12 stands for the seasonal component of the arima model. The first three ones perform an autoregression of additive data corresponding year to year while the last three ones take into consideration the oscillating month to month pattern (hence the 12 for the twelve months in a year). Of course, these values can all be adjusted for further fine-tuned investigation yet this model seems to suffice for constant patterns. 
+Next, we can do a similar process in identifying the parameter estimate and errors. But wait.. What are all these ones doing and what does this twelve mean? Well, if you have time, you might want to take a look at the explanations under the [arima(1,1,1)](https://tykiww.github.io/2017-10-05-fitting-an-arima111/) for the first component. The next (1,1,1)_12 stands for the seasonal component of the arima model. The first three ones perform an autoregression of additive data corresponding year to year while the last three ones take into consideration the oscillating month to month pattern (hence the 12 for the twelve months in a year). Of course, these values can all be adjusted for further fine-tuned investigation, yet this model seems to suffice for constant patterns. 
 
 ```r
 library(astsa)                              # Don't forget to install necessary packages!!
