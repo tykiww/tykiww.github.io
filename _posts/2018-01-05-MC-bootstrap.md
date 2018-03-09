@@ -165,3 +165,5 @@ Next time, I would probably take into account the average compliment of all valu
 I hope this reflects, at least, some of my abilities of effective data use in an applied setting. I just realized that I am enjoying this way too much... I still haven't done any of my homework.
 
 Thank you for patiently reading (:
+
+{% include disqus.html %}
