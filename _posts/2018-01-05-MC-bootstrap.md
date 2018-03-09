@@ -166,4 +166,4 @@ I hope this reflects, at least, some of my abilities of effective data use in an
 
 Thank you for patiently reading (:
 
-{% include disqus.html %}
+
