@@ -3,6 +3,7 @@ layout: post
 title: "Sales Strategy Bootstrapping with monte carlo error analysis!"
 fb-img: https://thumbs.gfycat.com/InbornTerrificAvocet-size_restricted.gif
 tags: [Monte Carlo, Bootstrap, base R, Predictive analytics, sales operation, timing R code]
+comments: true
 ---
 
 We oftentimes undermine the power that parameter estimates have in predicting probabilities of outcomes. Sometimes, we just don't have enough data to find out a confidence estimate and interval of an outcome. Other times, we lack information to perform accurate hypothesis tests of statistical significance. These situations usually lead to needing models to figure out likelihood estimates of certain outcomes with the limited information we have!
