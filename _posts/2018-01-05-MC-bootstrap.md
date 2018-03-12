@@ -30,7 +30,7 @@ Here's a hypothetical situation where the bootstrap & monte carlo technique may 
 
   - Because past data has shown that at least 4 percent of people who answer calls buy your product (On average, one sale makes about $199), the manager has decided that they wanted to re-evaluate how costly each phone call would be and see how many calls it will take to get at least one of every single area to respond. 
 
-  - After repeated data collection, we have observed that each division has respective probabilities of c("A" = 0.10,"B" = 0.25,"C" = 0.25,"D" = 0.40) people answering phone calls. These all happen to add up to one, but they don't have to.
+  - After repeated data collection, we have observed that each division has respective probabilities of c("A" = 0.10,"B" = 0.25,"C" = 0.15,"D" = 0.40, "E" = .775) people answering phone calls. E stands for the average compliment of these probabilities, so it would  be the probability of no one answering.
 
 
 **What is our estimated profit/per call?**
@@ -56,9 +56,10 @@ for (j in 1:n) {
   B <- FALSE
   C <- FALSE
   D <- FALSE
+  E <- FALSE
   while (!(A & B & C & D)) {
     count <- count + 1
-    num.box <- sample(c("A", "B", "C", "D"), replace = TRUE, prob = c(0.10, 0.25, 0.25, 0.40))
+    num.box <- sample(c("A", "B", "C", "D", "E"), size = 1, replace = TRUE, prob = c(0.10, 0.25, 0.15, 0.40, 0.775))
       # just for fun, I did a character match with the boolean TRUE
     if (0 < sum(matches(match = "TRUE",vars = as.character(grepl("A",num.box))))) {
       A <- TRUE
@@ -66,27 +67,29 @@ for (j in 1:n) {
       B <- TRUE
     } else if (0 < sum(matches(match = "TRUE",vars = as.character(grepl("C",num.box))))) {
       C <- TRUE
-    } else if (0 < sum(matches(match = "TRUE",vars = as.character(grepl("",num.box))))) {
+    } else if (0 < sum(matches(match = "TRUE",vars = as.character(grepl("D",num.box))))) {
       D <- TRUE
-    }
+    } else
+      E <- FALSE # doesn't do anything.
   }
   tha.calls[j] <- sum(count)
 }
 
-tha.calls # about 40
+tha.calls # about 20
 }
+yup <- mean(numcall4())
 hist(numcall4(), main = "Histogram of Bootstrapped Calls")
-c("mean # of calls" = mean(numcall4()))
+c("mean # of calls" = yup)
 ```
 
-![](https://tykiww.github.io/img/boot/boot1.png)
+![](https://tykiww.github.io/img/boot/bootfix1.png)
 
 Output
 
     ## mean count of calls 
-    ##           39.92 
+    ##           25.61 
 
-The histogram shows a negative binomial pattern with a low probability and an estimate of about 40. If you're trying to replicate, don't worry if your histogram looks slightly diffferent from mine. Now that we have a function that gives us a MC estimate of the number of calls it takes, next we can assess the profitability of each outcome and check the confidence interval of that estimate.
+The histogram shows a negative binomial pattern with a low probability and an estimate of about 25. If you're trying to replicate, don't worry if your histogram looks slightly diffferent from mine. Now that we have a function that gives us a MC estimate of the number of calls it takes, next we can assess the profitability of each outcome and check the confidence interval of that estimate.
 
 ```r
 # Vectorize values
@@ -120,23 +123,23 @@ c("mean calls t/s"=mean(av_calls), "mean short-profit t/s"=mean(check))
       ##                user  system elapsed 
       ##            30.212   0.213  30.924 
       ## mean calls t/s mean short-profit t/s 
-      ##      39.9690              317.3539 
+      ##        22.5900              179.3646 
       
 Oh good, it only took about 30 seconds. That's not bad. No wonder 1000x1000 took me forever: That would have taken me about (100)30/60 which would be roughly 50 min. I have a rather nice mac that runs fairly fast. I wonder how my CPU really compares with other machines.
 
-Each `check` value corresponds to a monte carlo element of the short-term profit that we would earn taking into account the average revenue minus the price per call. It seems like, on average, we make about 316 dollars after successfully getting at least one call from  each of the four areas. Now, dividing that by the average number of calls gives us about 7.94 dollars on average per-call.
+Each `check` value corresponds to a monte carlo element of the short-term profit that we would earn taking into account the average revenue minus the price per call. It seems like, on average, we make about 179.37 dollars after successfully getting at least one call from  each of the four areas. Now, dividing that by the average number of calls gives us about 7.94 dollars on average per-call.
 
 ```r
 ave_calls <- mean(av_calls)
 short_profit <- mean(check)
-c("prof/call" = short_profit/ave_calls )
+c("profit/call" = short_profit/ave_calls )
 # this means we make $ 7.94 on average per call that goes through to all 4 areas.
 ```
 
-    ## prof/call 
+    ## profit/call 
     ## 7.94 
     
-So, in essence, if we were trying to make sure to randomly hit all 4 areas, we would expect to make $7.94 per call that goes through and 316 dollars on average if they made at least (about) 39, calls trying to randomly hit all 4 areas. 
+So, in essence, if we were trying to make sure to randomly hit all 4 areas, we would expect to make $ 7.94 per call that goes through and $ 179.37 on average if they made at least (about) 23, calls randomly until they hit all 4 areas. 
 
 Let's take a look at how confident we are about this estimate.
 
@@ -148,20 +151,19 @@ abline(v=mc.err,col='red')
 c(mc.err[1],"estimate"=short_profit,mc.err[2])
 ```
 
-    ##     2.5% estimate    97.5% 
-    ## 266.6907 317.3539 369.8988 
+    ##      2.5% estimate    97.5% 
+    ##  158.0437 179.3646 200.494
 
-![](https://tykiww.github.io/img/boot/boot2.png)
 
-After taking a look at the histogram of the data, we can be quite certain that 95% of the estimates that we have created can be expressed by (263.2050, 369.8988). In other words, we are 95% confident that the true mean short-profit is captured in this interval. I guess our confidence interval is rather wide with a margin of error of about 53 dollars. This seems quite wide. we are unsure of about 5.9 percent of our data in both directions. For better estimates, we should probably perform even more bootstrap samples to narrow up the confidence interval.
+![](https://tykiww.github.io/img/boot/bootfix2.png)
 
-*See how useful this is??* I guess another step I could add is comparing the data to a monte carlo assesed without area "A" as it had the lowest probability outcome. If I was a manager, I would take a comparison and drop one of the areas and focus on a section that yields more revenue It seems rather intuitive that if we drop A that we would make even more money.. I would do this by specifying the prob of "A"=0 in the vector above and comparing estimates by hypothesis testing. (Ho: No difference when removing area A, Ha: There is a difference). 
+After taking a look at the histogram of the data, we can be quite certain that 95% of the estimates that we have created can be expressed by (158.0437, 200.494). In other words, we are 95% confident that the true mean short-profit is captured in this interval. I guess our confidence interval is rather wide with a margin of error of about 21 dollars. For better estimates, we should probably perform even more bootstrap samples to narrow up the confidence interval.
+
+*See how useful this is??* I guess another step I could add is comparing the data to a monte carlo assesed without area "A" as it had the lowest probability outcome. If I was a manager, I would take a comparison and drop one of the areas and focus on a section that yields more revenue. It may seem intuitive that if we drop A that we would make even more money, but we never know with such low probabilities.. I would do this by specifying the prob of "A"=0 in the vector above and comparing estimates by hypothesis testing. (Ho: No difference when removing area A, Ha: There is a difference). 
 
 Depending on the time, focus, and energy of the employees we could make an important cost-cutting decision to increase our profits!
 
-I guess there were a few things that I could have done better from this analysis. This is NOT by all means a procedure that accurately predicts the exact profits that will be gained by the company. I guess this model is more of a prescriptive measure than a predictive measure. Yet, if we have data enough to compare different set groups, we will be able to make important and informed decisions for what to do. Another important thing to consider, is that this model is probably **_only useful when the probabilities of certain areas are very similar and hard to decipher just by intuition_**. If area D had a probability of .80 for calls received, I would most definitely drop A and possibly B and/or C.
-
-Next time, I would probably take into account the average compliment of all values (maybe a value "E") which would account better for probability of calls not going through. I'll probably tweak it a bit for it to be more useful, but these aren't hard fixes. 
+I guess there were a few things that I could have done better from this analysis. This is NOT by all means a procedure that accurately predicts the exact profits that will be gained by the company. I guess this model is more of a prescriptive measure than a predictive measure. Yet, if we have data enough to compare different set groups, we will be able to make important and informed decisions for what to do. Another important thing to consider, is that this model is probably **_only useful when the probabilities of certain areas are very similar and hard to decipher just by intuition_**. If area D had a probability of .80 for calls received, I would most definitely drop A and possibly C and/or D.
 
 I hope this reflects, at least, some of my abilities of effective data use in an applied setting. I just realized that I am enjoying this way too much... I still haven't done any of my homework.
 
