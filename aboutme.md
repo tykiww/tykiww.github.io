@@ -24,4 +24,7 @@ I hope you enjoy my rough portfolio!
 
 
 
-![](../img/disco.jpg)
+![](https://tykiww.github.io/img/disco.jpg)
+
+
+<div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="vertical" data-theme="dark" data-vanity="taiki-wada"><a class="LI-simple-link" href='https://www.linkedin.com/in/taiki-wada?trk=profile-badge'>Tyki Wada</a></div>
