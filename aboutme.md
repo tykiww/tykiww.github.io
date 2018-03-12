@@ -18,7 +18,7 @@ My main interests include futsal, futsal, and futsal.
 
 **View** my [Publication project.](https://doi.org/10.1016/j.burn.2017.05.003)
 
-**Download** my [Resume (PDF)](https://tykiww.github.io/github%20rez.pdf)
+**Download** my [Resume (PDF)](https://tykiww.github.io/TykCV2.pdf)
 
 I hope you enjoy my rough portfolio!
 
