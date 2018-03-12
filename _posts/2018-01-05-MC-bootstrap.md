@@ -6,7 +6,7 @@ tags: [Monte Carlo, Bootstrap, base R, Predictive analytics, sales operation, ti
 comments: true
 ---
 
-We oftentimes undermine the power that parameter estimates have in predicting probabilities of outcomes. Sometimes, we just don't have enough data to find out a confidence estimate and interval of an outcome. Other times, we lack information to perform accurate hypothesis tests of statistical significance. These situations usually lead to needing models to figure out likelihood estimates of certain outcomes with the limited information we have!
+We oftentimes undermine the power that non-parametric methods have in predicting probabilities of outcomes. Sometimes, we just don't have enough data to find out a confidence estimate and interval of an outcome. Other times, we lack information to perform accurate hypothesis tests of statistical significance. These situations usually lead to needing models to figure out likelihood estimates of certain outcomes with the limited information we have!
 
 Fortunately, we have the monte carlo method to give us a good gist. Monte carlo sampling is a technique that allows for estimates to follow a pattern of the law of large numbers, creating a central limit distribution. In other words, MC takes a random sample of certain events (estimates) over and over and over and over again to obtain numerical events from uncertainty. Monte Carlo sampling is very useful when determining confidence estimates from non-parametric distributions. As long as we are familiar with a 'true' proportion or a tendency of the estimate, we can create confidence estimates.
 
