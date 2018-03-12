@@ -29,7 +29,7 @@ glimpse(diamonds)
     ## $ cert    <chr> "GIA", "GIA", "GIA", "GIA", "GIA", "GIA", "GIA", "GIA", "GIA", "...
     ## $ price   <int> 1302, 1510, 1510, 1260, 1641, 1555, 1427, 1427, 1126, 1126, 1468...
     
-  ====================================================================================
+  =========================================================================
     
     
     
@@ -178,11 +178,11 @@ qplot(lncarat,lnprice,data=lndiamonds,
 
 ![](https://tykiww.github.io/img/slr/slr4.png)
 
-We can see how small of our confidence interval are. We notice this by the very narrow confidence bands in our qplot. This is most likely attributed due to the high number of observations (54,000). If you were a jewelry store manager we can see how useful this information is to predict, in our range, the price of the diamond from the size.
+We can see how small of our confidence interval is. Practically invisible We notice this by the very narrow confidence bands in our qplot. This is most likely attributed due to the high number of observations (54,000). If you were a jewelry store manager we can see how useful this information is to predict, in our range, the price of the diamond from the size.
 
 Now, if you were a newly-wed couple trying to look for a ring and wanted to see the predicted price for a 1 carat diamond, we just need to use the `predict()` function and insert a new dataframe containing the desired x-value. If you transformed the data, make sure to un-transform the information to correctly interpret! I took the `exp()` of the information.
 
-```rr
+```r
 exp(predict(out.diamonds, newdata=data.frame(lncarat=1), interval="prediction"))
 plot.df <- cbind(diamonds, exp(predict(out.diamonds, interval="prediction")))
 
