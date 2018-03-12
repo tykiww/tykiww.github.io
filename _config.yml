@@ -24,6 +24,11 @@ title: 太希
 # Short description of your site
 description: Tyki's Project Portfolio
 
+
+
+plugins:
+  - jekyll-seo-tag
+
 # --- Navigation bar options --- #
 
 # List of links in the navigation bar
