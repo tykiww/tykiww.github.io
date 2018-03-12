@@ -165,7 +165,7 @@ Depending on the time, focus, and energy of the employees we could make an impor
 
 I guess there were a few things that I could have done better from this analysis. This is NOT by all means a procedure that accurately predicts the exact profits that will be gained by the company. I guess this model is more of a prescriptive measure than a predictive measure. Yet, if we have data enough to compare different set groups, we will be able to make important and informed decisions for what to do. Another important thing to consider, is that this model is probably **_only useful when the probabilities of certain areas are very similar and hard to decipher just by intuition_**. If area D had a probability of .80 for calls received, I would most definitely drop A and possibly C and/or D.
 
-I hope this reflects, at least, some of my abilities of effective data use in an applied setting. I just realized that I am enjoying this way too much... I still haven't done any of my homework.
+I hope this reflects, at least, some of my abilities of effective data use in an applied setting.
 
 Thank you for patiently reading (:
 
