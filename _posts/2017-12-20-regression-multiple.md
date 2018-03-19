@@ -29,10 +29,7 @@ Temperature: Temp data was collected by NASA. This comprises an estimate of the 
 
 Greenhouse Gasses: Data was collected at the Maunaloa observatory. Since each chemical compound is a different size, each are expressed in various sizes. This will not affect overall regression estimates and standard errors.
 
-pp = parts per
-m = million
-b = billion
-t = trillion
+"pp" parts per : "m" million : "b" billion : "t" trillion
 
 - co2: ppm
 - methane: ppm
