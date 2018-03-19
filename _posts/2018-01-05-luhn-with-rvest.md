@@ -36,7 +36,6 @@ Let's get started by downloading the only necessary library. The rest will be pe
 
 ```r
 library(rvest)
-library(xml2)
 ```
 
 The only place I could find useful information about typical credit network values was on [wikipedia](https://en.wikipedia.org/wiki/Payment_card_number#Major_Industry_Identifier_.28MII.29). The table I want to retrieve looks like this. 
