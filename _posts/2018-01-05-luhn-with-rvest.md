@@ -23,7 +23,7 @@ The rules are...
 - 6 + 2 + 6 + 7 + 6 = 27
 6. Now multiply that value by 9 
 - 27 * 9 = 243. The last value _3_ is your 'check' digit.
-7. Finally, you will have a string that includes the original random numbers including the 'check digit.
+7. Finally, you will have a string that has the original random numbers including the 'check' digit.
 - 373263
 
 The pseudo-code for this algorithm is right [here](https://en.wikipedia.org/wiki/Luhn_algorithm#Pseudo-Code). If you want to do this on your own, it may be a good guide. It's rather simple. You probably won't need it if you had the rules. 
@@ -250,7 +250,7 @@ mod10(network = "Visa")
 
 The first item is a luhn algorithm of length 14, could be any credit card number. The second element is the specified visa credit card number. Pass the second string through [here](http://www.validcreditcardnumber.com/)! It works!
 
-In summary, this probably took only 2 or so hours to create (most of the time is taken writing the blog posts and research). This seems like an effective technique to create unique identification numbers for your company or even create 'fake' credit card numbers. Odds are, someone has those values, so maybe you should be careful. If you want, click here and input the credit card number at the bottom to see how it is validated online. You'll find a lot more information that you thought you would.
+In summary, this probably took only 2 or so hours to create (most of the time is taken writing the blog posts and research). This seems like an effective technique to create unique identification numbers for your company or even create 'fake' credit card numbers. Odds are, someone has those values, so maybe you should be careful. If you want, click here and input the credit card number at the bottom to see how it is validated online. You'll find a lot more information than you thought you would.
 
 I'm still kinda angry that my McDonald's app is being dumb. I really want those one dollar deals...
 
