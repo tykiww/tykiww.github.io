@@ -5,11 +5,13 @@ tags: [rvest, base R, web scraping, credit card, credit network, visa, luhn algo
 comments: true
 ---
 
-So, I have this McDonalds app. So convenient. Especially for a hungry college student looking for ways to save money. Yet, there's a problem with my card. It just seems to not register with the app. How disappointing! Usually they have those 1 dollar deals to get any sandwich. **ANY SANDWICH**. That's my favorite one (This is in no way product placement, I'm just always hungry 笑).
+_Webscraping with `Rvest` and investigating mod 10_
+
+So, I have this McDonalds app. Really convenient, especially for any hungry college student looking for ways to save money. Yet, there's a problem with my card. It just doesn't register with the app. How disappointing! Usually they have those 1 dollar deals to get any sandwich. **ANY SANDWICH**. That's my favorite one (This is in no way product placement, I'm just always hungry 笑).
 
 ![](https://www.streetinsider.com/images/news2/139/13920358/LYNXNPEE271FK.jpg)
 
-Upon being frustrated at how my card didn't work, I tried to troubleshoot this problem on the internet. Unfortunately, I couldn't find any solutions, but I ended up finding something even more interesting. This was the mod 10 (modulus 10) or Luhn algorithm. This is an algorithm that is heavily used to generate credit card numbers and ID numbers. I guess it isn't safe to generate passwords because if someone found out every value except for the last one, I'd be screwed.
+Upon being frustrated at how my card didn't work, I tried to troubleshoot this problem on the internet. Unfortunately, I couldn't find any solutions, but I ended up finding something even more interesting. This was the mod 10 (modulus 10) or Luhn algorithm. This is an algorithm that is heavily used to generate credit card numbers and ID numbers. I guess it isn't safe to generate passwords because if someone found out every value except the last number of my card, I'd be screwed.
 
 The rules are...
 
@@ -26,11 +28,11 @@ The rules are...
 7. Finally, you will have a string that has the original random numbers including the 'check' digit.
 - 373263
 
-The pseudo-code for this algorithm is right [here](https://en.wikipedia.org/wiki/Luhn_algorithm#Pseudo-Code). If you want to do this on your own, it may be a good guide. It's rather simple. You probably won't need it if you had the rules. 
+The pseudo-code for this algorithm is right [here](https://en.wikipedia.org/wiki/Luhn_algorithm#Pseudo-Code). It's rather simple. You probably won't need it if you have the rules. 
 
-With this algorithm, I decided to make a credit card generator for some of the main credit networks (ie. Visa, Amex, MasterCard, etc.). I also hoped to incorporate some simple `rvest()` scraping so it will help you realize how easy it can be to scrape information from the web. 
+With this algorithm, I decided to make a credit card generator for some of the main credit networks (ie. Visa, Amex, MasterCard, etc.). I also hoped to incorporate some simple `rvest()` scraping to help you realize how easy it can be to scrape information from the web. 
 
-Let's get started by downloading the only necessary library. the rest will be performed in Base R. 
+Let's get started by downloading the only necessary library. The rest will be performed in Base R. 
 
 ```r
 library(rvest)
@@ -39,7 +41,7 @@ library(xml2)
 
 The only place I could find useful information about typical credit network values was on [wikipedia](https://en.wikipedia.org/wiki/Payment_card_number#Major_Industry_Identifier_.28MII.29). The table I want to retrieve looks like this. 
 
-![](https:/;tykiww.github.io/img/luhn/luhn1.png)
+![](https://tykiww.github.io/img/luhn/luhn1.png)
 
 Before we read anything in, let's grab the xpath from our inspect element of the table. Right click on your chrome or firefox window on the page and select "inspect". This will pull up a sidebar that shows us the html, css, and other properties in the window.  
 
@@ -49,7 +51,7 @@ From there, start clicking on the html elements that highlight the specific port
 
 ![](https://tykiww.github.io/img/luhn/luhn3.png)
 
-Once you get to the portion that highlights the desired table (usually in between the section that specifies "<table...), just right click and copy the xtable value! This will make sure which table you are exactly searching for. 
+Once you get to the portion that highlights the desired table (usually in between the section that specifies "<table...), just right click and copy the xtable value! This will make sure exact table you are searching for. 
 
 ![](https://tykiww.github.io/img/luhn/luhn4.png)
 
@@ -57,7 +59,7 @@ Interesting huh? I guess we can apply this to so many other situations where we 
 
 Now that we have that out of the way, let's use the information we need to scrape the table.
 
-This can all be done in one simple step. `read_html()` comes from the `xml2` package, and the `html_nodes()` and `html_table()` both come from the rvest package. The `%>%` operator is a fun one to toy with. I am actually not completely used to using it yet, but I realized that it simplifies my code for this example instead of having to vectorize everything. I'll hopefully be using them more often. 
+This can all be done in one simple step. `read_html()` comes from the `xml2` package, and the `html_nodes()` and `html_table()` both come from the rvest package. The `%>%` operator fun to toy with. I am actually not completely used to using it yet, but I realized that it simplifies my code for this example instead of having to vectorize everything. I'll hopefully be using them more often. 
 
 All it is, is just taking a url into the `read.html()`, searching for the xpath from our inspected element.
 
@@ -74,7 +76,6 @@ credit <-
 
 credit <- credit[[1]] # first list element. 
 head(credit)
-
 ```
 
 ![](https://tykiww.github.io/img/luhn/luhn5.png)
@@ -92,7 +93,7 @@ credit <- sapply(credit, function(x) annoying(x) )
 networks <- credit[c(22,18,19,1,8,3,12,14),c(1:2,4)]
 ```
 
-From here, I'm only going to pull out the Credit card networks that I want. I am only going to select the most heavily international-use cards. I just pulled up a google search with the most used networks. Sorry to bankcard, rupay, and all others...
+From here, I'm only going to pull out the Credit card networks that I want. I am only going to select the most heavily used international cards. I just pulled up a google search with the most used networks. Sorry to bankcard, rupay, and all others...
 
     ## Visa [22], Mastercard [18,19], Amex [1], Discover [8], UnionPay [3], JCB [12], Maestro [14].
   
@@ -107,7 +108,6 @@ x <- 15
 base1 <- sample(0:9,x-1, replace = T)
 # reverse the numbers
 split <- rev(base1)
-
 ```
 
 Now we'll take the odd values and double them! I passed the values through a for loop and used my own function to take apart the digits.
@@ -248,9 +248,9 @@ mod10(network = "Visa")
     ## [1] "391215822812658"
     ## [1] "4727059036057"
 
-The first item is a luhn algorithm of length 14, could be any credit card number. The second element is the specified visa credit card number. Pass the second string through [here](http://www.validcreditcardnumber.com/)! It works!
+The first item is a luhn algorithm of length 14, could be any credit card number. The second element is the specified visa credit card number. Pass the second string through [here](http://www.validcreditcardnumber.com/) to confirm.
 
-In summary, this probably took only 2 or so hours to create (most of the time is taken writing the blog posts and research). This seems like an effective technique to create unique identification numbers for your company or even create 'fake' credit card numbers. Odds are, someone has those values, so maybe you should be careful. If you want, click here and input the credit card number at the bottom to see how it is validated online. You'll find a lot more information than you thought you would.
+I am sure there is more information that I am missing besides these specifics, but I am satisfied for now. The coding process probably took only 2 or so hours to create (not including the time taken in writing the blog posts and research). This seems like an effective technique to process unique identification numbers for your company or even 'fake' credit card numbers. Odds are, someone has those values, so maybe you should be careful. 
 
 I'm still kinda angry that my McDonald's app is being dumb. I really want those one dollar deals...
 
