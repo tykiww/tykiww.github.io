@@ -18,7 +18,7 @@ My main interests include futsal, futsal, and futsal.
 
 **View** my [Publication project.](https://doi.org/10.1016/j.burn.2017.05.003)
 
-**Download** my [Resume (PDF)](https://tykiww.github.io/Tyki%20Resume.pdf)
+**Download** my [Resume (PDF)](https://tykiww.github.io/gitrez.pdf).
 
 I hope you enjoy my rough portfolio!
 
@@ -26,5 +26,3 @@ I hope you enjoy my rough portfolio!
 
 ![](https://tykiww.github.io/img/disco.jpg)
 
-
-<div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="vertical" data-theme="dark" data-vanity="taiki-wada"><a class="LI-simple-link" href='https://www.linkedin.com/in/taiki-wada?trk=profile-badge'>Tyki Wada</a></div>
