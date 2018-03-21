@@ -139,7 +139,7 @@ c("profit/call" = short_profit/ave_calls )
     ## profit/call 
     ## 7.94 
     
-So, in essence, if we were trying to make sure to randomly hit all 4 areas, we would expect to make $7.94 per call that goes through and $179.37 on average if they made at least (about) 23, calls randomly until they hit all 4 areas. 
+So, in essence, if we were trying to make sure to randomly hit all 4 areas, we would expect to make 7.94 per call that goes through and 179.37 on average if they made at least (about) 23, calls randomly until they hit all 4 areas. 
 
 Let's take a look at how confident we are about this estimate.
 
