@@ -2,7 +2,7 @@
 layout: page
 title: About Me
 bigimg:
-  - "img/gopro.jpg" : ""
+  - "/img/gopro.jpg" : ""
 ---
 
 
