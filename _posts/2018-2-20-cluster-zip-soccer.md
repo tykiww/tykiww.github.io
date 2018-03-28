@@ -17,7 +17,7 @@ Today, we're going to visit two things.
 1. How to unzip files in R. 
 2. How to do a simple cluster analysis.
 
-I'm actually not the biggest fan of watching soccer nor am I a big FIFA of guy, but I decided that finding real player information is very difficult. Not much I can do about that but luckily, [Kaggle](https://kaggle.com) has some nice compilations of data that you can always search through. 
+I'm actually not the biggest fan of watching soccer nor am I a big FIFA of guy. Kinda weird since I love to play. Anyways, one of the first things I wanted to do once I built this page was to do a soccer analysis. Unfortunately, I found out that finding real player information is very difficult. Not much I can do about that but luckily, [Kaggle](https://kaggle.com) has some nice compilations of data that you can always search through. 
 
 The dataset we are looking at can be loaded from my github repository (The link is in the code). This dataset has 53 columns and 17,000 rows. It's a big dataset, but not sure how big Big Data is these days. These columns include variables such as player ratings, teams, countries, and skill aspects that influence their overall score. It is a near-complete FIFA player stats set.
 
