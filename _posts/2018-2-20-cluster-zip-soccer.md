@@ -21,10 +21,6 @@ I'm actually not the biggest fan of watching soccer nor am I a big FIFA of guy. 
 
 The dataset we are looking at can be loaded from my github repository (The link is in the code). This dataset has 53 columns and 17,000 rows. It's a big dataset, but not sure how big Big Data is these days. These columns include variables such as player ratings, teams, countries, and skill aspects that influence their overall score. It is a near-complete FIFA player stats set.
 
-Okay, let's start with unzipping our files:
-
-I've recently come across too many problems when loading straight datasets. Especially large ones were compressing becomes standard. An easy solution is to just open it separately in your machine and read the file from your working directly, but I think it's always fun to find new ways to read data.
-
 Let's start with our usual, required packages. The newest packages we are exposed to this time will be the `cluster` and `fpc`. The function we use, `kmeans`, is luckily already in our R studio, but those two are there to help us map out which groups are truly different. I'll show you how to work them when we get there. Let's first find out how to download zipped files.
 
 ```r
@@ -33,7 +29,9 @@ library(cluster)
 library(fpc)
 ```
 
-The steps are simple. We have to specify a `tempfile()` which specifies an empty frame we will fill up while using the `download.file` and `unzip` functions. Just make sure to specify the correct name of the file you are trying to unzip! Sometimes you will need to open it an make sure which one to grab, but overall it speeds up the process of having to go through the process again.
+I've recently come across too many problems when loading straight datasets. Especially large ones were compressing becomes standard. An easy solution is to just open it separately in your machine and read the file from your working directly, but I think it's always fun to find new ways to read data.
+
+The steps are simple. We have to specify a `tempfile()` which specifies an empty frame we will fill up while using the `download.file` and `unzip` functions. Just make sure to specify the correct name of the file you are trying to unzip! Sometimes you will need to open it an make sure which one to grab, but overall it speeds up the process of having to download things.
 
 ```r
 url <- "http://tykiww.github.io/assets/FullData.csv.zip"
@@ -157,7 +155,7 @@ range <- 1:15
 elbow <- sapply(range, function(k) kmeans(foot, k, nstart=25, iter.max = 20 )$tot.withinss)
 ```
 
-While running this code, you will see that you will get some warnings. Depending on what you set the range as, count the number of warnings. If this exceeds the length of your range, maybe we need to switch to a different algorithm. The number on the left indicates the last few times the function ran, so as long as your 'elbow' value is before the warnings, you should be okay. Usually, the bigger the number of clusters, the harder it is to converge with such limited iterations. Let's plot the total within-cluster SS.
+While running this code, you will see some warnings. Depending on what you set the range as, count the number of warnings. If this exceeds the length of your range, maybe we need to switch to a different algorithm. The number on the left indicates the last few times the function ran, so as long as your 'elbow' value is before the warnings, you should be okay. Usually, the bigger the number of clusters, the harder it is to converge with such limited iterations. Let's plot the total within-cluster SS.
 
 ```r
 plot(range, elbow,
@@ -188,7 +186,7 @@ table(fut$Rating,fitted$cluster)
 
 ![](https://tykiww.github.io/img/soccer/fut6.png)
 
-Now I'm not going to print out this whole table as it is a little too large for this post. You can just take a look at this snippet. Now obviously, when playing our game we want to maximize the rating of our players so we have, practically, the best team to play with. Unfortunately, we know that not every team has all the best players, so let's take a look at "what is the lowest rating that I could settle with so I have a high-average rated team". We can see that the second group captures most of the highest rated players and starts to converge until we hit about 78 on the rating scale. So, we can say that as long as our players are above 78, we have a pretty solid team of 'top players'.
+Now I'm not going to print out this whole table as it is a little too large for this post. You can just take a look at this snippet. Now obviously, when playing our game we want to maximize the rating of our players so we have, practically, the best team to play with. Unfortunately, we know that not every team has all the best players, so let's take a look at "what is the lowest rating that I could settle with so I still have a high-average rated team". We can see that the second group captures most of the highest rated players and starts to converge until we hit about 78 on the rating scale. Therefore, we can say that as long as our players are above 78, we have a pretty solid team of 'top players'.
 
 Here is another diagram of the clusters separating the groups using the `plotcluster` function taken from the `fpc` library (Centroid Plot against 2 discriminant functions)
 
@@ -203,4 +201,3 @@ We see that our values are along a range from 40-99, so the values are closely a
 Of course, this wasn't the best way to perform the analysis, but I have been able to gain really good insight on how to work with cluster algorithms. I want to see if I can get better at understanding the mechanics and start working with more categorical variables and recognize trends. I guess this is an area I know that I definitely want to improve in and would love to find some mentoring in. 
 
 At least I know what types of players to settle for if I was to ever pick up the remote. I don't even remember the last time I played that game. I really want to go out and play for real now.
-
