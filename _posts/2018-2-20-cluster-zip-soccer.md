@@ -7,9 +7,9 @@ comments: TRUE
 
 I finally took the time to look at a soccer dataset!
 
-Growing up, the sport I lived day by day for was soccer. There was nothing that was more exciting for me (at that time) than to be outside and play. Unfortunately, priorities shift and other things get in the way. 
+Growing up, the sport I lived day by day for was soccer. There was nothing that was more exciting for me (at that time) than to be outside and playing. Unfortunately, priorities shift and other things get in the way. 
 
-**This is me a couple of months ago**
+_This is me a couple of months ago_
 ![](https://tykiww.github.io/img/soccer/fut1.jpg)
 
 Today, we're going to visit two things. 
@@ -53,7 +53,7 @@ glimpse(data)
     ## $ National_Kit       <dbl> 7, 10, 10, 9, 1, 1, 9, 11, NA, 1, 17, 1...
     ## $ Club               <fct> Real Madrid, FC Barcelona, FC Barcelona...
 
-Simple huh? I had to include this in some other post so I wouldn't end up creating a super short blog entry. I've used this method countless times to grab zip files. Very very useful.
+Simple huh? I've used this method countless times to grab zip files. Very very useful.
 
 Now here's my regular spring (dataset) cleaning. Utah weather is weird. Some days feel like spring, but then an hour later, it snows like the dandruff off a dirty child. Can't do much about that!
 
@@ -202,5 +202,5 @@ We see that our values are along a range from 40-99, so the values are closely a
 
 Of course, this wasn't the best way to perform the analysis, but I have been able to gain really good insight on how to work with cluster algorithms. I want to see if I can get better at understanding the mechanics and start working with more categorical variables and recognize trends. I guess this is an area I know that I definitely want to improve in and would love to find some mentoring in. 
 
-At least I know what types of players to settle for if I was to ever pick up the remote. I don't even remember the last time I played that game. I really want to go out and play now.
+At least I know what types of players to settle for if I was to ever pick up the remote. I don't even remember the last time I played that game. I really want to go out and play for real now.
 
