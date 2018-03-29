@@ -11,16 +11,21 @@ Scan here below to skip to the ones you want to see!
 - [Multiple Regression](https://tykiww.github.io/2017-12-20-regression-multiple/)
 - [Basis Function Expansions](https://tykiww.github.io/2018-02-05-BFE/)
 - [Logistic Regression](https://tykiww.github.io/404.html)
+
 # Timeseries
 - [Arima (1,1,1)](https://tykiww.github.io/2017-10-05-fitting-an-arima111/)
 - [Seasonal Arima](https://tykiww.github.io/2017-11-05-fitting-a-seasonal-arima/)
+
 # Tree Models
 - [Phylogenetic Trees](https://tykiww.github.io/2017-12-05-phylogenetic-trees/)
 - [Random Forest](https://tykiww.github.io/2017-11-20-rf-model/)
+
 # Cluster Models
 - [Cluster Preview](https://tykiww.github.io/2018-02-20-cluster-zip-soccer/)
+
 # Monte Carlo Simulations
 - [Bootstrapping](https://tykiww.github.io/2018-01-20-MC-bootstrap/)
+
 # Misc
 - [Salesforce R integration](https://tykiww.github.io/404.html)
 - [Credit Card/Luhn Algorithm](https://tykiww.github.io/2018-01-05-luhn-with-rvest/)
