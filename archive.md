@@ -9,7 +9,7 @@ Scan here below to skip to the ones you want to see!
 # Regression Models
 - [Simple Linear Regression](https://tykiww.github.io/2017-10-20-SLR-Plotly/)
 - [Multiple Regression](https://tykiww.github.io/2017-12-20-regression-multiple/)
-- [Basis Function Expansions](https://tykiww.github.io/2018-02-05-BFE/)
+- [Basis Function Expansion snippet](https://tykiww.github.io/2018-02-05-BFE/)
 - [Logistic Regression](https://tykiww.github.io/404.html)
 
 # Timeseries
