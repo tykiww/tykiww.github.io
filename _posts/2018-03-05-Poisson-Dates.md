@@ -5,7 +5,7 @@ tags: [tidyverse, tidyr, poisson, regression, separate, dates, yearmon, data cle
 comments: TRUE
 ---
 
-Date manipulation can be a pain. Sometimes, this is typically due to the random formatting of different dates. In my personal opinion, R has quite a terrible class for dates. It MUST include year, month, and day. If not, you have to make sure to use `format()` to coerce it to a Year-month, Year-day combination. I looked online for some other classes. The `zoo` package apparently has a yearmon class. Yet, we don't necessarily need that. It seems like a convenience issue. I believe it should be standard practice to separate out the Overall date, Year, Month, and Day for every raw dataset. I guess that's just wishful thinking.
+Date manipulation can be a pain. Sometimes, this is due to the random formatting of different dates. In my personal opinion, R has quite a terrible class for dates. It MUST include year, month, and day. If not, you have to make sure to use `format()` to coerce it to a Year-month, Year-day combination. I looked online for some other classes. The `zoo` package apparently has a yearmon class. Yet, we don't necessarily need that. It seems like a convenience issue. I believe it should be standard practice to separate out the Overall date, Year, Month, and Day for every raw dataset. I guess that's just wishful thinking.
 
 For example, the other day, I was doing a BI analysis for an HR risk company. I was just investigating some of their data to see if I could extract any useful information. Unfortunately, there wasn't much from what I got to inference anything. I was, however, able to pull out the number of days each employee had been working. During that process, I remembered again how lack of date standardization can be a pain.
 
