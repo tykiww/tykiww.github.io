@@ -244,8 +244,8 @@ mod10(x = 14)
 mod10(network = "Visa")
 ```
 
-    ## [1] "391215822812658"
-    ## [1] "4727059036057"
+    ## [1] "391215822812658"  # mod10(x = 14)
+    ## [1] "4727059036057"    # mod10(network = "Visa")
 
 The first item is a luhn algorithm of length 14, could be any credit card number. The second element is the specified visa credit card number. Pass the second string through [here](http://www.validcreditcardnumber.com/) to confirm.
 
