@@ -21,7 +21,11 @@ For this analysis, I decided to take a look at climate change. Poor Polar Bear..
 For a moment, I thought to myself. Maybe I will end the debate on climate change once and for all! Yet, that is probably not going to happen. I'll enjoy this thoroughly. This test will check to see if (H<sub>o</sub>) there really is a significant difference in greenhouse gas effect. We will look at 5 different types of greenhouse gasses (co2, methane, n2o, sf6, hcfc) and compare these individual values.
 
 Citation of the data will be at the bottom!
-If you want to follow along, download the datasets in this [repository](https://github.com/tykiww/projectpage/tree/master/datasets/Climate%20data).
+If you want to follow along, download the datasets in this [repository](https://github.com/tykiww/projectpage/tree/master/datasets/Climate%20data) or source the code below.
+
+```r
+source("http://tykiww.github.io/assets/BFE/Basis%20Function%20Expansion.R")
+```
 
 Just some background on how the data was collected for validity.
 
