@@ -15,10 +15,10 @@ Otherwise, my main interests include futsal, futsal, and futsal.
 
 **Connect** with me on [LinkedIn](https://www.linkedin.com/in/taiki-wada)!
 
-**Contact**: [tyki@byu.net](tyki@byu.net)
+**Contact**: tyki[at]byu[dot]net
 (phone number and other details upon request).
 
-**View** my [Publication project](https://doi.org/10.1016/j.burn.2017.05.003).
+**View** my [Publication Project](https://doi.org/10.1016/j.burn.2017.05.003).
 
 **Download** my [Resume (PDF)](https://tykiww.github.io/CVgit.pdf).
 
