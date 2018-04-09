@@ -20,7 +20,7 @@ library(tidyverse) # Do this instead for more packages
 
 ![](https://tykiww.github.io/img/poisson/ps1.png)
 
-The data comes from my github repository. I got the first file from the [utah avalanche center](https://utahavalanchecenter.org) and downloaded avalanches from all regions in Utah. The second, I had to order from an [airport](https://www.ncdc.noaa.gov/cdo-web/search?datasetid= GSOM). The information is sorted on a government site and allows you to extract information and send it to your email. I have the Salt Lake City international airport weather data. I decided to use `read_csv()` information form `readr` package. Not much is different for now. It's probably because the columns are already rather clean. One plus is definitely the information output you get of the `NA`s that appear. Always nice to have extra information.
+The data comes from my github repository. I got the first file from the [utah avalanche center](https://utahavalanchecenter.org) and downloaded avalanches from all regions in Utah. The second, I had to order from an [airport](https://www.ncdc.noaa.gov/cdo-web/search?datasetid=GSOM). The information is sorted on a government site and allows you to extract information and send it to your email. I have the Salt Lake City international airport weather data. I decided to use `read_csv()` information form `readr` package. Not much is different for now. It's probably because the columns are already rather clean. One plus is definitely the information output you get of the `NA`s that appear. Always nice to have extra information.
 
 ```r
 ava <- read_csv("http://tykiww.github.io/assets/Poisson/reco-download.csv", col_names = T)
@@ -45,7 +45,7 @@ ava <- ava[,-(5:9)] # Remove ignore columns
 
 The `aggregate()` function comes in very handy if you are trying to use a function over a certain value of factors. Interestingly, this functions very similarly to `tapply` over the Date variables. One advantage the aggregate function has over tapply is that it spits out a dataframe rather than an array. The dataframe will make it easier to just stick it back into our original data.
 
-Also, avalanches aren't too big of a problem outside of winter months, so we will get rid of every month except December, January, Februrary, and March. I used the `|` operator again just like in the credit card](https://tykiww.github.io/2018-01-05-luhn-with-rvest/) post to extract those exact months.
+Also, avalanches aren't too big of a problem outside of winter months, so we will get rid of every month except December, January, Februrary, and March. I used the `|` operator again just like in the [credit card](https://tykiww.github.io/2018-01-05-luhn-with-rvest/) post to extract those exact months.
 
 ```r
 # Counting up number of avalanches per month
