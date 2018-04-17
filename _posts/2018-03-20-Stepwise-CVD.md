@@ -156,7 +156,7 @@ out.frambackward <- step(glm(CVD~.,data=h.train,family="binomial"))
 
 The backwards selection takes the whole model by specifying `~ .` and works backwards by taking out the worst variables. Remember, we cannot do a backwards selection if number of columns don't exceed the number of rows!
 
-Now here's the stepwise regression model! You can see how we specify "both" in the direction and the scope is the biggest model just as we created in the forward selection.
+Now here's the stepwise regression model! You can see how we specify "both" in the direction and the scope is the biggest model just as we created in the forward selection. Another note here, the order of the AIC values change, but the overall AIC, BIC, and adjusted R^2 values are not different accross all the models. If you decide that you want a smaller or bigger model, make sure to specify `step = x` inside of your `step()` function if you want a tune your model the way you like it.
 
 ```r
 # stepwise! 
