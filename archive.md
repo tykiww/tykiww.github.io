@@ -5,8 +5,7 @@ title: Portfolio
 Here below is an archive of my blog posts. 
 Scan here below to skip to the ones you want to see!
 
-# Model Selection Techniques
-- [Stepwise Regression](https://tykiww.github.io/2018-03-20-Stepwise-CVD/)
+
 
 # Regression Models
 - [Simple Linear Regression](https://tykiww.github.io/2017-10-20-SLR-Plotly/)
@@ -22,6 +21,9 @@ Scan here below to skip to the ones you want to see!
 # Tree Models
 - [Phylogenetic Trees](https://tykiww.github.io/2017-12-05-phylogenetic-trees/)
 - [Random Forest](https://tykiww.github.io/2017-11-20-rf-model/)
+
+# Model Selection Techniques
+- [Stepwise Regression](https://tykiww.github.io/2018-03-20-Stepwise-CVD/)
 
 # Cluster Models
 - [Cluster Preview](https://tykiww.github.io/2018-02-20-cluster-zip-soccer/)
