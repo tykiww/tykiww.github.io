@@ -6,7 +6,6 @@ Here below is an archive of my blog posts.
 Scan here below to skip to the ones you want to see!
 
 
-
 # Regression Models
 - [Simple Linear Regression](https://tykiww.github.io/2017-10-20-SLR-Plotly/)
 - [Multiple Regression](https://tykiww.github.io/2017-12-20-regression-multiple/)
@@ -34,3 +33,4 @@ Scan here below to skip to the ones you want to see!
 # Misc
 - [Salesforce R integration](https://tykiww.github.io/404.html)
 - [Credit Card/Luhn Algorithm](https://tykiww.github.io/2018-01-05-luhn-with-rvest/)
+- [Data Collection/Crosstalk](https://tykiww.github.io/2018-04-05-Scrape-CrossTalk/)
