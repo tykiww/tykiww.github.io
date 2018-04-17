@@ -4,8 +4,6 @@ title: "More Scraping + Crosstalk"
 tags: [Webscraping, Rvest, Crosstalk, vizualization, Plotly, Google Search, Foreign Currency Exchange]
 ---
 
-Data collection + Crosstalk!
-
 Recently, I had become more curious of what more I could do with the `Rvest` package. I knew that I could rip elements and tables from off of websites, but I wanted to see what else I could do. I know that there are better scraping techniques, but I wanted to become more proficient at grabbing useful information and tabulating them. Today, I want to show you a recent project I finished on how to automate a data collection process for select interest variables! Afterwards, I'll display the information through [Crosstalk](https://rstudio.github.io/crosstalk/). A useful HTML widgets package. I guess I won't be going into creating any deliverables for website integration, but just putting information side by side for easier data representation.
 
 Here we go.
