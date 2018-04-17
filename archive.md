@@ -5,13 +5,15 @@ title: Portfolio
 Here below is an archive of my blog posts. 
 Scan here below to skip to the ones you want to see!
 
+# Model Selection Techniques
+- [Stepwise Regression](https://tykiww.github.io/2018-03-20-Stepwise-CVD/)
 
 # Regression Models
 - [Simple Linear Regression](https://tykiww.github.io/2017-10-20-SLR-Plotly/)
 - [Multiple Regression](https://tykiww.github.io/2017-12-20-regression-multiple/)
 - [Basis Function Expansion snippet](https://tykiww.github.io/2018-02-05-BFE/)
 - [Poisson Regression](https://tykiww.github.io/2018-03-05-Poisson-Dates/)
-- [Logistic Regression](https://tykiww.github.io/404.html)
+- [Logistic Regression](https://tykiww.github.io/2018-03-20-Stepwise-CVD/)
 
 # Timeseries
 - [Arima (1,1,1)](https://tykiww.github.io/2017-10-05-fitting-an-arima111/)
