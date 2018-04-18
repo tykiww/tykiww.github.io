@@ -225,19 +225,20 @@ library(crosstalk)
 # define a shared data object
 d <- SharedData$new(car.datas.dol)
 # make a scatterplot of disp vs mpg
-scatterplot <- plot_ly(d, x = ~`Operating income`, y = ~Revenue) %>%
+ogscatterplot <- plot_ly(d, x = ~`Total.assets`, y = ~Revenue) %>%
   add_markers(color = I("navy"))
 # define two subplots: boxplot and scatterplot
 subplot(
   # boxplot of disp
-  plot_ly(d,x = ~`Total equity`, y = ~Revenue) %>% 
+  plot_ly(d, y = ~Revenue) %>% 
     add_boxplot(name = "overall", 
                 color = I("navy")),
-  # scatterplot of disp vs mpg
-  scatterplot, 
+  ogscatterplot, 
   shareY = TRUE, titleX = T) %>% 
   layout(dragmode = "select")
 ```
+
+![](https://tykiww.github.io/img/scrape/scrape7.png)
 
 There have been several times when I wondered how to do something like this. Especially with an interactive graph. I hope you find this to be useful. I will most likely be working more with interactive plots in the future! If you are interested in checking out more about how to use plotly and simple interactive graphs, [click here]( https://tykiww.github.io/2017-10-20-SLR-Plotly/)
 
