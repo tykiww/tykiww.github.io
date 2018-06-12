@@ -12,6 +12,7 @@ Scan here below to skip to the ones you want to see!
 - [Basis Function Expansion snippet](https://tykiww.github.io/2018-02-05-BFE/)
 - [Poisson Regression](https://tykiww.github.io/2018-03-05-Poisson-Dates/)
 - [Logistic Regression](https://tykiww.github.io/2018-03-20-Stepwise-CVD/)
+- [Regression with Matrix Algebra in R](https://tykiww.github.io/2018-04-20-SL-theory/)
 
 # Timeseries
 - [Arima (1,1,1)](https://tykiww.github.io/2017-10-05-fitting-an-arima111/)
@@ -31,6 +32,8 @@ Scan here below to skip to the ones you want to see!
 - [Bootstrapping](https://tykiww.github.io/2018-01-20-MC-bootstrap/)
 
 # Misc
+- [Google Maps API in R](https://tykiww.github.io/2018-05-05-Google-Maps-API/)
 - [Salesforce R integration](https://tykiww.github.io/404.html)
 - [Credit Card/Luhn Algorithm](https://tykiww.github.io/2018-01-05-luhn-with-rvest/)
 - [Data Collection/Crosstalk](https://tykiww.github.io/2018-04-05-Scrape-CrossTalk/)
+
