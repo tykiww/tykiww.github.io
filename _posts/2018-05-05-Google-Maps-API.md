@@ -130,7 +130,7 @@ b <- plotGoogleMaps(lonlat, api = apikey)
 
 This is actually pretty comical as it doesn't really explain anything, but it is a rather useful tool in getting a good snapshot view of what you're looking for. It seems like the most populated locations are in Kentucky, California, Ohio, and South Carolina. They seem to be the most dense and closely packed. Now your manager is happy and you are good to go (:.
 
-I am definitely sure there are more useful procedures we can deal with especially if we are getting into deeper cluster or geospatial analysis. This is just more of me exploring what I can produce with R! I'll be exploring more as time progresses. I hope you enjoyed the short demonstration!
+I am definitely sure there are more useful procedures we can deal with especially if we are getting into deeper cluster or geospatial analysis. This is just more of me exploring what I can produce with R! I'll be exploring more as time progresses. I hope you enjoyed the short demonstration!  
 
 
 
