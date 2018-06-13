@@ -14,6 +14,9 @@ Scan here below to skip to the ones you want to see!
 - [Logistic Regression](https://tykiww.github.io/2018-03-20-Stepwise-CVD/)
 - [Regression with Matrix Algebra in R](https://tykiww.github.io/2018-04-20-SL-theory/)
 
+# Model Selection Techniques
+- [Stepwise Regression](https://tykiww.github.io/2018-03-20-Stepwise-CVD/)
+
 # Timeseries
 - [Arima (1,1,1)](https://tykiww.github.io/2017-10-05-fitting-an-arima111/)
 - [Seasonal Arima](https://tykiww.github.io/2017-11-05-fitting-a-seasonal-arima/)
@@ -22,19 +25,19 @@ Scan here below to skip to the ones you want to see!
 - [Phylogenetic Trees](https://tykiww.github.io/2017-12-05-phylogenetic-trees/)
 - [Random Forest](https://tykiww.github.io/2017-11-20-rf-model/)
 
-# Model Selection Techniques
-- [Stepwise Regression](https://tykiww.github.io/2018-03-20-Stepwise-CVD/)
-
-# Cluster Models
-- [Cluster Preview](https://tykiww.github.io/2018-02-20-cluster-zip-soccer/)
-
-# Monte Carlo Simulations
+# Distribution Modeling
 - [Bootstrapping](https://tykiww.github.io/2018-01-20-MC-bootstrap/)
+- [Dynamic Pricing Model](https://tykiww.github.io/2018-06-05-Dynamic-Chocolate-Pricing/)
+
+# Web Scraping
+- [Credit Card/Luhn Algorithm](https://tykiww.github.io/2018-01-05-luhn-with-rvest/)
+- [Data Collection/Crosstalk](https://tykiww.github.io/2018-04-05-Scrape-CrossTalk/)
+- [RSelenium Web Scraping](https://tykiww.github.io/2018-05-20-Selenium-Scraping/)
 
 # Misc
 - [Google Maps API in R](https://tykiww.github.io/2018-05-05-Google-Maps-API/)
 - [Salesforce R integration](https://tykiww.github.io/404.html)
-- [Credit Card/Luhn Algorithm](https://tykiww.github.io/2018-01-05-luhn-with-rvest/)
-- [Data Collection/Crosstalk](https://tykiww.github.io/2018-04-05-Scrape-CrossTalk/)
-- [RSelenium web scraping](https://tykiww.github.io/2018-05-20-Selenium-Scraping/)
+- [Cluster Preview](https://tykiww.github.io/2018-02-20-cluster-zip-soccer/)
+
+
 
