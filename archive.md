@@ -36,4 +36,5 @@ Scan here below to skip to the ones you want to see!
 - [Salesforce R integration](https://tykiww.github.io/404.html)
 - [Credit Card/Luhn Algorithm](https://tykiww.github.io/2018-01-05-luhn-with-rvest/)
 - [Data Collection/Crosstalk](https://tykiww.github.io/2018-04-05-Scrape-CrossTalk/)
+- [RSelenium web scraping](https://tykiww.github.io/2018-05-20-Selenium-Scraping/)
 
