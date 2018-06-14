@@ -5,13 +5,13 @@ tags: [Econometrics, Chocolate, Dynamic Pricing, Demand]
 ---
 
 
-A bit of econometrics doesn't hurt to try.
+A bit of econometrics doesn't hurt to try. As an international wholesale retail owner of a particular chocolate brand, your goal is to map the optimum price for your world-famous candy bar using historical data. You have collected data on the past years' price changes along with quantity information in response to these price adjustments. What will you do now?
 
 ![](https://collectiveinnovation.com/wp-content/uploads/2016/02/Dynamic-Pricing.png)
 
 Dynamic pricing is an extremely complex subject. Even more than I can wrap my head around. There are so many different approaches when it comes to optimization. We want it just right!
 
-Simply stated, dynamic pricing is a strategy businesses employ that adjusts based on the demand of the market.
+Simply stated, dynamic pricing is a strategy businesses employ that adjusts prices based on the demand of the market.
 
 These various approaches are always different. Today, we will be looking at revenue and cost information gleaned from the demand of customers. This process is different from what I have traditionally studied. We will use a more bayesian-esque approach by using a known 'linear' demand curve. Instead of using timeseries analysis, we can model customer behavior using this known distribution. How do we code this up? Fortunately, R allows for rather easy vizualization to bring some theory to life. 
 
@@ -194,5 +194,3 @@ Actually, if you didn't catch on earlier, you may have noticed that I added 50 t
 However, I can see if we had real historical price changes over the span of a year, we would have had somewhat similar results.. Another good thing to note is how it still works. Given a situation where you happened to make dynamic price changes throughout the year, you could predict from then this next year's price! I would love to be able to use something of this nature in a product/retail side of business. It seems rather exciting to me.
 
 I hope you are able to at least notice one of the ways of dynamic pricing. This estimation technique allows us to see historical trends in our time series, uses a bayesian approach to predict the future prices, and reflects new estimates in line with our old data. Please try this out when you actually have some good info! It's rather easy. All you need is a price-quantity set with historical price and cost changes. I will hopefully be introducing more approaches using other machine learning techniques.
-
-
