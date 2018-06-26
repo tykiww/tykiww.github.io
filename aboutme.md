@@ -3,6 +3,7 @@ layout: page
 title: About Me
 # bigimg:
 #  - "/img/gopro.jpg" : ""
+# ![](https://tykiww.github.io/img/disco.jpg)
 ---
 
 As a dual-native from the US and Japan, I have been richly blessed by many international outcomes that have stretched my limits to areas that I had previously never dared to touch. These opportunities have led me to take interest in statistics and the power that descriptive, predictive, and prescriptive analytics has in enriching the lives of individuals. 
@@ -30,7 +31,7 @@ I hope you enjoy my rough portfolio!
 
 
 
-# ![](https://tykiww.github.io/img/disco.jpg)
+
 
 
 
