@@ -30,7 +30,7 @@ I hope you enjoy my rough portfolio!
 
 
 
-![](https://tykiww.github.io/img/disco.jpg)
+# ![](https://tykiww.github.io/img/disco.jpg)
 
 
 
