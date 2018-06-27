@@ -4,7 +4,7 @@ title: "Scraping Amazon with RSelenium"
 tags: [Selenium, RSelenium, Web Scraping, Amazon, Toilet Seat Covers, Google, Walmart]
 ---
 
-I have finally gotten around to using Rselenium! The first time I had heard of this was from one of my good friends who was web scraping off of Python. It actually took me a long time to figure out how exactly I was supposed to use it because it was rather difficult for me to grasp the concept as a new learner.
+The first time I had heard of Rselenium was from one of my good friends who was web scraping off of Python. It actually took me a long time to figure out how exactly I was supposed to use it because it was rather difficult for me to grasp the concept as a new learner.
 
 In layman terms, RSelenium is an R version of a website testing platform. This means that Selenium allows the automation of website actions just as if you are pointing and clicking. This means that the usage of this tool is not only used for testing web apps, but can be used for scraping information on the web, or performing certain tasks that need to be done recursively. Of course, R may not be the easiest nor the best way to use the Selenium server (There seem to be better methods with other IDEs. ie. Firefox Selenium IDE) but the whole point of this blog is expanding the reach of R as an analytical tool.
 
