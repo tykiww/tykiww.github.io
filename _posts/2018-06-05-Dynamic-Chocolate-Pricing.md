@@ -5,9 +5,9 @@ tags: [Econometrics, Chocolate, Dynamic Pricing, Demand]
 ---
 
 
-As an international wholesale retail owner of a particular chocolate brand, your goal is to map the optimum price for your world-famous candy bar using historical data. You have collected data on the past years' price changes along with quantity information in response to these price adjustments. What will you do now?
+Here's a hypothetical situation we can whip up. As an international wholesale retail owner of a particular chocolate brand, your goal is to map the optimum price for your world-famous candy bar using historical data. You have collected data on the past years' price changes along with quantity information in response to these price adjustments. What will you do now?
 
-A bit of econometrics doesn't hurt to try. 
+A bit of econometrics wouldn't hurt to try. 
 
 ![](https://collectiveinnovation.com/wp-content/uploads/2016/02/Dynamic-Pricing.png)
 
