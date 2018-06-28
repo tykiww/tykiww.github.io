@@ -36,8 +36,6 @@ Scan here below to skip to the ones you want to see!
 
 # Misc
 - [Google Maps API in R](https://tykiww.github.io/2018-05-05-Google-Maps-API/)
-- [Salesforce R integration](https://tykiww.github.io/404.html)
+- [HR Cost Estimate](https://tykiww.github.io/2018-06-20-HR-Estimate/)
 - [Cluster Preview](https://tykiww.github.io/2018-02-20-cluster-zip-soccer/)
-
-
 
