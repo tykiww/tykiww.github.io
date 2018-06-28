@@ -200,7 +200,7 @@ Our output gives us valuable information. First, is our true cost to our employe
 
 Next is our employee billable cost/hour. This shows the service fee we should be charging to our clients for the time they are spending with our employees. This may be useful for any lawyers or consultants who need to charge accurate hourly rates.
 
-Yet once we hit the estimated loss due to turnover, we see a problem. If you are expecting to re-hire 15 employees every year, our overall spending for all those analysts will amount to be over 1 million dollars. Now that seems to be a problem.
+Yet once we hit the estimated loss due to turnover, we see a problem. If you are expecting to re-hire 15 employees every year, our overall spending for all those analysts will amount to be over **1 million dollars**. Now that seems to be a problem.
 
 Any solutions? Probably some organizational changes seem necessary. Maybe your employees are burned out? Maybe they don't have enough challenge demands. Adjustments will need to be made in order to invest more into decreasing turnover. You might know what to do better than I do. If you're just curious and want to check out a conceptual meta-analytic map explaining turnover, you can find some research my mentor and I did [here](https://www.sciencedirect.com/science/article/pii/S221305861630050X?via%3Dihub). 
 
