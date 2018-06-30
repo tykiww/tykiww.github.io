@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About
+title: Welcome!
 # bigimg:
 #  - "/img/gopro.jpg" : ""
 # ![](https://tykiww.github.io/img/disco.jpg)
