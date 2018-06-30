@@ -81,8 +81,8 @@ a
 
 ```
 
-      ### Annual Salary         Hourly Wage Annual Hours Worked 
-      ###         70000               29.17                2400
+      ## Annual Salary         Hourly Wage Annual Hours Worked 
+      ##         70000               29.17                2400
 
 Next, we will move on to grabbing our overhead costs. This is simple as we have our operating, training, and hiring costs all together. We will use the `sover` option to sum up the vector of 2.
 
