@@ -4,16 +4,15 @@ title: "How much does an employee cost?"
 tags: [HR, Organizational Behavior, R Analytics, Estimation, Business]
 ---
 
-
-New talent hire is critical for any business; find the right talent and they will help you succeed. On the other hand, a bad hire is surely detrimental to any organization. According to the [Bureau of Labor Statistics](https://www.bls.gov/oes/current/oes_nat.htm#00-0000) the summary statistics of all the wages categorized appear as follows (Anesthesiologists, surgeons, top managers at the highest end and cooks, cashiers, 'artists' towards the bottom).
+Hiring talent is critical for any business; find the right one and they will help you succeed. On the other hand, a bad hire is surely detrimental to any organization. According to the [Bureau of Labor Statistics](https://www.bls.gov/oes/current/oes_nat.htm#00-0000) the summary of US wages -accross all typical jobs- are categorized below. (Anesthesiologists, surgeons, top managers at the highest end and cooks, cashiers, 'artists' towards the bottom).
 
     ##   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
     ##  21230   36675   50480   58887   72245  265990 
 
 ![](https://tykiww.github.io/assets/HR-Estimate/1.png)
 
-Supposing that we are considering the average employee to be at the median of $50,480 and the [average
-benefit cost per employee](https://www.bls.gov/news.release/pdf/ecec.pdf) to be roughly $18,000, we can see how the typical case of employers will be losing a rough estimate of 68-70 thousand dollars for every new employee hired then lost per year. Furthermore, the [average](https://www.bls.gov/news.release/archives/nlsoy_06272008.pdf) individual born after the baby boom held around 10.8 jobs from age 18 to age 42. Making it more likely that people will change jobs while employed at "your company". Since it is so difficult to really know the marginal impact each employee has on their firm, you don't necessarily know how much you are losing.
+Suppose we consider the average employee to be at the median of $50,480 and the [average
+benefit per employee](https://www.bls.gov/news.release/pdf/ecec.pdf) to be roughly $18,000. We see how the typical (median) employer will be losing a rough estimate of 68-70 thousand dollars for every new employee hired then lost per year. Furthermore, the [average](https://www.bls.gov/news.release/archives/nlsoy_06272008.pdf) individual born after the baby boom held around 10.8 jobs from age 18 to age 42. Making it more likely that people will change offices while employed at "your company". Since it is so difficult to really know the marginal impact each employee has on their firm, you don't necessarily know how much you are losing.
 
 For this case, I built a tool that calculates a not so rough estimate of how much a single employee can cost you.
 
@@ -21,19 +20,19 @@ It's rather simple. The true cost of an employee comprises of 3 things:
 
 - Annual Employee Labor Cost (Salary + Bonuses)
 - Annual Employee Overhead Cost (Overhead / # of employees)
-- Annual Employee Tax Cost (FUTA, SUTA, Social Security, Medicare)
+- Annual Employee Tax (FUTA, SUTA, Social Security, Medicare)
 
 The sum of these will amount to the total cost of an employee.
 
 I am by no means an expert in accounting. I actually did rather terrible on an accounting class at my university. Yet, going through these and countless other scenarios have helped me gain a deeper understanding of the language of business.
 
-Here is my [R script](https://raw.githubusercontent.com/tykiww/projectpage/master/Tools/empcost.R) with 4 functions that will allow you to input the necessary information to estimate the cost of your employee. Sorry if I haven't made it so readable. It is in this particular format so if I ever feel like using `roxygen2` to create some documentation and packaging, I will be able to do so. Please refer to the #' marks to guide you on the function inputs.
+Here is my [R script](https://raw.githubusercontent.com/tykiww/projectpage/master/Tools/empcost.R) with 4 functions that will allow you to input the necessary information to estimate the cost of your employee. Sorry if this isn't so readable. It is in a particular documentation format just in case I want to create a package using `roxygen2` . Please refer to the #' marks to guide you on the function inputs.
 
-If you want to see it in an excel format, you can download it [here](https://github.com/tykiww/projectpage/raw/master/datasets/hr-cost/Employee%20Cost%20Estimation.xlsx). It looks like this.
+If you want to see it done in excel, you can download it [here](https://github.com/tykiww/projectpage/raw/master/datasets/hr-cost/Employee%20Cost%20Estimation.xlsx). It looks like this.
 
 ![](https://tykiww.github.io/assets/HR-Estimate/4.png)
 
-Otherwise, please source it from my project github.
+Otherwise, please source it by running this in your command line.
 
 ```r
 source("https://raw.githubusercontent.com/tykiww/projectpage/master/Tools/empcost.R")
@@ -41,18 +40,18 @@ source("https://raw.githubusercontent.com/tykiww/projectpage/master/Tools/empcos
 
 Technically, what I created could be carved on the back of a paper napkin. Furthermore, this is a very basic situation. You'll notice how simplified the math is. Thus, it is an estimation tool. Not all companies operate in this linear fashion, but for the most general case, it will work. Regardless, it would be a very useful tool for those that do not want to be math oriented or need quick solutions.
 
-Let's create a scenario where you are back in 2017 and you own a company in Arkansas where your typical analyst makes around $70,000 a year including bonuses and no benefits. They are alloted 4 weeks of vacation out of which only 2 weeks are paid time off. Furthermore, they work a 6 day week. 
+Let's create a scenario where you are back in 2017 and you own a company in Arkansas. Your typical analyst makes around $70,000 a year including bonuses and no benefits. They are alloted 4 weeks of vacation out of which only 2 weeks are paid time off. Furthermore, they work a 6 day week. 
 
 You also have the following information. 
 
 - You are a $40 million company.
 - Number of Employees in Office: 400 (95% Analysts)
 - Total Annual Operating expenses (Not including Training and Hiring): $621,759
-- Total AnnualTraining and Hiring costs: $500,800
-- Your employees typically stay in office for around 8 hours. (N,sd ~0.65)
+- Total Annual Training and Hiring costs: $500,800
+- Your employees typically stay in office for around 8 hours. (N,sd ~0.65 (really just making this up.))
 - Your turnover rate amongst the analysts has rose to 4% for the past 3 years.
 
-How much are you paying for your typical employee per year?
+How much do you end up paying for your typical employee per year?
 
 Let's begin first with finding a general labor cost estimate. We'll include the 70,000 dollars and the 50 hour paid weeks. Assuming that all the employees stay about 8 hours per day working 6 days a week, we have the information we need to go to the next step.
 
@@ -183,7 +182,7 @@ empcost <- function(wage,overhead,antax,extras=FALSE,hours,leave) {
        "Employee billable cost/hour"=billable,
        "Overall estimated loss due to turnover"= loss)
 }
-400*.95*.04 # 15.2
+400*.95*.04 # equals 15.2
 empcost(a[1],b,c,hours =a[3],leave = 15)
 ```
 
@@ -196,14 +195,15 @@ empcost(a[1],b,c,hours =a[3],leave = 15)
     ## $`Overall estimated loss due to turnover`
     ## [1] 1105543
 
-Our output gives us valuable information. First, is our true cost to our employee. We notice here how one employee costs about 105% of his annual salary. The employee taxes and overhead costs seems to be well managed. 
+Our output gives us valuable information. First, is our true cost to our employee. We notice here how one employee costs about 105% of his annual salary. The employee taxes and overhead costs seem to be well managed. 
 
-Next is our employee billable cost/hour. This shows the service fee we should be charging to our clients for the time they are spending with our employees. This may be useful for any lawyers or consultants who need to charge accurate hourly rates.
+Next is our employee billable cost/hour. This shows the service fee we should be charging to our clients for the time they are spending with our employees. This may be useful for any lawyers or consultants who need to charge accurate hourly rates as to ensure no loss of profits.
 
 Yet once we hit the estimated loss due to turnover, we see a problem. If you are expecting to re-hire 15 employees every year, our overall spending for all those analysts will amount to be over **1 million dollars**. Now that seems to be a problem.
 
-Any solutions? Probably some organizational changes seem necessary. Maybe your employees are burned out? Maybe they don't have enough challenge demands. Adjustments will need to be made in order to invest more into decreasing turnover. You might know what to do better than I do. If you're just curious and want to check out a conceptual meta-analytic map explaining turnover, you can find some research my mentor and I did [here](https://www.sciencedirect.com/science/article/pii/S221305861630050X?via%3Dihub). 
+Any solutions? Probably some organizational changes seem necessary. Maybe your employees are burned out? Maybe they don't have enough challenge demands. Adjustments will need to be made in order to invest more into decreasing turnover. You might know what to do better than I do. (If you're just curious and want to check out a conceptual meta-analytic map explaining turnover, you can find some research my mentor and I did [here](https://www.sciencedirect.com/science/article/pii/S221305861630050X?via%3Dihub).) The decision is yours.
 
-Overall, we see another way we are able to use R outside of a pure stats need. As long as we have these functions marked, they become easy access for business. The excel tool seemed to be popular amongst some of the sales partners at my workplace. It allowed them to identify potential organizational costs and negotiate their management training products right beside their client. Of course, it was customized more to fit their needs. Regardless, I hope this will incentivize you to be more anaytical in your every-day processes!
+Overall, we see another way to use R outside of a pure stats need. As long as we have these functions marked, they become easy access for business. If R still isn't your thing, don't worry. The excel tool seemed to be popular amongst some of the sales partners at my workplace. It allowed them to identify potential organizational costs and negotiate their leadership training products right beside their client. Of course, it was customized more to fit their needs. 
 
+I hope this will incentivize you to be more anaytical in your every-day processes!
 Thank you for reading!
