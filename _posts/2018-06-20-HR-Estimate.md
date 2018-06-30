@@ -156,7 +156,7 @@ emptax <- function(state,salary, count, taxes = FALSE, dataset = FALSE) {
 c <- emptax("Arkansas",a[1], 400, dataset = TRUE)[[2]][1]
 c
 ```
-
+ 
 Our first output is the dataset. Then our estimate will include our employee annual tax.
 
 ![](https://tykiww.github.io/assets/HR-Estimate/3.png)
