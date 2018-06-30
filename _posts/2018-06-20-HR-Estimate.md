@@ -31,7 +31,7 @@ Here is my [R script](https://raw.githubusercontent.com/tykiww/projectpage/maste
 
 If you want to see it in an excel format, you can download it [here](https://github.com/tykiww/projectpage/raw/master/datasets/hr-cost/Employee%20Cost%20Estimation.xlsx). It looks like this.
 
-![](https://tykiww.github.io/assets/HR-Estimate/2.png)
+![](https://tykiww.github.io/assets/HR-Estimate/4.png)
 
 Otherwise, please source it from my project github.
 
