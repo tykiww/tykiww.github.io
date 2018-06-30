@@ -34,7 +34,7 @@ plugins:
 # List of links in the navigation bar
 navbar-links:
   Home: "index"
-  About: "aboutme"
+  Info: "aboutme"
   Archive: "archive"
   
 
