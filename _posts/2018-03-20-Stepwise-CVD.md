@@ -3,6 +3,7 @@ layout: post
 title: "Too much data, what do I do? (Stepwise)"
 tags: [Stepwise, leaps, forward selection, backward selection, Big Data, AIC, BIC, Logistic Regression]
 comments: TRUE
+# for better notes, go here: http://uc-r.github.io/model_selection it will help you in the future when you use it.
 ---
 
 What do you do when you have too many variables, you don't know what to do? Which ones are the most important? How many is too much, where it impedes your model's ability to perform a regression? 
