@@ -60,7 +60,7 @@ abline(v=1946, col="red")
 
 How simple! The graph appears to be additive from 1930s to present but has a dip between 1940-1950. Looking closely, Non-constant mean changes occur from 1941 to 1946. The dip seen from 1940-1946 roughly fits the time period of world war 2. This may suggest that wartime may have changed opportunities or interest of individuals. Some other possible causes for the curvature from 1920s to 1946 may be due to an increase in exposure, interest, and transportation. Good to think about.
 
-Yet, this makes the data unusable! So, we will need to subset the data to after 1945. By subsetting, we notice a more additive model that suggests less if not any changes in behavior or policy from year to year. With this subsetted data, we can see a more constant mean change that reflects future Yosemite tourism demand.
+However, this makes the data unusable! We will need to subset the data to after 1945. By subsetting, we notice a more additive model that suggests less if not any changes in behavior or policy from year to year. With this subsetted data, we observe a more constant mean change that reflects future Yosemite tourism demand.
 
 ```r							
 Yos[Yos$Year==1945,] #Subset to after 1945
@@ -75,9 +75,9 @@ plot(lnvisitors~Year,
 
 ![](https://tykiww.github.io/img/arima111/yos3.png)
 
-Everything looks great! now that we have an additive model subsetted to the recent past, we can continue with the forecasting.
+Everything looks great! Now that we have an additive model subsetted to the recent past, we can continue with the forecasting.
 
-Now let's take look at the arima model. You might need to install the asta package. The asta package was created by a professor from the University of Pittsburg, and information on time series analysis is on his [website](http://www.stat.pitt.edu/stoffer/tsa4/index.html) The `sarima()` model links all of the past datapoints and gives us parameter estimates. At first you are going to see a list of graphics that show the residual for the 1,1,1 model. We're going to ignore this as it has no relevance to our question.
+Now let's take look at the arima model. You might need to install the `asta` package. `asta` was created by a professor from the University of Pittsburg, and information on time series analysis is on his [website](http://www.stat.pitt.edu/stoffer/tsa4/index.html) The `sarima()` model links all of the past datapoints and gives us parameter estimates. At first you are going to see a list of graphics that show the residual for the 1,1,1 model. We're going to ignore this as it has no relevance to our question.
 
 The output ar1, ma1, and constant are the names for phi, epsilon, and mu. This information tells us the parameter estimate mu, and the standard errors. 
 
@@ -160,7 +160,7 @@ Table of the unlogged 95% parameter estimates and CI.
 
 ![](https://tykiww.github.io/img/arima111/yos5.png)
  
-As you can see, we now have both a table with predictions and a good-looking graph of those future values. Pretty simple huh? This type of analysis is very handy for forecasting future performance whether it be for marketing trends, or tourism details. **_Yet there is always a catch!_** I probably should have told you at the very beginning, but this type of modelling is not useful for seasonal trends which oscillate during different periods (ie. mapping climate change, airport delay times... I will be doing a different seasonal arima example next.) 
+As you see, we now have both a table with predictions and a good-looking graph of those future values. Pretty simple huh? This type of analysis is very handy for forecasting future performance whether it be for marketing trends, or tourism details. Any type of data that does not involve too much volitility. Yet there are cases where it is used in stock trading. **_Yet there is always a catch!_** I probably should have told you from the beginning, but this type of modelling is not useful for seasonal trends which oscillate during different periods (ie. mapping climate change, airport delay times... I will be doing a different seasonal arima example next.) 
 
 Some other things to watch out for may include (Arima Model assumptions):
 1.There are no known/suspected predictor variables
@@ -171,4 +171,4 @@ Some other things to watch out for may include (Arima Model assumptions):
 Since arima is a type of regression using past values (values predicted from year to year), sharp dips and spikes may interfere with the model. This means that arima does not take into consideration any procedural changes, anomalies, or other predictor values that may have actually contributed to any skips in convergence (ie. park closes down, vertical integration of a new financial firm, or even a blizzard that tears through a potato farm).
 
 Regardless, we've done it! The Arima model still continues to be one of the most standard procedures to forecast future values to this day. Maybe because time happens to be amongst the strongest predicting elements of nature.
-Although it is not the best possible model (do we even know what the best model even is?), it is almost like those gloves where one-size fits all.
+Although it is not the best possible model (do we even know what the best model even is?), it is a sort of one-size-fits-all.
