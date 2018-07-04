@@ -5,12 +5,11 @@ fb-img: http://tykiww.github.io/img/slr.png
 tags: [Simple, SLR, Simple Linear Regression, Regression, transofmation, plotly, interactive plots]
 ---
 
-As many of my friends were getting married, some had concerns on how they should choose a diamond. Most people don't really care, but I have realized that a ring can be quite the investment for the future. Just as a car and house have value and can be an additive investment, rings can have a similar quality. I guess I'm not in that boat, but a ring shopper would like to know if they are buying the best price per quality. 
+Several of my friends are getting married and questions about rings have been thrown around. What kind of ring should I choose? Should I go for a diamond? How about Moissanite? Or, what's the whole point of even getting a ring in the first place?Most people don't really care, but I aire on the side that a ring can be a bit of equity that you can carry just in case something happens. In some ways, a car and house have value and can be an additive investment; rings have the potential to work the same way if you play it smart. I guess I'm not currently in that boat, but a ring shopper would like to know if they are buying the best price per quality. 
 
 ![](https://randor.com/wp-content/uploads/2014/04/img-diamond-4Cs.jpg)
 
-There is an already imbedded dataset in R studio if you type in `data(diamonds)`. This dataset is rather large and can take some machines a long time to process chunks of information. 
-
+There is an already imbedded dataset in R studio if you run `data(diamonds)` in your command line. This dataset is rather large and can take some machines a long time to process chunks of information. 
 
 If you want to try a smaller set, go to this [link](http://www.amstat.org/publications/jse/v9n2/4Cdata.txt). Load the data like this below.
 
@@ -33,9 +32,9 @@ glimpse(diamonds)
     
     
     
-We won't be working with that one. Let's take a look at the imbedded large set. The Diamonds dataset is one of the great examples of how powerful R can be using big data. Unfortunately, we're not touching all of it because we are only working a simple linear regression.
+We won't be working with that set. Let's take a look at the imbedded large one. The diamonds dataset is one of the great examples of how powerful R can be using big data. Unfortunately, we're not touching all of it because we are only working a univariate linear regression.
 
-Make sure to install the libraries for analysis! Today I'm going to show you an interactive plot using [plotly](https://plot.ly/)! Plotly is an interactive interface that allows for easier labeled visualization. With it, you can see individual plot points and easily recognize any outliers. Rather impressive, it definitely beats having to use the `identify()` function or `gganimate()` which sometimes is quite a pain. 
+Make sure to install the libraries for analysis! Today I'm going to show you an interactive plot using [plotly](https://plot.ly/)! Plotly is an interactive interface that allows for easier labeled visualization. With it, you can see individual plot points and easily recognize any outliers. Rather impressive, it definitely beats having to use the `identify()` function which gives you information but cannot glean quick-interactive information.
 
 ```r
 library(ggplot2)
@@ -43,7 +42,7 @@ library(dplyr)
 library(plotly)
 ```
 
-Just call out the original diamonds dataset by `data(diamonds)`. Since we only need two columns for the dataset, let's clean the set and take a look at the plot. Now we have 1 factor with 53,940 levels, and one replication.
+Just call out the original diamonds dataset by `data(diamonds)`. Since we only need two columns for the dataset, let's clean the set and take a look at the plot. We have 1 factor with 53,940 levels, and one replication.
 
 ```r
 data(diamonds)
@@ -71,7 +70,7 @@ plot(diamonds1$carat, diamonds1$price)
 
 ![](https://tykiww.github.io/img/slr/slr1.png)
 
-A lot more data than I thought. The trend of this information looks rather multiplicative rather than additive, and the data is *fan-shaped*. This probably requires a transformation of some sorts. My usual go-to is to use a log transformation, so I am going to just create a new variable below and plot the data.
+A lot more data than I thought. The trend of this information looks rather multiplicative rather than additive and the data is *fan-shaped*. This probably requires a transformation of some sorts. The fan shape requires a log transformation, so I will proceed to create a new variable below and plot the data.
 
 ```r
 lndiamonds <- diamonds1
@@ -82,11 +81,10 @@ plot(lndiamonds$lncarat, lndiamonds$lnprice)
 
 ![](https://tykiww.github.io/img/slr/slr2.png)
 
-There we go. This looks more like some data we can perform an analysis in creating a model. Let's now fit the model for our analysis!
+This looks more like some data we can perform an analysis in creating a model. Let's proceed to fit the model for our analysis!
 
-Explanatory variable: log carat
-Response variable: log price
-
+		Explanatory variable: log carat
+		Response variable: log price
 
 Here's our model below. I am going to do what I can to explain the basis of the simple linear regression. Here we will be using the cell means model.
 
@@ -96,7 +94,7 @@ Model: y<sub>i</sub> = ß<sub>o</sub> + ß<sub>i</sub>X<sub>i</sub> + epsilon<su
 - ß<sub>i</sub> is the slope coefficient (The predictor of per-unit effect on y<sub>i</sub> depending on x<sub>i</sub>)
 - epsilon ~ N(0,ø^2) means that we are assuming that the errors are normally distributed.
 				
-This model looks a lot like a linear y = mx + b graph that we see in algebra. This is because it is very similar. Simply said, this model takes every average value of y<sub>i</sub> estimated parameters and creates an estimate y&#772;. So, when we are predicting, our model will look like this:
+This model looks a lot like a linear y = mx + b graph that we see in algebra. This is because it is based on the same concept. Simply said, this model takes every average value of y<sub>i</sub> estimated parameters and creates an estimate y&#772;. So, when we are predicting, our model will look like this:
 
 
 :::::: y&#772; = ß<sub>o</sub> + ß<sub>1</sub>X<sub>i</sub> + epsilon<sub>i</sub>, for epsilon ~ N(0,ø^2)
@@ -157,7 +155,7 @@ Let' also take a look at the histogram of residuals to see if we have violated a
 
 Not bad, it looks like we have a roughly normal distribution of errors, which satisfies our assumptions! K-S tests are short for the Kolmogorov–Smirnov test, and is a hypothesis test with Ho: Residuals are not normally distributed. Our p-value from this output shows a p-value of <.001, so we can safely say that the residuals are indeed normally distributed.
 
-Now going back to the summary output, we can see a p-value < 2.2e-16 and F statistic of 7.51e+05 df(1,53938). This corresponds to the Ho: the size of a diamond does NOT have a statistically significant effect on the cost. Therefore, at a p-value less than 0.0001, we have sufficient evidence to reject the null hypothesis and say that there is a statistically significant effect in price from carat to offspring and for a 1% increase in Carat size, we estimate an expected increase in Price of 1.676% in offspring sweet pea diameter (95% CI: 1.672%,1.679%).
+Now going back to the summary output, we can see a p-value < 2.2e-16 and F statistic of 7.51e+05 df(1,53938). This corresponds to the "Ho: the size of a diamond does NOT have a statistically significant effect on the cost." Therefore, at a p-value less than 0.0001, we have sufficient evidence to reject the null hypothesis and say that there is a statistically significant effect in price from carat to offspring and for a 1% increase in Carat size, we estimate an expected increase in Price of 1.676% in offspring sweet pea diameter (95% CI: 1.672%,1.679%).
 
 ```r
 confint(out.diamonds)
@@ -169,7 +167,7 @@ qplot(lncarat,lnprice,data=lndiamonds,
       se = TRUE,
       xlab ="Size of Diamonds (log carat)",
       ylab = "Price (log)"
-)
+      )
 ```
 
     ##                2.5 %   97.5 %
@@ -178,9 +176,9 @@ qplot(lncarat,lnprice,data=lndiamonds,
 
 ![](https://tykiww.github.io/img/slr/slr4.png)
 
-We can see how small of our confidence interval is. Practically invisible We notice this by the very narrow confidence bands in our qplot. This is most likely attributed due to the high number of observations (54,000). If you were a jewelry store manager we can see how useful this information is to predict, in our range, the price of the diamond from the size.
+We can see how small our confidence interval is. Practically invisible. We notice this by the very narrow confidence bands in our qplot. This is most likely attributed due to the high number of observations (54,000). If you were a jewelry store manager we can see how useful this information is to predict, in our range, the price of the diamond from the size.
 
-Now, if you were a newly-wed couple trying to look for a ring and wanted to see the predicted price for a 1 carat diamond, we just need to use the `predict()` function and insert a new dataframe containing the desired x-value. If you transformed the data, make sure to un-transform the information to correctly interpret! I took the `exp()` of the information.
+Now, if you were a newly-wed couple trying to look for a ring and wanted to see the predicted price for a 1 carat diamond, we just need to use the `predict()` functionality and insert a new dataframe containing the desired x-value. If you transformed the data, make sure to un-transform the information to correctly interpret (using `exp()`)!
 
 ```r
 exp(predict(out.diamonds, newdata=data.frame(lncarat=1), interval="prediction"))
@@ -202,7 +200,7 @@ ggplotly(p)
 
 The plot above is rather neat huh? Click around and you notice how you can check out individual plot elements. This is perfect for when you are creating reports for managers to show them individual datapoints and explaining outliers. Usually, this plot shows up on the viewer in R studio.
 
-Yet, here's a secret.. this isn't the actual data. You could probably tell by the lack of data points and the axis labels. This was from the first mentioned dataset from amstat.org. When I tried to publish the data from the above mentioned `ggplotly()`, it actually slowed down my computer because of the crazy amount of datasets. This was the warning message. Soo, I couldn't do the interactive. 
+Here's a secret.. this isn't the actual data. You could probably tell by the lack of data points and the axis labels. This was from the first mentioned dataset from amstat.org. When I tried to publish the data from the above mentioned `ggplotly()`, it actually slowed down my machine because of the crazy amount of datasets. This was the warning message. 
 
 ![](https://tykiww.github.io/img/slr/slr5.png)
 
@@ -213,10 +211,12 @@ Here's the actual plot below with the prediction output.
 
 ![](https://tykiww.github.io/img/slr/slr6.png)
 
-For a one carat diamond, we can expect a price of about 24946.22 with a 95% confidence of (14907.68, 41744.49). These are HUGE bounds.. This is pretty obvious. As the carat amount gets higher, there is so much more variability in price. This means that there is more of a chance for someone to rip you off! Of course, this data is not including the fitting and cutting of the ring, the other C's included (cut, color, clarity), but it is rather relevant information. 
+For a one carat diamond, we can expect a price of about 24946.22 with a 95% confidence of (14907.68, 41744.49). These are HUGE bounds. Yet, this is pretty expected. As the carat amount rises, there is more volitility in price. This means that there is more of a chance for someone to rip you off! Of course, this data is not including the fitting and cutting of the ring, the other C's included (cut, color, clarity), but it is rather relevant information. 
 
 This research is great as it has a lot of information (data points) to perform a regression. It is also good to note that there is a seemingly strong correlation between size of diamonds and price, so it makes the analysis easier to perform. 
 
 Alternatively, we can tell that this is not a perfect model to predict price. Just one simple linear regression does not tell us all the other information that we are missing! In that way, we can see how picky we need to be about our information whenever performing an analysis. 
 
-Regardless, I hope you can enjoy toying around with regressions and the interactive plots. If you have any further questions, let me know!
+As for the plotly library, I realize now that there are limits to visualization. Good to know that in the future. Maybe if I had a machine with better processing it may work out.
+
+Regardless, I hope you can enjoy toying around with regressions and the interactive plots. If you have any further questions, please [let me know](tyki@byu.edu)!
