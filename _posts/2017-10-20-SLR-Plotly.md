@@ -217,6 +217,6 @@ This research is great as it has a lot of information (data points) to perform a
 
 Alternatively, we can tell that this is not a perfect model to predict price. Just one simple linear regression does not tell us all the other information that we are missing! In that way, we can see how picky we need to be about our information whenever performing an analysis. 
 
-As for the plotly library, I realize now that there are limits to visualization. Good to know that in the future. Maybe if I had a machine with better processing it may work out.
+As for the plotly library, I realize now that there are limits to visualization. Good to know that in the future. Yet, my frugality will probably keep me from every paying for more.
 
 Regardless, I hope you can enjoy toying around with regressions and the interactive plots. If you have any further questions, please [let me know](tyki@byu.edu)!
