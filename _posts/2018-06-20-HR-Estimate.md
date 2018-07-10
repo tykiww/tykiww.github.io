@@ -196,7 +196,7 @@ empcost(a[1],b,c,hours =a[3],leave = 15)
     ## $`Overall estimated loss due to turnover`
     ## [1] 1105543
 
-Our output gives us valuable information. First, is our true cost to our employee. We notice here how one employee costs about 105% of his annual salary. The employee taxes and overhead costs seem to be well managed. 
+Our output gives us valuable information. First, is our "true cost" to our employee. We notice here how one employee costs about 105% of his annual salary. The employee taxes and overhead costs seem to be well managed. (This is not typical for an average company. Yet, it is variable amongst all companies, so please put your own information in!)
 
 Next is our employee billable cost/hour. This shows the service fee we should be charging to our clients for the time they are spending with our employees. This may be useful for any lawyers or consultants who need to charge accurate hourly rates as to ensure no loss of profits.
 
