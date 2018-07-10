@@ -15,8 +15,9 @@ Suppose we consider the average employee to be at the median of $50,480 and the 
 benefit per employee](https://www.bls.gov/news.release/pdf/ecec.pdf) to be roughly $18,000. We see how the typical (median) employer will be losing a rough estimate of 68-70 thousand dollars for every new employee hired then lost per year. Furthermore, the [average](https://www.bls.gov/news.release/archives/nlsoy_06272008.pdf) individual born after the baby boom held around 10.8 jobs from age 18 to age 42. Making it more likely that people will change offices while employed at "your company". Since it is so difficult to really know the marginal impact each employee has on their firm, you don't necessarily know how much you are losing.
 
 For this case, I built a tool that calculates a not so rough estimate of how much a single employee can cost you.
+(Note here: There are many many ways to calculate the cost of an employee. This will not be looking at the amount of time employees are costing by making mistakes or using another employees time or time off from work. In other words, vacation and inefficiencies.)
 
-It's rather simple. The true cost of an employee comprises of 3 things:
+Our example here is rather simple. The true cost of an employee comprises of 3 things:
 
 - Annual Employee Labor Cost (Salary + Bonuses)
 - Annual Employee Overhead Cost (Overhead / # of employees)
