@@ -27,7 +27,7 @@ The sum of these will amount to the total cost of an employee.
 
 I am by no means an expert in accounting. I actually did rather terrible on an accounting class at my university. Yet, going through these and countless other scenarios have helped me gain a deeper understanding of the language of business.
 
-Here is my [R script](https://raw.githubusercontent.com/tykiww/projectpage/master/Tools/empcost.R) with 4 functions that will allow you to input the necessary information to estimate the cost of your employee. Sorry if this isn't so readable. It is in a particular documentation format just in case I want to create a package using `roxygen2` . Please refer to the #' marks to guide you on the function inputs.
+Here is my [R script](https://raw.githubusercontent.com/tykiww/projectpage/master/Tools/empcost.R) with 4 functions that will allow you to input the necessary information to estimate the cost of your employee. I apologize if this isn't very readable. It is in a particular documentation format just in case I want to create a package using `roxygen2` . Please refer to the #' marks to guide you on the function inputs.
 
 If you want to see it done in excel, you can download it [here](https://github.com/tykiww/projectpage/raw/master/datasets/hr-cost/Employee%20Cost%20Estimation.xlsx). It looks like this.
 
@@ -88,7 +88,7 @@ Next, we will move on to grabbing our overhead costs. This is simple as we have 
 
 ```r
 empover <- function(tover = FALSE,count,sover=FALSE) {
-  options(warn=-1)
+  options(warn=-1) # warnings don't hurt the output. Just get in the way.
   if (sover == FALSE)  {
     overhead <- tover / count
   }
@@ -106,7 +106,7 @@ b
     ## Overhead per employee 
     ##              2806.40 
 
-This next function is rather long, but it is mosly due to cleaning. I hope that I can find a more efficient way to clean the dataset, but for now I will manage with what I have. We have here the employee tax by state. All we do here now is list the state, salary (which we pulled from before), number of employees and also take a look at the dataset from the repository.
+This next function is rather long, but it is mosly due to cleaning. I hope that I can find a more efficient way to clean the dataset, but for now I will manage with what I have. We have here the employee tax by state. All we do now is list the state, salary (which we pulled from before), number of employees and also take a look at the dataset from the repository.
 
 ```r
 emptax <- function(state,salary, count, taxes = FALSE, dataset = FALSE) {
@@ -196,13 +196,13 @@ empcost(a[1],b,c,hours =a[3],leave = 15)
     ## $`Overall estimated loss due to turnover`
     ## [1] 1105543
 
-Our output gives us valuable information. First, is our "true cost" to our employee. We notice here how one employee costs about 105% of his annual salary. The employee taxes and overhead costs seem to be well managed. (This is not typical for an average company. Yet, it is variable amongst all companies, so please put your own information in!)
+Our output gives us valuable information. First, is our "true cost" to our employee. We notice here how one employee costs about 105% of his annual salary. The employee taxes and overhead costs seem to be well managed. (This is not typical for an average company. Please assume variability amongst all companies, so put in your own information!!)
 
 Next is our employee billable cost/hour. This shows the service fee we should be charging to our clients for the time they are spending with our employees. This may be useful for any lawyers or consultants who need to charge accurate hourly rates as to ensure no loss of profits.
 
 Yet once we hit the estimated loss due to turnover, we see a problem. If you are expecting to re-hire 15 employees every year, our overall spending for all those analysts will amount to be over **1 million dollars**. Now that seems to be a problem.
 
-Any solutions? Probably some organizational changes seem necessary. Maybe your employees are burned out? Maybe they don't have enough challenge demands. Adjustments will need to be made in order to invest more into decreasing turnover. You might know what to do better than I do. (If you're just curious and want to check out a conceptual meta-analytic map explaining turnover, you can find some research my mentor and I did [here](https://www.sciencedirect.com/science/article/pii/S221305861630050X?via%3Dihub).) The decision is yours.
+Any solutions? Probably some organizational changes seem necessary. Maybe your employees are burned out? Maybe they don't have enough challenge demands. Adjustments will need to be made in order to invest more into decreasing turnover. You might know what to do better than I do. (If you're just curious and want to check out a conceptual meta-analytic map explaining turnover, you can find some research my mentor and I did [here](https://www.sciencedirect.com/science/article/pii/S221305861630050X?via%3Dihub).) The strategic decision is now up to you!
 
 Overall, we see another way to use R outside of a pure stats need. As long as we have these functions marked, they become easy access for business. If R still isn't your thing, don't worry. The excel tool seemed to be popular amongst some of the sales partners at my workplace. It allowed them to identify potential organizational costs and negotiate their leadership training products right beside their client. Of course, it was customized more to fit their needs. 
 
