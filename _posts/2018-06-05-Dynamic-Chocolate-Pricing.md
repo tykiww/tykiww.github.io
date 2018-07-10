@@ -5,20 +5,19 @@ tags: [Econometrics, Chocolate, Dynamic Pricing, Demand]
 ---
 
 
-Here's a hypothetical situation we can whip up: As an international wholesale retail owner of a particular chocolate brand, your goal is to map the optimum price for your world-famous candy bar using historical data. You have collected data on the past years' price changes along with quantity information in response to these price adjustments. What will you do now?
+Here's a hypothetical situation we can whip up: As an international wholesale retail owner of a particular chocolate brand, your goal is to map the optimum price for your world-famous candy bar using historical data. You have collected data on the past years' price changes along with quantity information in response to these price adjustments. What will you do?
 
 A bit of econometrics wouldn't hurt to try. 
 
 ![](https://collectiveinnovation.com/wp-content/uploads/2016/02/Dynamic-Pricing.png)
 
-Dynamic pricing is an extremely complex subject. Even more than I can wrap my head around. There are so many different approaches when it comes to optimization. We want it just right!
+Dynamic pricing is an extremely complex subject. So much so, it hurts to wrap my head around. There are so many different approaches when it comes to optimization. We want it just right!
 
 Simply stated, dynamic pricing is a strategy businesses employ that adjusts prices based on the demand of the market.
 
-These various approaches are always different. Today, we will be looking at revenue and cost information gleaned from the demand of customers. This process is different from what I have traditionally studied. We will use a more bayesian-esque approach by using a known 'linear' demand curve. Instead of using timeseries analysis, we can model customer behavior using this known distribution. How do we code this up? Fortunately, R allows for rather easy vizualization to bring some theory to life. 
+Various approaches are used, and they are all seemingly different. Today, we will be looking at revenue and cost information gleaned from the demand of customers. This process is different from what I have traditionally studied. We will use a more bayes-esque approach by using a known 'linear' demand curve. Instead of using timeseries analysis, we can model customer behavior using this known distribution. How do we code this up? Fortunately, R allows for rather easy vizualization to bring some theory to life. 
 
-
-Here are the packages we will use today. I actually don't think any of them are too necessary. Yet, if you are following along with my specific code, you will need them.
+Here are the packages we will use today. I actually don't think any of them are too necessary to do this analysis. Yet, if you are following along with my code, please load them!
 
 ```r
 library(dplyr)
@@ -42,7 +41,7 @@ names(dat) <- c("price","quantity")
 raw <- as.data.frame(dat)
 ```
 
-We will operate under the assumption that our demand is linear (even thought it isn't really). Regardless, there is supposed evidence that it is 'good enough', but what do I know? This is just what I am learning and applying. Therefore, we will be working with our y = ßx + a + error model from a regression! This will be our posterior model that we will refer to towards the end to make our estimations on the best possible price.
+We will operate under the assumption that our demand is linear (even thought it isn't really). Regardless, there is supposed evidence that it is ['good enough'](https://www0.gsb.columbia.edu/faculty/azeevi/PAPERS/pwr_simple_models_ob_az.pdf), but what do I know? (Not much, but I do know that the basis for all measurement of curvature began in the greek days of Eudoxus and Archimedes and was refined by Newton by the creation of calculus). Therefore, we will be working with our y = ßx + a + error model from a regression! This will be our posterior model that we will refer to towards the end to make our estimations on the best possible price.
 
 ```r
 # Begin by finding our estimate values.
@@ -78,7 +77,7 @@ demand <- function(x, b = -65.18, a = 502.32, sd = 2.286543) {
 }
 ```
 
-Now unfortunately, we do not have historical price information. I actually realized this just now! Yet, no fear. *We can just make it up.* I know this isn't the best idea, but if we did happen to have the historical price information, it wouldn't be difficult to model it off of what I have here. We'll just create a years' worth of daily prices that fluctuate under a normal distribution. It is my assumption that we may run into negative integers, but our standard deviation is rather small so I am not counting on it. Also, since we have already modeled our demand function after our data, our predictions will just be off by the factor of having different historical prices.
+Now, unfortunately, we do not have historical price information. I actually realized this just now! Yet, do not fear. *We can just make it up.* I know this isn't the best idea, but if we did happen to have the historical price information, it wouldn't be difficult to model it off of what I have here. We'll just create a years' worth of daily prices that fluctuate under a normal distribution. It is possible that we may run into some negative floats (maybe two? Nah, probably just one), but our standard deviation is rather small so I am not counting on it. Also, since we have already modeled our demand function after our data, our predictions will just be off by the factor of having different historical prices.
 
 Now we are here, but we have to make sure to get our equations correct. These are the ones we will be using:
 
@@ -88,7 +87,7 @@ Now we are here, but we have to make sure to get our equations correct. These ar
 
 Note here that we are using our demand to calculate revenue. This may not be up to accounting standards, but it actually won't be too off. The principle of demand seems to apply in this situation. Our r-squared value is at 20%, but we will have to make do. As long as we know that our linear model is significant, we should not be having too many problems. 
 
-Another note is that we are going to fix our unit price of the bar to be .50 cents as a manufacturer and changing due to the same demand as the chocolate bar. Furthermore, we are not accounting for any variable costs that may arise. Needless to say, our margin will be rather big with or without them with in the end. So many things to keep in mind.
+Another note is that we are going to set our manufacturer's unit price of the candy bar to be 50 cents and fluctuate it with the same demand as the chocolate bar. Furthermore, we are not accounting for any variable costs that may arise. Needless to say, our margin will be rather big with or without them with in the end. So many things to keep in mind.
 
 ```r
 # Obtaining historical price (i)
@@ -132,9 +131,9 @@ ggplot(views, aes(Period, Daily.Revenue, colour = 'Historical Revenue')) +
 
 ![](https://tykiww.github.io/assets/dynamic%20pricing/2.png)
 
-We can definitely tell how random this is! I don't think any company actually works like this. Some of the revenue on these days are so low. Pretty surreal situation, but anything is possible. It would have been nice to have real data as that would model the business setting. Regardless, we can see the balance here.
+We can definitely see the randomness! I don't think any company actually works like this. Some of the revenue on these days are so low. Pretty surreal situation, but anything is possible. It would have been nice to have real data as that would model the business setting. Regardless, we have a balance here.
 
-The above graph is what we can replicate to be real world output. If we happened to be looking for the linear demand curve this way, we would just do a regression of the above data.
+Now, we will do a regression of the above data.
 
 ```r
 lm.fit <- lm(demand.hist ~ price.hist)
@@ -146,7 +145,7 @@ summary(lm.fit)
     ## (Intercept) 790.61982    0.34005    2325   <2e-16 ***
     ## price.hist  -65.20197    0.06056   -1077   <2e-16 *** 
 
-Now to find the optimum price at any level, we can use this linear model that we created to optimize our profits! This will be part of our estimates for optimization. We'll first initialize and tuck them away for use later.
+To find the optimum price at any level, we use this linear model that we created to optimize our profits! This will be part of our estimates for optimization. We'll first initialize and tuck them away for use later.
 
 ```r
 # initializing info
@@ -156,7 +155,7 @@ p.rev <- -intercept/(2*p.est) # estimated revenue price
 p.prof <- (p.est*unit.cost - intercept)/(2*p.est) # estimated profit price
 ```
 
-We'll now set up functions that map out our true revenue and true profits that come from our original chocolate data.
+We'll next set up functions that map out our 'true revenue' and 'true profits' that come from our original chocolate data.
 
 ```r
 # True curves
@@ -164,7 +163,7 @@ true.rev <- function(p) p*(-65.18*p + 502.32) # Revenue from original linear mod
 true.prof <- function(p) (p - unit.cost)*(-65.18*p + 502.32) # price from original data.
 ```
 
-We'll also want to create functions that reflect our new estimate from our fake random data that we created earlier.
+Also, let's create functions that reflect our new estimates from our fake random data that we created earlier.
 
 ```r
 # Estimated curves
@@ -172,7 +171,7 @@ est.rev <- function(p) p*(lm.fit$coefficients[2]*p + lm.fit$coefficients[1])
 est.prof <- function(p) (p - unit.cost)*(lm.fit$coefficients[2]*p + lm.fit$coefficients[1])
 ```
 
-Now that we have our set-up, let's get all of our functions mapped out! I decided here to use ggplot. You could also use the base R plots and specify `add = TRUE` if you like. I just love the graphics on ggplot.
+Now that we have our set-up, let's get all of our functions mapped out! I decided here to use ggplot. You could also use the base R plots and specify `add = TRUE` if you like. ggplot graphics are the best!
 
 ```r
 ggplot(data = data.frame(Price = 0)) +
@@ -189,10 +188,10 @@ ggplot(data = data.frame(Price = 0)) +
 
 ![](https://tykiww.github.io/assets/dynamic%20pricing/3.png)
 
-Our estimated profits for chocolates are extremely close to our historical true profits! We see that according to our the timeseries model, this next year's profits will probably be slightly higher than our past 'true profits'. In this case, we would set our prices in between 4-5 dollars for the candy bar (What an expensive piece of candy). It looks like, due to the elasticity of demand, that it is in our favor to raise the price higher than what our current profits show as our new estimates will supposedly yield higher revenue and higher profits!
+We observe: Our estimated profits for chocolates are extremely close to our historical true profits! According to the timeseries model, this next year's profits will probably be slightly higher than our past 'true profits'. In this case, we would set our prices in between 4-5 dollars for the candy bar (what an expensive piece of candy!). It seems, due to the elasticity of demand, that it is in our favor to raise the price higher than what our current profits show as our new estimates will supposedly yield higher revenue and higher profits!
 
-Actually, if you didn't catch on earlier, you may have noticed that I added 50 to our historical demand earlier. This was because our estimated profits and true profit curves were going to overlap each other due to overfitting. I wanted to be able to visualize the curves in the right way. Technically, our data is corrupt because of the random sampling and inflated demand.
+(Actually, if you didn't catch on earlier, you may have noticed that I added 50 to our historical demand earlier. This was because our estimated profits and true profit curves were going to overlap each other due to overfitting. I wanted to be able to visualize the curves in the right way. Technically, our data is corrupt because of the random sampling and inflated demand.)
 
-However, I can see if we had real historical price changes over the span of a year, we would have had somewhat similar results.. Another good thing to note is how it still works. Given a situation where you happened to make dynamic price changes throughout the year, you could predict from then this next year's price! I would love to be able to use something of this nature in a product/retail side of business. It seems rather exciting to me.
+If we had real historical price changes over the span of a year, we may have had completely different results.. Yet it still works! Given a situation where you have to make dynamic price changes throughout the year, you could predict this next year's price! I would love to apply something of this nature in a product/retail side of business. It seems rather exciting to me.
 
-I hope you are able to at least notice one of the ways of dynamic pricing. This estimation technique allows us to see historical trends in our time series, uses a bayes-esque approach to predict the future prices, and reflects new estimates in line with our old data. Please try this out when you actually have some good info! It's rather easy. All you need is a price-quantity set with historical price and cost changes. I will hopefully be introducing more approaches using other machine learning techniques.
+I hope you are able to enjoy one of the methods of dynamic pricing. This estimation technique allows us to glance at historical trends in our time series, uses a bayes-esque approach to predict the future prices, and reflect new estimates in line with our old data. Please try this out when you actually have some good info! It's rather easy. All you need is a price-quantity set with historical price and cost changes. I will hopefully be looking into more application examples!!
