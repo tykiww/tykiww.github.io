@@ -10,7 +10,9 @@ How many visitors can we expect to see in Yosemite National park for the next 5 
 
 ![](https://cdn.shopify.com/s/files/1/0272/4781/files/summer-sunset-over-half-dome-from-glacier-point-yosemite.jpg?1089)
 
-My first entry is a simple timeseries model of an ARIMA(1,1,1). The method I will use is also known as the Box Jenkins Method (one method of using an ARIMA time series) and is one of the most general class of autoregressive model for forecasting a time series (Well, you could get more general if you'd like). Simply, the 1,1,1 stands for (last period's change, year to year change, moving average). These details can be fine tuned according to how the data looks, but as a general guideline, the ARIMA(1,1,1) is beneficial and accurate for most cases. For the lowest [AIC](https://en.wikipedia.org/wiki/Akaike_information_criterion), you'll need to tweak it to your liking. If that didn't make much sense or you are curious, visit this [link](https://www.datascience.com/blog/introduction-to-forecasting-with-arima-in-r-learn-data-science-tutorials).
+My first entry is a simple timeseries model of an ARIMA(1,1,1). The method I will use is also known as the Box Jenkins Method (one method of using an ARIMA time series) and is one of the most general class of autoregressive model for forecasting a time series (Well, you could get more general if you'd like). 
+
+Simply, the 1,1,1 stands for: last period's change, year to year change, moving average. These details can be fine tuned according to how the data looks, but as a general guideline, the ARIMA(1,1,1) is beneficial and accurate for most cases. For the lowest [AIC](https://en.wikipedia.org/wiki/Akaike_information_criterion), you'll need to tweak it to your liking. If that didn't make much sense or you are curious, visit this [link](https://www.datascience.com/blog/introduction-to-forecasting-with-arima-in-r-learn-data-science-tutorials).
 
 That's enough of the stats lessons. Let's actually try fitting the model to the Yosemite data!
 
