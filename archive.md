@@ -28,6 +28,7 @@ Scan here below to skip to the ones you want to see!
 # Distribution Modeling
 - [Bootstrapping](https://tykiww.github.io/2018-01-20-MC-bootstrap/)
 - [Dynamic Pricing Model](https://tykiww.github.io/2018-06-05-Dynamic-Chocolate-Pricing/)
+- [Discounted Cash Flow Analysis using Monte Carlo](https://tykiww.github.io/2018-07-05-MC-DCF/)
 
 # Web Scraping
 - [Credit Card/Luhn Algorithm](https://tykiww.github.io/2018-01-05-luhn-with-rvest/)
