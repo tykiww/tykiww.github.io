@@ -104,10 +104,10 @@ share-links-active:
 
 # --- Misc --- #
 # Fill in your Disqus shortname (NOT the userid) if you want to support Disqus comments
-# disqus: tykiww-github-io
+disqus: tykiww-github-io
 
 # Fill in your Google Analytics ID to track your website using GA
-# google_analytics: "UA-116220649-1"
+google_analytics: "UA-116220649-1"
 
 # Google Tag Manager ID
 #gtm: ""
