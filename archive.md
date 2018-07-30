@@ -33,7 +33,7 @@ Scan here below to skip to the ones you want to see!
 # Web Scraping
 - [Credit Card/Luhn Algorithm](https://tykiww.github.io/2018-01-05-luhn-with-rvest/)
 - [Data Collection/Crosstalk](https://tykiww.github.io/2018-04-05-Scrape-CrossTalk/)
-- [RSelenium Web Scraping](https://tykiww.github.io/2018-05-20-Selenium-Scraping/)
+- [RSelenium Web Scraping](https://tykiww.github.io/2018-04-05-Selenium-Scraping/)
 
 # Misc
 - [Google Maps API in R](https://tykiww.github.io/2018-05-05-Google-Maps-API/)
