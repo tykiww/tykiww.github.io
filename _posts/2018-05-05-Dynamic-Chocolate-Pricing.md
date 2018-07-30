@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "A Dynamic Pricing Model with Chocolate"
+title: "A Dynamic Pricing Model for Chocolate"
 tags: [Econometrics, Chocolate, Dynamic Pricing, Demand]
 ---
 
