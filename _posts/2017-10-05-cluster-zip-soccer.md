@@ -198,6 +198,6 @@ plotcluster(foot, fitted$cluster)
 
 We see that our values are along a range from 40-99, so the values are closely arranged together. This lets see how our data has been separated into 3 different groups along that range.
 
-Of course, this wasn't the best way to perform the analysis, but I have been able to gain really good insight on how to work with cluster algorithms. I want to see if I can get better at understanding the mechanics and start working with more categorical variables and recognize trends. I guess this is an area I know that I definitely want to improve in and would love to find some mentoring in. 
+Of course, this wasn't the best way to perform the analysis, since the outcome is rather obvious, but I have been able to gain really good insight on how to work with cluster algorithms. I want to see if I can get better at understanding the mechanics and start working with more categorical variables and recognize trends. I guess this is an area I know that I definitely want to improve in and would love to find some mentoring in. 
 
 At least I know what types of players to settle for if I was to ever pick up the remote. I don't even remember the last time I played that game. I really want to go out and play for real now.
