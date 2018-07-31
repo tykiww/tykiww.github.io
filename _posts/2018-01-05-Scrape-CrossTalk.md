@@ -73,7 +73,7 @@ cars1
 
 ![](https://tykiww.github.io/img/scrape/scrape3.png)
 
-It looks nicely compiled! Now I revisited one of the `rvest` posts that I wrote a while back and extracted the main table that supplies the information I need. You can take a look at it [here](https://tykiww.github.io/2018-01-05-luhn-with-rvest/). I looked to table the important information. During the process, I realized that Nissan had an extra table that made the xpath the 2nd table in the page. I guess if the Wikipedia page changes, it will revert back to the top. I should keep that in mind when revisiting this specific scraping method for information. 
+It looks nicely compiled! Now I revisited one of the `rvest` posts that I wrote a while back and extracted the main table that supplies the information I need. You can take a look at it [here](https://tykiww.github.io/2017-07-05-luhn-with-rvest/). I looked to table the important information. During the process, I realized that Nissan had an extra table that made the xpath the 2nd table in the page. I guess if the Wikipedia page changes, it will revert back to the top. I should keep that in mind when revisiting this specific scraping method for information. 
 
 ```r
 cc <- list()
@@ -138,7 +138,7 @@ car.datas <- car.datas %>%
 }
 ```
 
-Once again, I brought up the same function used in my [credit card](https://tykiww.github.io/2018-01-05-luhn-with-rvest/) analysis and did a similar function to rid the useless info. Unfortunately, this time around the cleaning is not as easy as we would like it. After cleaning the junk, I needed to make sure to separate the units, so I can revisit and create uniform numbers across the dataset. To do this, I used a similar technique as when I split the date information for the [Poisson post](https://tykiww.github.io/2018-03-05-Poisson-Dates/). 
+Once again, I brought up the same function used in my [credit card](https://tykiww.github.io/2017-07-05-luhn-with-rvest/) analysis and did a similar function to rid the useless info. Unfortunately, this time around the cleaning is not as easy as we would like it. After cleaning the junk, I needed to make sure to separate the units, so I can revisit and create uniform numbers across the dataset. To do this, I used a similar technique as when I split the date information for the [Poisson post](https://tykiww.github.io/2017-11-05-Poisson-Dates/). 
 
 Now that the units had been extracted, I set out to clean some more. Yet, this time I proceeded to grab all the currency information, from yahoo in the `quantmod` library. This is a useful tool that update stock information, currency exchange, and any other financial information that needs to be quickly updated. I'll probably explore this more in the future. 
 
@@ -240,6 +240,6 @@ subplot(
 
 ![](https://tykiww.github.io/img/scrape/scrape7.png)
 
-There have been several times when I wondered how to do something like this. Especially with an interactive graph. I hope you find this to be useful. I will most likely be working more with interactive plots in the future! If you are interested in checking out more about how to use plotly and simple interactive graphs, [click here]( https://tykiww.github.io/2017-10-20-SLR-Plotly/)
+There have been several times when I wondered how to do something like this. Especially with an interactive graph. I hope you find this to be useful. I will most likely be working more with interactive plots in the future! If you are interested in checking out more about how to use plotly and simple interactive graphs, [click here](https://tykiww.github.io/2017-02-05-SLR-Plotly/)
 
 
