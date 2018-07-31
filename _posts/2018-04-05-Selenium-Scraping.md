@@ -4,13 +4,15 @@ title: "Scraping Amazon with RSelenium"
 tags: [Selenium, RSelenium, Web Scraping, Amazon, Toilet Seat Covers, Google, Walmart]
 ---
 
-The first time I had heard of Rselenium was from one of my good friends who was web scraping off of Python. It actually took me a long time to figure out how exactly I was supposed to use it because it was rather difficult for me to grasp the concept as a new learner.
+You know those "I am not a robot" confirmation boxes? They always get in the way, especially when I'm trying to grab large amounts of information from google searches. Previously, I primarily scraped web content through rvest. Fast and pretty reliable, but I would often come to a wall. Then came Selenium. When I first heard what it was, I had no idea how it worked. Huh? How does a web app testing software do scraping? It took forever to figure out how to use this application (I had to learn it in python first, then translate it in R).
 
-In layman terms, RSelenium is an R version of a website testing platform. This means that Selenium allows the automation of website actions just as if you are pointing and clicking. This means that the usage of this tool is not only used for testing web apps, but can be used for scraping information on the web, or performing certain tasks that need to be done recursively. Of course, R may not be the easiest nor the best way to use the Selenium server (There seem to be better methods with other IDEs. ie. Firefox Selenium IDE) but the whole point of this blog is expanding the reach of R as an analytical tool.
+In layman terms, web app testing is used for application developers to see the efficacy of the application by automatically testing the usefulness of the app. Yet, the process for pointing and clicking is done by identifying css or xml tags (you see where I am headed? If not, it's okay. You should start with my post learning how to use [rvest](https://tykiww.github.io/2017-07-05-luhn-with-rvest/)). From that point, grabbing the information is pretty easy. Yet, the best part about selenium is this: __It acts as if someone was just pointing and clicking from your computer rather than a bot flipping through the internet__. Hence, less likely to get shut down!
+
+Of course, R may not be the easiest nor the best way to use the Selenium server (there seems to be better methods with other IDEs. ie. Firefox Selenium IDE) but I'll show you how I figured it out.
 
 We'll get started right away.
 
-Unfortunately, since I last loaded the package, it has become defunct. I found out later it was because the dependencies `binman` and `wdman` were deleted from the CRAN server due to "checks" problems. Don't ask me too many details, because I am no any expert. Good thing we can access the archived RSelenium and old dependencies!
+Unfortunately, since I last loaded the package, it has become defunct. I found out later it was because the dependencies `binman` and `wdman` were deleted from the CRAN server due to "checks" problems. Don't ask me too many details, because I am no any expert. Good thing we can access the archived RSelenium and old dependencies.
 
 ```r
 library(devtools)
@@ -20,7 +22,7 @@ library(devtools)
 library("RSelenium")
 ```
 
-If you are super picky about the "proper" way to use things, there is yet another administrative task we have to go through in order to use RSelenium. You also need to get our hands on Docker  as rsDriver is not currently working. To solve this, make sure to go  and download Docker from this [site](https://store.docker.com/) after creating an account. It's free. Don't worry. Yet, I am not really in the mood to run through two separate ways to run Selenium, so I will show you how I use this. If you're interested in using Docker, check out this [cool resource](https://callumgwtaylor.github.io/blog/2018/02/01/using-rselenium-and-docker-to-webscrape-in-r-using-the-who-snake-database/) with animal species analysis using Rselenium. A little different from what I am intending to do.
+If you are super picky about the "proper" way to use things, there is yet another administrative task we have to go through in order to use RSelenium. You also need to get our hands on Docker, since rsDriver is not currently working. To solve this, make sure to go  and download Docker from this [site](https://store.docker.com/) after creating an account. It's free. Don't worry. Yet, I am not really in the mood to run through two separate ways to run Selenium, so I will show you how I use this. If you're interested in using Docker, check out this [cool resource](https://callumgwtaylor.github.io/blog/2018/02/01/using-rselenium-and-docker-to-webscrape-in-r-using-the-who-snake-database/) with animal species analysis using Rselenium. Slightly different from my intentions.
 
 We initially will begin by using the `rsDriver()` function with the correct port and browser information. Usually, as a developer tool, Firefox is the main, but since I bought this new laptop I have not once touched it. I suggest if you are following along, use Chrome browser to access Selenium. 
 
@@ -146,9 +148,5 @@ for ( i in 1:50) {
 ```
 
 Hope you enjoyed this post. Thank you for reading!
-
-
-
-
 
 
