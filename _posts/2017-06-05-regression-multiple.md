@@ -6,11 +6,7 @@ tags: [Regression, multiple regression, base R, Predictive analytics, Global War
 comments: true
 ---
 
-Let's just run a regression.笑
-
-[Click here](https://tykiww.github.io/reports/Effects%20of%20Greenhouse%20Gasses%20on%20Global%20Temperature.pdf) for a simple report done for this analysis:
-
-Today is time for the most common data analysis technique: Regression. Some people like to call it Multiple Regression, but my guess is that people are just saying that to feel good about themselves doing something difficult. Honestly, whenever I get a dataset, the first thing I do is just run a regression on the data. It is an invaluable tool that can be surprisingly subjective depending on what you are really looking for.
+Time for the most commonly used and abused data analysis technique: Regression. Some people like to call it Multiple Regression, but my guess is that people are just saying that to feel good about themselves doing something difficult. Honestly, whenever I get a dataset, the first thing I do is just run a regression on the data. It is an invaluable tool that can be surprisingly subjective depending on what you are really looking for.
 
 In search for more "relevant" larger datasets to run on regression, I finally found one. I did most of the cleaning and scraping off of the NASA website, but I won't be showing it here. I will write an entry sometime soon using both `rvest` and `selenium` packages. Model creation is really arbitrary depending on what you want to predict.. Not everything goes quite to plan as you would expect. 
 
