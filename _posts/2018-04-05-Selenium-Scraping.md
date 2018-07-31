@@ -75,7 +75,7 @@ I've hit the jackpot with odd search items. The Florida man jailed story says, "
 
 ![](https://tykiww.github.io/assets/selenium/3.png)
 
-You can also pull out specific images or text from the page. This will usually require an xpath for ease. I have already gone and grabbed it, but if you are curious how to pull out the xpath, take a look at one of my older [posts](https://tykiww.github.io/2018-01-05-luhn-with-rvest/).
+You can also pull out specific images or text from the page. This will usually require an xpath for ease. I have already gone and grabbed it, but if you are curious how to pull out the xpath, take a look at one of my older [posts](https://tykiww.github.io/2017-02-05-SLR-Plotly/).
 
 Say we wanted to pull out the industry marker and explanation from this page. We will begin by finding the xpath for both of those items.
 
