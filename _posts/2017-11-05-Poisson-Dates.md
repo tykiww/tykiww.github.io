@@ -45,7 +45,7 @@ ava <- ava[,-(5:9)] # Remove ignore columns
 
 The `aggregate()` function comes in very handy if you are trying to use a function over a certain value of factors. Interestingly, this functions very similarly to `tapply` over the Date variables. One advantage the aggregate function has over tapply is that it spits out a dataframe rather than an array. The dataframe will make it easier to just stick it back into our original data.
 
-Also, avalanches aren't too big of a problem outside of winter months, so we will get rid of every month except December, January, Februrary, and March. I used the `|` operator again just like in the [credit card](https://tykiww.github.io/2018-01-05-luhn-with-rvest/) post to extract those exact months.
+Also, avalanches aren't too big of a problem outside of winter months, so we will get rid of every month except December, January, Februrary, and March. I used the `|` operator again just like in the [credit card](https://tykiww.github.io/2017-07-05-luhn-with-rvest/) post to extract those exact months.
 
 ```r
 # Counting up number of avalanches per month
