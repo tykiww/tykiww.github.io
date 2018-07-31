@@ -219,4 +219,4 @@ Alternatively, we can tell that this is not a perfect model to predict price. Ju
 
 As for the plotly library, I realize now that there are limits to visualization. Good to know that in the future. Yet, my frugality will probably keep me from every paying for more.
 
-Regardless, I hope you can enjoy toying around with regressions and the interactive plots. If you have any further questions, please [let me know](tyki@byu.edu)!
+Regardless, I hope you can enjoy toying around with regressions and the interactive plots. If you have any further questions, please let me know!
