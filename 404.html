@@ -7,25 +7,20 @@ permalink: /404.html
 <div class="text-center">
   <h1>Aww, I'm sorry! This page doesn't exist.</h1>
   <h1>Try a different one! (404 error)</h1>
-  <a href="javascript:openSite()">Click to go to a random site</a>
 <script>
-var links = [
-              "google.com",
-              "youtube.com",
-              "reddit.com",
-              "apple.com"]
+    var sites = [
+        'http://www.google.com',
+        'http://www.stackoverflow.com',
+        'http://www.example.com',
+        'http://www.youtube.com'
+    ];
 
-           var openSite = function() {
-              // get a random number between 0 and the number of links
-              var randIdx = Math.random() * links.length;
-              // round it, so it can be used as array index
-              randIdx = parseInt(randIdx, 10);
-              // construct the link to be opened
-              var link = 'http://' + links[randIdx];
-
-     return link;
-    };
+    function randomSite() {
+        var i = parseInt(Math.random() * sites.length);
+        location.href = sites[i];
+    }
 </script>
+<a href="#" onclick="randomSite();">Random</a>
   
   
   <br/>
