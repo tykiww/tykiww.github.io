@@ -4,7 +4,7 @@
 
 body {
   font-family: 'Lora', 'Times New Roman', serif;
-  font-size: 17.5px;
+  font-size: 18px;
   color: #404040;
   position: relative;
   background: #FFF;
@@ -465,7 +465,7 @@ footer .theme-by {
 }
 .intro-header .page-heading .page-subheading,
 .intro-header .post-heading .post-subheading {
-  font-size: 27px;
+  font-size: 26px;
   line-height: 1.1;
   display: block;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
