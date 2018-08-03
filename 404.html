@@ -5,13 +5,34 @@ permalink: /404.html
 ---
 
 <div class="text-center">
-  <h1>Whoops, this page doesn't exist.</h1>
-  <h1>Move along. (404 error)</h1>
+  <h1>Aww, I'm sorry! This page doesn't exist.</h1>
+  <h1>Try a different one! (404 error)</h1>
+  <a href="javascript:openSite()">Click to go to a random site</a>
+<script>
+var links = [
+              "google.com",
+              "youtube.com",
+              "reddit.com",
+              "apple.com"]
+
+           var openSite = function() {
+              // get a random number between 0 and the number of links
+              var randIdx = Math.random() * links.length;
+              // round it, so it can be used as array index
+              randIdx = parseInt(randIdx, 10);
+              // construct the link to be opened
+              var link = 'http://' + links[randIdx];
+
+     return link;
+    };
+</script>
+  
+  
   <br/>
 
   <img src="{{ site.baseurl }}/img/sorry.gif" />
 </div>
 <div class="text-center">
-  <h1>Any Major Complaints? Send me a note.</h1>
+  <h1>Any Complaints? Send me a note.</h1>
   <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc2SngnqnI_c--X0yhQrerCvHW_Fel1OzOFsPIjv7-t8V73Xw/viewform?embedded=true" width="800" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
 </div>
