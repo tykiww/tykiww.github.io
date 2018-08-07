@@ -19,15 +19,6 @@ title: 'Tag Index'
     <h2 id="{{- tag -}}" class="linked-section">
         <i class="fa fa-tag" aria-hidden="true"></i>
         &nbsp;{{- tag -}}&nbsp;({{site.tags[tag].size}})
-    </h2>
-    <div class="post-list">
-        {%- for post in site.tags[tag] -%}
-            <div class="tag-entry">
-                <a href="{{- site.url -}}{{- post.url -}}">{{- post.title -}}</a>
-                <div class="entry-date">
-                    <time datetime="{{- post.date | date_to_xmlschema -}}">{{- post.date | date: "%B %d, %Y" -}}</time>
-                </div>
-            </div>
         {%- endfor -%}
     </div>
 {%- endfor -%}
