@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 'Tag Index'
+subtitle: 'Tag Index'
 ---
 
 {%- capture site_tags -%}
@@ -11,5 +11,6 @@ title: 'Tag Index'
 {%- assign tags_list = site_tags | split:',' | sort -%}
 
 {%- for tag in tags_list -%}
+
     <a href="#{{- tag -}}" class="btn btn-primary tag-btn"><i class="fa fa-tag" aria-hidden="true"></i>&nbsp;{{- tag -}}&nbsp;({{site.tags[tag].size}})</a>
 {%- endfor -%}
