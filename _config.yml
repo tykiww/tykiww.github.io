@@ -36,7 +36,7 @@ navbar-links:
   Home: "index"
   Info: 
     - Who: "who"
-    - What:"aboutme"
+    - What: "aboutme"
     
   Portfolio: 
     - Archive: "archive"
