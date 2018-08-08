@@ -1,23 +1,3 @@
-var jasmine = [, , , , , , ].join();
-
-$(window).on('keypress', function(e) {
-    var $this = $(this),
-        gap = e.timeStamp - ($this.data('time') || e.timeStamp),
-        chars = $this.data('chars') || [];
-
-    if (gap > 1000) {
-        chars = [];
-    }
-
-    chars.push(e.which);
-    if (chars.join() === jasmine) {
-        alert('I love you');
-    }
-
-    $this.data('chars', chars);
-    $this.data('time', e.timeStamp);
-});
-
 
 // a key map of allowed keys
 var allowedKeys = {
