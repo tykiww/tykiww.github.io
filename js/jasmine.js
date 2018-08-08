@@ -45,5 +45,5 @@ function activateCheats() {
   var audio = new Audio('audio/a.mp3');
   audio.play();
 
-  alert("I love you!");
+  alert("I love you baby!");
 }
