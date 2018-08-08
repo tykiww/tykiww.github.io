@@ -43,5 +43,5 @@ function activateCheats() {
   var audio = new Audio('audio/pling.mp3');
   audio.play();
 
-  alert("Yo, no cheats allowed here");
+  alert("Hey, that hurts. Don't do that");
 }
