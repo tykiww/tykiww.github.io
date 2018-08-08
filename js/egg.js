@@ -40,7 +40,7 @@ document.addEventListener('keydown', function(e) {
 function activateCheats() {
   document.body.style.backgroundImage = "url('img/cheaters.jpg')";
 
-  var audio = new Audio('audio/pling.mp3');
+  var audio = new Audio('audio/dundun.mp3');
   audio.play();
 
   alert("Sorry, no cheats here.");
