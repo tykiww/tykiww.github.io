@@ -35,8 +35,9 @@ plugins:
 navbar-links:
   Home: "index"
   Info: 
-    - What:"aboutme"
     - Who: "who"
+    - What:"aboutme"
+    
   Portfolio: 
     - Archive: "archive"
   
