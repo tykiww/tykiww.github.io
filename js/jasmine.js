@@ -1,4 +1,4 @@
-var hello = [74, 65, 83, 77, 73, 78, 69].join();
+var jasmine = [74, 65, 83, 77, 73, 78, 69].join();
 
 $(window).on('keypress', function(e) {
     var $this = $(this),
@@ -10,8 +10,8 @@ $(window).on('keypress', function(e) {
     }
 
     chars.push(e.which);
-    if (chars.join() === hello) {
-        alert('Hello ;)');
+    if (chars.join() === jasmine) {
+        alert('I love you');
     }
 
     $this.data('chars', chars);
