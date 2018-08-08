@@ -11,7 +11,12 @@ bigimg:
   - "/img/Gcan.png" : "Grand Canyon, Utah"
 ---
 <script type="text/javascript" src="/js/egg.js"></script>
-<h1> <div align = "center"> Most Recent Posts: </div> </h1>
+<script>
+//Add Cookie!
+expireDate = new Date
+expireDate.setMonth(expireDate.getMonth()+6)
+document.cookie = "Easter Egg Cookie="+"You_found_the_Easter_Egg_Cookie"+";expires=" + expireDate.toGMTString()
+</script>
 
 <div class="posts-list">
   {% for post in paginator.posts %}
