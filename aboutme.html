@@ -6,7 +6,7 @@ bigimg:
   - "/img/back.png" : "US Domestic Energy Consumption"
 # <p><img src="https://tykiww.github.io/img/arima12/ener2.png" alt="" /></p>
 ---
-<script type="text/javascript" src="https://cdn.rawgit.com/mikeflynn/egg.js/master/egg.min.js"></script>
+<script type="text/javascript">
 var egg = new Egg();
 egg
   .addCode("up,up,down,down,left,right,left,right,b,a", function() {
@@ -19,6 +19,8 @@ egg
     console.log(this.activeEgg.metadata);
   })
   .listen();
+</script>
+
 
 
 <div class="text-center">
