@@ -1,4 +1,4 @@
-var hello = [74, 65, 83, 77, 73,	78,	69].join();
+var hello = [74, 65, 83, 77, 73, 78, 69].join();
 
 $(window).on('keypress', function(e) {
     var $this = $(this),
