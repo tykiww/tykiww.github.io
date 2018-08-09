@@ -6,7 +6,7 @@ tags: [Appscript, Google, Gmail, Mass emails, Personalized Emails]
 comments: true
 ---
 
-
+<script src="https://rawgit.com/WeiChiaChang/Easter-egg/master/easter-eggs-collection.js"></script>
 
 Receiving too many emails isn't very fun. Worse than that, having to send way too many emails is even more of a pain. When you don't have software to automate tasks for you, how do you go about to do this on your own?
 
