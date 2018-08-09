@@ -16,6 +16,8 @@ Lately, I've been messing with the AppScript within the Google product realm. I 
 
 Today, I'll show you a neat trick you can use (if you use the google service) with the email feature.
 
+<hr>
+
 Let's create a pretend situation:
 
 You're part of a new company hoping to be the next insurgent disruptor for baby diapers. As one of the digital marketers, you realize that you are in charge of building relationships and reflecting the product, placement, and price with your flavor of promotion. 
