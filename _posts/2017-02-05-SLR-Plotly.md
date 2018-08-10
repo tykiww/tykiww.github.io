@@ -199,6 +199,13 @@ ggplotly(p)
 [Right click here and open in new tab for the interactive plot](https://plot.ly/~tykimichael/1.embed)
  .
 <iframe width="900" height="800" frameborder="0" scrolling="no" src="//plot.ly/~tykimichael/1.embed"></iframe>
+
+
+<div>
+    <a href="https://plot.ly/~tykimichael/1/?share_key=RsHSJxQyZmYNlVTuu6GFQn" target="_blank" title="public-graph" style="display: block; text-align: center;"><img src="https://plot.ly/~tykimichael/1.png?share_key=RsHSJxQyZmYNlVTuu6GFQn" alt="public-graph" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+    <script data-plotly="tykimichael:1" sharekey-plotly="RsHSJxQyZmYNlVTuu6GFQn" src="https://plot.ly/embed.js" async></script>
+</div>
+
  .
 The plot above is rather neat huh? Click around and you notice how you can check out individual plot elements. This is perfect for when you are creating reports for managers to show them individual datapoints and explaining outliers. Usually, this plot shows up on the viewer in R studio.
 
