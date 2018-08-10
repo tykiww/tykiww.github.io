@@ -197,10 +197,9 @@ ggplotly(p)
 ```
 
 [Right click here and open in new tab for the interactive plot](https://plot.ly/~tykimichael/1.embed)
-
+ .
 <iframe width="900" height="800" frameborder="0" scrolling="no" src="//plot.ly/~tykimichael/1.embed"></iframe>
-
-
+ .
 The plot above is rather neat huh? Click around and you notice how you can check out individual plot elements. This is perfect for when you are creating reports for managers to show them individual datapoints and explaining outliers. Usually, this plot shows up on the viewer in R studio.
 
 Here's a secret.. this isn't the actual data. You could probably tell by the lack of data points and the axis labels. This was from the first mentioned dataset from amstat.org. When I tried to publish the data from the above mentioned `ggplotly()`, it actually slowed down my machine because of the crazy amount of datasets. This was the warning message. 
