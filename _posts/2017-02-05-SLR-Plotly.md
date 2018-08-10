@@ -7,7 +7,7 @@ tags: [Simple, SLR, Simple Linear Regression, Regression, transofmation, plotly,
 
 Several of my friends are getting married and questions about rings have been thrown around. What kind of ring should I choose? Should I go for a diamond? How about moissanite? Or, what's the whole point of even getting a ring in the first place?Most people don't really care, but I aire on the side that a ring can be a bit of equity that you can carry just in case something happens. In some ways, a car and house have value and can be an additive investment; rings have the potential to work the same way if you play it smart. I guess I'm not currently in that boat, **yet**, but a ring shopper would like to know if they are buying the best price per quality. 
 
-![](https://randor.com/wp-content/uploads/2014/04/img-diamond-4Cs.jpg)
+![](https://s3.amazonaws.com/lowres.cartoonstock.com/fashion-diamond_ring-marriage_proposal-cubic_zirconia_rings-swindal-cheap_bastards-mban1583_low.jpg)
 
 There is an already imbedded dataset in R studio if you run `data(diamonds)` in your command line. This dataset is rather large and can take some machines a long time to process chunks of information. 
 
