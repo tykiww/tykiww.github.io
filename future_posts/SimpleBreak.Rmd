@@ -1,4 +1,5 @@
 ---
+layout: post
 title: '"Shiny" Breakeven Analysis"'
 output: html_notebook
 ---
