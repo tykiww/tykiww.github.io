@@ -5,14 +5,11 @@ fb-img: https://tykiww.github.io/img/arima12.png
 tags: [asta, arima, base R, big data, vizualization,]
 ---
 
-*Predict the MONTHLY US residential energy consumption for the next 2 years for the 'Short-Term Energy Outlook'*
+*What is the MONTHLY US residential energy consumption for the next 2 years for the 'Short-Term'*
 
 ![](http://needtoknow.nas.edu/energy/media/media_browser_uploads/images/item_1_.jpg)
 
 In one of my last posts I went through a non-seasonal ARIMA, looking at annual values, _but what if the values I am looking for are not annual, but monthly?_
-
-  **No problem! Just change the y limits and gather monthly datapoints. Pretty simple, right?
-  Well, not really..**
 
 As behavioral economics dictates, monthly values tend to rise and fall according to season. Winter Holidays seem to bring in some the highest volume of consumption during a period. Ice cream sales on aggregate decrease significantly during the winter (though the amount I ate seemed rather consistent growing up).
 
@@ -47,7 +44,7 @@ plot(energy,
 
 ![](https://tykiww.github.io/img/arima12/ener1.png)
 
-Well, how odd! (not really, if you catch my sarcasm..) the values seem like they move in a seasonal pattern with a periodical movement. I wonder why? Most likely due to seasonal consumption of energy. The two peaks might be explained by the energy used to heat homes in the winter and air conditioning during the summer. Otherwise, the plot doesn't seem to have any abnormalities.
+Well, how odd! The values seem like they move in a periodic pattern. I wonder why? (Most likely due to seasonal consumption of energy.) The two peaks might be explained by the energy used to heat homes in the winter and air conditioning during the summer. Otherwise, the plot doesn't seem to have any abnormalities.
 
 Next, we can do a similar process in identifying the parameter estimate and errors. But wait.. What are all these ones doing and what does this twelve mean? Well, if you have time, you might want to take a look at the explanations under the [arima(1,1,1)](https://tykiww.github.io/2017-01-05-fitting-an-arima111/) for the first component. The next (1,1,1)_12 stands for the seasonal component of the arima model. The first three ones perform an autoregression of additive data corresponding year to year while the last three ones take into consideration the oscillating month to month pattern (hence the 12 for the twelve months in a year). Of course, these values can all be adjusted for further fine-tuned investigation, yet this model seems to suffice for constant patterns. 
 
@@ -69,7 +66,7 @@ energy.out$ttable
 
 Getting back to the table of estimates we notice that there is an ar1, ma1 corresponding to phi and epsilon of the annual data. There is also sar1, sma1 which are tied to phi and epsilon of the seasonal data. Where did the constant mu go? Well, this gets rather computationally greedy, but it can be simplified. Since arima estimates by maximum likelihood, mu gets subtracted away from seasonal differences as it intersects with the annual information.
 
-Now back to the fun portion! We use the same `sarima.for()` function and put the same 7 values, but also specify 27 units ahead. Since we only had data from september 2017, we wanted to account for the last three months that we missed. Of course, you are free to play around with these parameters.
+Now on to the fun portion! We use the same `sarima.for()` function and put the same 7 values, but also specify 27 units ahead. Since we only had data from september 2017, we wanted to account for the last three months that we missed. Of course, you are free to play around with these parameters.
 
 ```r
 # Forecast the US resindential energy consumption for the next 2 years.
@@ -91,7 +88,7 @@ energy.future$pred
 
 Now look at that! We have a simple graphic forcasting the next 27 months and the individual values. This was definitely less coding than a non-seasonal arima despite how fearful the data looks. There was no need to transform the data, and half the lines of code. 
 
-One downfall to the sarima graphic is that we cannot specify the limits, title, or labels. So, without any explanation, I will attempt to recreate the same graphic above, below using Base R.
+One downfall to the sarima graphic is that we cannot specify the limits, title, or labels. We'll just recreate this graph in Base R.
 
 ```r
 # Report a table of predictions and 95% predictions intervals.
@@ -117,14 +114,12 @@ lines(322:348,energy.future$pred,col="red",type="b",pch=8)                # and 
 
 ![](https://tykiww.github.io/img/arima12/ener3.png)
 
-I tried! Not sure if I like the aesthetics as much as the other one, but close enough right?
-
 The seasonal arima model is impressive as it flexibily represents several varieties of time series with simplicity. Of course, there are always weaknesses. For example, the same assumptions apply with the non-seasonal arima: 
 - It does not take into account unsuspected predictor variables or time deterministic trends. 
 - It looks from year to year. 
 
 Additionally, the weakness with this type of model is that the addition of more data does not necessarily mean more data points. It means more detailed data points that are included in the time frame. If more data is necessary, we will need quality descriptive data points in between each seasonal trend. If you have time on your own, give it a try!
 
-One place you can look to practice with certain types of data would be qlik.com. Qlick or data.gov has an enormous databse of information available to the public. All of the data is stored by an internal server that was previously owned by datamarket.com. Take a look at some of the data below and try it on your own.
+Take a look at some of the data below and try it on your own.
 
 ie. [Monthly sales of Tasty Cola](https://datamarket.com/data/set/22xx/monthly-sales-of-tasty-cola#!ds=22xx&display=line)
