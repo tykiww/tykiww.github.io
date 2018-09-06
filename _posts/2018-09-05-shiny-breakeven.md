@@ -59,7 +59,7 @@ Of course, there's actually more ways to do this but we will choose the first si
 
     ## [1] 250000
 
-Hmm this is quite a heft sum! **121,000** units sold and we are breaking even. That seems feasible, but a challenge. That means yearly we need to sell to about **12500** units per year. Break that down into months, **1040** meals per month. Might seem a bit tough for a botique sandwich shop.
+Hmm this is quite a heft sum! **250,000** units sold and we are breaking even. That seems feasible, but a challenge. That means yearly we need to sell to about **12500** units per year. Break that down into months, **1040** meals per month. Might seem a bit tough for a botique sandwich shop.
 
 One thing to realize is that they are profiting. $225,000 in revenue. Yet, to pay it off in the long run is now dependent on how the marketing, opearation, and maintenance costs will go. Doable? Might be tough for the first few years, but not impossible to pull it off. I would get a cheaper location or lower the fixed costs.
 
