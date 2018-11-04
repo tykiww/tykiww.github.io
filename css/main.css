@@ -452,7 +452,7 @@ footer .theme-by {
 .intro-header.big-img .page-heading,
 .intro-header.big-img .post-heading {
   padding: 100px 0;
-  color: #FFF;
+  color: #ecf0f1;
   text-shadow: 1px 1px 3px #000;
 }
 .intro-header .page-heading h1 {
@@ -573,7 +573,7 @@ footer .theme-by {
   font-weight: 800;
   letter-spacing: 1px;
   padding: 10px 5px;
-  background: #FFF;
+  background: #ecf0f1;
   border-radius: 0;
   color: #404040;
 }
@@ -584,7 +584,7 @@ footer .theme-by {
 }
 .pager li a:hover,
 .pager li a:focus {
-  color: #FFF;
+  color: #ecf0f1;
   background: #0085a1;
   border: 1px solid #0085a1;
 }
