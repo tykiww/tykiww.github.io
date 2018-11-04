@@ -33,14 +33,14 @@ plugins:
 
 # List of links in the navigation bar
 navbar-links:
-  Home: "index"
+  Blog: "index"
   Info: 
     - Who: "who"
     - What: "aboutme"
     
   Portfolio: 
-    - Archive: "archive"
     - Portfolio: "https://tykiww.github.io/CV/projects/"
+    - Archive: "archive"
   
 
 # Image to show in the navigation bar - image must be a square (width = height)
