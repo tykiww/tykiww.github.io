@@ -2,7 +2,8 @@
 
 Personal Repo and project display. 
 
-
+Project is to be launched start of January to public.
+Posts will be re-published every 2 weeks on linkedin to gain following.
 
 ## Map
 '*' is a to-do item.
