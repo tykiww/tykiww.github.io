@@ -36,7 +36,7 @@ navbar-links:
   Home: "https://tykiww.github.io/CV/"
   Blog: "index"
   Info: 
-    - Who: "who"
+    - Who: "https://tykiww.github.io/CV/about/"
     - What: "aboutme"
     
   Portfolio: 
