@@ -2,16 +2,21 @@
 layout: post
 title: "Simple Linear Regression using interactive plots"
 fb-img: http://tykiww.github.io/img/slr.png
-tags: [Simple, SLR, Simple Linear Regression, Regression, transofmation, plotly, interactive plots]
 ---
 
-Several of my friends are getting married and questions about rings have been thrown around. What kind of ring should I choose? Should I go for a diamond? How about moissanite? Or, what's the whole point of even getting a ring in the first place?Most people don't really care, but I aire on the side that a ring can be a bit of equity that you can carry just in case something happens. In some ways, a car and house have value and can be an additive investment; rings have the potential to work the same way if you play it smart. I guess I'm not currently in that boat, **yet**, but a ring shopper would like to know if they are buying the best price per quality. 
+Several of my friends are getting married and questions about rings have been thrown around. What kind of ring should I choose? Should I go for a diamond? How about moissanite? Or, what's the whole point of even getting a ring in the first place?Most people don't really care, but I aire on the side that a ring can be a bit of equity that you can carry just in case something happens. In some ways, a car and house have value and can be an additive investment; rings have the potential to work the same way depending on how you use it. 
 
 ![](https://s3.amazonaws.com/lowres.cartoonstock.com/fashion-diamond_ring-marriage_proposal-cubic_zirconia_rings-swindal-cheap_bastards-mban1583_low.jpg)
 
-There is an already imbedded dataset in R studio if you run `data(diamonds)` in your command line. This dataset is rather large and can take some machines a long time to process chunks of information. 
+### Case
 
-If you want to try a smaller set, go to this [link](http://www.amstat.org/publications/jse/v9n2/4Cdata.txt). The data will look like this below.
+Any ring shopper would like to know if they are buying the best price per quality. Let's predict how much our diamond will cost given varying weights (carats).
+
+### Exploratory Data Analysis
+
+There is an already imbedded dataset in R if you run `data(diamonds)` in your command line. This dataset is rather large and may take some machines a long time to process the information. 
+
+If you want to try a smaller set, go to the Texas A&M [link](http://www.amstat.org/publications/jse/v9n2/4Cdata.txt). The data will look like this below.
 
 ```r
 url <- "http://www.amstat.org/publications/jse/v9n2/4Cdata.txt"
@@ -68,7 +73,7 @@ plot(diamonds1$carat, diamonds1$price)
 
 ![](https://tykiww.github.io/img/slr/slr1.png)
 
-A lot more data than I thought. The trend of this information looks rather multiplicative rather than additive and the data is *fan-shaped*. This probably requires a transformation of some sorts. The fan shape requires a log transformation, so I will proceed to create a new variable below and plot the data.
+A lot more data than we thought. The trend of this information looks rather multiplicative rather than additive and the data is *fan-shaped*. This probably requires a transformation of some sorts. The fan shape is usually mitigated by a log transformation, so we will proceed to create a new variable below and plot the data.
 
 ```r
 lndiamonds <- diamonds1
@@ -79,14 +84,17 @@ plot(lndiamonds$lncarat, lndiamonds$lnprice)
 
 ![](https://tykiww.github.io/img/slr/slr2.png)
 
+### The Model
+
 This looks more like some data we can perform an analysis in creating a model. Let's proceed to fit the model for our analysis!
 
 		Explanatory variable: log carat
 		Response variable: log price
 
-Here's our model below. I am going to do what I can to explain the basis of the simple linear regression. Here we will be using the cell means model.
+Here's our model below. We will quickly go through the basics of the simple linear regression. Using the cell means model...
 
 Model: y<sub>i</sub> = ß<sub>o</sub> + ß<sub>i</sub>X<sub>i</sub> + epsilon<sub>i</sub>, for epsilon ~ N(0,ø^2)
+
 - y<sub>i</sub> is new observation
 - ß<sub>o</sub> is y-intercept (What our data looks like when we don't have the carat effect)
 - ß<sub>i</sub> is the slope coefficient (The predictor of per-unit effect on y<sub>i</sub> depending on x<sub>i</sub>)
@@ -94,13 +102,11 @@ Model: y<sub>i</sub> = ß<sub>o</sub> + ß<sub>i</sub>X<sub>i</sub> + epsilon<su
 				
 This model looks a lot like a linear y = mx + b graph that we see in algebra. This is because it is based on the same concept. Simply said, this model takes every average value of y<sub>i</sub> estimated parameters and creates an estimate y&#772;. So, when we are predicting, our model will look like this:
 
-
 :::::: y&#772; = ß<sub>o</sub> + ß<sub>1</sub>X<sub>i</sub> + epsilon<sub>i</sub>, for epsilon ~ N(0,ø^2)
 
 As for our transformed data, it will look like this.
 				
 :::::: lnPrice = ß<sub>o</sub> + ß<sub>1</sub> lnCarat + epsilon, for epsilon ~ N(0,ø^2)
-
 
 We can simplify this further, but that's enough for now. Let's get back to working this in R. All we need to do is run a linear model with the `lm` function and stick it into a summary function to get our parameter estimates and standard errors. I'm a big fan of using `summary()` rather than `anova()` for personal reasons, but here are both results.
 
@@ -131,8 +137,10 @@ Now from here, we can see that our ß<sub>o</sub> value is 8.448661 and our ß<s
 Our linear prediction model now looks like: 
 
 log Price of a 1 carat diamond = 8.449 + (1.68)X<sub>i<sub/>
+	
+Interesting fact about taking the log of both the explanatory and predictor, is that the ß coefficients can be explained as a % change (ie. for a 1% increase in carat size, the will be a 1.67% increase in price).
 
-Another important note to look at is the R^2 value for this model. You can see how I manually calculated the R^2 for the non-logged value and the logged one is part of the linear model. The logged values seem to explain more of the variability than the unlogged one (unlogged = 0.828, logged = 0.933). For those that are not familiar with R^2, this indicates the percentage of variability that is explained by the model. For the most case, the higher, the better as long as the residuals are normally distributed. If you want more information, take a look at this [site](http://statisticsbyjim.com/regression/interpret-r-squared-regression/).
+Another important note to look at is the R^2 value for this model. You can see how R^2 may be manually calculated for the non-logged value (the logged one is part of the linear model). The logged values seem to explain more of the variability than the unlogged one (no-log = 0.828, logged = 0.933). For those that are not familiar with R^2, this indicates the percentage of variability that is explained by the model. For the most case, the higher, the better as long as the residuals are normally distributed. If you want more information, take a look at this [site](http://statisticsbyjim.com/regression/interpret-r-squared-regression/).
 
 Let' also take a look at the histogram of residuals to see if we have violated any assumptions of normality. We do this by performing a K-S test on the r-studentized residuals (residuals we have transformed to analyze in a normal curve. The standard deviations from the mean will match the same distribution). 
 
@@ -174,7 +182,7 @@ qplot(lncarat,lnprice,data=lndiamonds,
 
 ![](https://tykiww.github.io/img/slr/slr4.png)
 
-Our confidence interval is so small. Practically invisible. We notice this due to the very narrow confidence bands in our qplot. This is most likely attributed due to the high number of observations (54,000). If you were a jewelry store manager we can see how useful this information is to predict, in our range, the price of the diamond from the size.
+Our confidence interval is so small. Practically invisible. However, don't freak out. This due to the data being loggedand a high number of observations (54,000). If you were a jewelry store manager we may see how useful this information is to predict, in our range, the price of the diamond from the size.
 
 Now, if you were a newly-wed couple trying to look for a ring and wanted to see the predicted price for a 1 carat diamond, we just need to use the `predict()` functionality and insert a new dataframe containing the desired x-value. If you transformed the data, make sure to un-transform the information to correctly interpret (using `exp()`)!
 
@@ -200,7 +208,7 @@ ggplotly(p)
 
 The plot above is rather neat huh? Click around and you notice how you can check out individual plot elements. This is perfect for when you are creating reports for managers to show them individual datapoints and explaining outliers.
 
-Here's a secret.. this isn't the actual data. You could probably tell by the lack of data points and the axis labels. This was from the first mentioned dataset from amstat.org. When I tried to publish the data from the above mentioned `ggplotly()`, it actually slowed down my machine because of the crazy amount of datasets. This was the warning message. 
+Here's a secret.. this isn't the actual data. You could probably tell by the lack of data points and the axis labels. This was from the first mentioned dataset from amstat.org. If you try to publish the `ggplotly()`, it will slow down your machine without some serious RAM.
 
 ![](https://tykiww.github.io/img/slr/slr5.png)
 
@@ -211,12 +219,9 @@ Here's the actual plot below with the prediction output.
 
 ![](https://tykiww.github.io/img/slr/slr6.png)
 
-For a one carat diamond, we can expect a price of about 24946.22 with a 95% confidence of (14907.68, 41744.49). These are HUGE bounds. Yet, this is pretty expected. As the carat amount rises, there is more volitility in price. This means that there is more of a chance for someone to rip you off! Of course, this data is not including the fitting and cutting of the ring, the other C's included (cut, color, clarity), but it is rather relevant information. 
+For a one carat diamond, we can expect a price of about 24946.22 with a 95% prediction interval between 14907.68, 41744.49. These large prediction intervals are pretty expected as they are not the same as confidence intervals (for more information on the differences, click [here](https://statisticsbyjim.com/hypothesis-testing/confidence-prediction-tolerance-intervals/)). Also we should note that the carat amount rises, there is more volitility in price. This means that there is more of a chance for someone to rip you off! Of course, this data is not including the fitting and cutting of the ring, the other C's included (cut, color, clarity), but it is rather relevant information. 
 
-This research is great as it has a lot of information (data points) to perform a regression. It is also good to note that there is a seemingly strong correlation between size of diamonds and price, so it makes the analysis easier to perform. 
+Remember, this is *not* a perfect model to predict price. Just one simple linear regression does not tell any other information we are missing! Later, we will cover more detailed analyses with more covariates.
 
-Alternatively, we can tell that this is not a perfect model to predict price. Just one simple linear regression does not tell us all the other information that we are missing! In that way, we can see how picky we need to be about our information whenever performing an analysis. 
-
-As for the plotly library, I realize now that there are limits to visualization. Good to know that in the future. Yet, my frugal nature will probably keep me from every paying for more.
-
-Hope you enjoyed it!
+As for the plotly library, we now know that there are limits to visualization. 
+Good to know for the future; enjoy coding!
