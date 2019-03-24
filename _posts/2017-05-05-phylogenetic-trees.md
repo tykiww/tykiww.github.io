@@ -13,23 +13,19 @@ Turns out, "ape" happened to be an acronym for Analysis of Phylogenetic and Evol
 
 If you want to read up on more detail about this event, click [here](http://www.nytimes.com/1993/06/06/weekinreview/aids-and-a-dentist-s-secrets.html?pagewanted=all).
 
-At first, I laughed. This photo made absolutely no sense. How does this simple tree diagram represent whether or not this dentist infected his patients with HIV? Yet, as I kept reading more about phylogenetic trees, I realized how this was not a method to infer conclusions but a case of making correlation. 
-
 It turns out that this analysis was performed by laying out the viral traits of each patient and creating an analysis of correlation through a maximum likelihood sampling with replacement (bootstrap procedure). Although the technique depends on the assumption of independence of the original sample, the bootstrap can be used to estimate bias and variance for confidence intervals, and for hypothesis testing in many situations. After sampling, ordinal values are created based on the correlation of each attribute and distributed amongst the clades (branches) of the tree. That was a mouthful. 
 
-Simply said, this analysis takes like values and groups them together based on how similar they are! As for the case of the dentist infecting HIV to the patient, samples of the blood were taken from 6 of the patients and compared with each other (along with other control groups) and found that the characteristics of the virus in the patients and the dentist correlated very closely in the same branch. This type of analysis may be useful in areas such as linguistics, evolutionary biology, and even detective work.
-
+Simply said, this analysis takes like values and groups them together based on how similar they are. Essentially, this is a categorical version of a recurisvely partitioned tree model. As for the case of the dentist infecting HIV to the patient, samples of the blood were taken from 6 of the patients and compared with each other (along with other control groups) and found that the characteristics of the virus in the patients and the dentist correlated very closely in the same branch. This type of analysis may be useful in areas such as linguistics, evolutionary biology, and even detective work.
 
 _Can we say for certain that the doctor did malignantly infect his patients? No. Yet, there is potential evidence!_
 
-
 After reading all this, I decided that I wanted to make my own tree diagram even though I knew nothing about how to go about it. After realizing how difficult this task was going to be, I resorted to create just one tree that simply showed how closely linked a group of interest was. I am sure that I can explore other packages. Someone is bound to have already created something similar.
 
-So... Let's get started!
+### Project
 
-Just for fun, I decided to create a .csv with a supposed "top ten" coding languages. I just randomly looked this up on the internet and found a list, removed the last one, and inserted R (you can see how conceited I am about R). The .csv is at the bottom for reference. To get the data, I simply took a random sample of 15 computing language characteristics on wikipedia without replacement and displayed Y or N values to each one. 
+So... Let's create our own phylogenetic trees.
 
-We first start out by installing the "ape" package and creating a function to read the data.
+Just for fun, we have a csv of a supposed "top ten" coding languages. 14 of the points were collected randomly on the internet with the 10th language included as R. The .csv is at the bottom for reference.  We first start out by installing the "ape" package and creating a function to read the data.
 
 ```r
 library("ape")
@@ -42,7 +38,7 @@ readData <- function(path) {
 } #1st
 ```
 
-Next, is a function that takes the table and creates a matrix that returns the correlating values of each row. Probably could have done it simpler, but I just hard-coded it. Also, I found out for the first time that I did not need curly brackets to complete a for loop.. Just shows my inexperience. Go figure.
+Next, is a function that takes the table and creates a matrix that returns the correlating values of each row. Probably could have done it simpler, but it was just hard-coded.
 
 ```r
 Relationship <- function(table) {
@@ -58,8 +54,7 @@ Relationship <- function(table) {
         return(rMatrix)}
 }	
 ```
-
-I hope you ignore this next portion of code. I don't think I can even explain it well enough. Simply, I transformed the correlation matrix and attached names to connect ordinal values, so it would match the "Newick" or "New Hampshire" format.
+Taking inputs of our csv and the relationship matrix, we will create labels and match each part of the tree. The correlation matrix is transformed and attached to connect ordinal values. Now it will match the "Newick" or "New Hampshire" format.
 
 ```r
 makeTreeText <- function(matrix, table) {   # Longer function
@@ -115,7 +110,7 @@ makeTreeText <- function(matrix, table) {   # Longer function
     # These titles are merged to pass through the plot Treefunction!
     mTitles <- function(titles, indices) {
       merged <- paste(titles[indices], collapse=",")
-      merged <- paste("(",merged,")", sep="")
+      merged <- paste("(",merged,")", sep=" ")
       remove <- titles[indices[2:length(indices)]]
       dTitles <- titles[!titles %in% remove]
       dTitles[indices[1]] <- merged
@@ -155,8 +150,7 @@ makeTreeText <- function(matrix, table) {   # Longer function
     text <- paste(text,";", sep=" ")
     return(text)
  ```
-
-Aaand finally, this is the best part. Combining the functions and plotting the tree. Turns out, the ape package only uses the `read.tree()` function inside. All this setup for one measly function. 
+Finally, we are combining the functions and plotting the tree. Using the `read.tree()` function. 
 
 ```r
   # PLOT TREE FUNCTION BELOW
@@ -173,17 +167,16 @@ plotTree("prog.csv")
 
 ![](https://tykiww.github.io/img/phyl/phylcode.png)
 
-ALL THAT FOR ONE TREE!? 
-Regardless, how neat is that? 
+All that for a simple tree.
 
+This is a brute-force recursive partitioned tree. Much like what biologists use today, they figure what variables carry the most weight and separate the values according to the various explanatory factors.
 
-This may not have been how you would categorize the languages, as I only took a random sample of the explanatory variables. Some variables carry more weight than others do, so you can see how different explanatory variables affect the tree in different ways.
+This tree will work with as many categorical values. If you would like to give this example csv a try, give it a go!
 
-I guess there is one thing that I am not completely satisfied with in my code. I can't seem to create spaces in between the titles no matter how hard I try!! I guess I shouldn't sweat it. No need to get caught up in insignificant details. 
+### Conclusion
 
-Regardless, the neat thing about this tree is how it also works with several categorical values. So, in essence, you could categorize each explanatory variable by a subset of the data (I have another example csv right here if you want to try it on your own.).
+This is less of an analysis post but more of a coding project that shows the power R has to be just as object-oriented as any other language. Of course, R is still nothing in comparison to the speed of languages such as C++ and python. Soon, it will catch up in other ways. 
 
-This is less of an analysis post, but more of a coding project that I created for myself. Regardless, I finally finished after sifting through the internet and piecing together details. This definitely took me a long time to finish and had been put aside for a while. Even after this, I still don't consider myself a great coder but there is a certain satisfaction to know, with invested time, I can figure most things out. I hope you may find this useful!
 
 [download](https://tykiww.github.io/assets/Phyl/prog.csv) the original matrix
 
