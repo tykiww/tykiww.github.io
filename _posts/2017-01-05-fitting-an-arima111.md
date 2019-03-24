@@ -2,6 +2,8 @@
 layout: post
 title: "Fitting a simple timeseries: Arima (1,1,1)"
 fb-img: https://tykiww.github.io/img/arima111/yosemite.png
+toc: true
+toc_float: true
 ---
 
 
