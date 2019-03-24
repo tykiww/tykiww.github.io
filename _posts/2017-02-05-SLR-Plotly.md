@@ -93,7 +93,7 @@ This looks more like some data we can perform an analysis in creating a model. L
 
 Here's our model below. We will quickly go through the basics of the simple linear regression. Using the cell means model...
 
-Model: y<sub>i</sub> = ß<sub>o</sub> + ß<sub>i</sub>X<sub>i</sub> + epsilon<sub>i</sub>, for epsilon ~ N(0,ø^2)
+Model: y<sub>i</sub> = ß<sub>o</sub> + ß<sub>i</sub>X<sub>i</sub> + epsilon<sub>i</sub>, for epsilon ~ N(0,ø<sup>2</sup>)
 
 - y<sub>i</sub> is new observation
 - ß<sub>o</sub> is y-intercept (What our data looks like when we don't have the carat effect)
@@ -102,17 +102,16 @@ Model: y<sub>i</sub> = ß<sub>o</sub> + ß<sub>i</sub>X<sub>i</sub> + epsilon<su
 				
 This model looks a lot like a linear y = mx + b graph that we see in algebra. This is because it is based on the same concept. Simply said, this model takes every average value of y<sub>i</sub> estimated parameters and creates an estimate y&#772;. So, when we are predicting, our model will look like this:
 
-:::::: y&#772; = ß<sub>o</sub> + ß<sub>1</sub>X<sub>i</sub> + epsilon<sub>i</sub>, for epsilon ~ N(0,ø^2)
+:::::: y&#772; = ß<sub>o</sub> + ß<sub>1</sub>X<sub>i</sub> + epsilon<sub>i</sub>, for epsilon ~ N(0,ø<sup>2</sup>)
 
 As for our transformed data, it will look like this.
 				
-:::::: lnPrice = ß<sub>o</sub> + ß<sub>1</sub> lnCarat + epsilon, for epsilon ~ N(0,ø^2)
+:::::: lnPrice = ß<sub>o</sub> + ß<sub>1</sub> lnCarat + epsilon, for epsilon ~ N(0,ø<sup>2</sup>)
 
 We can simplify this further, but that's enough for now. Let's get back to working this in R. All we need to do is run a linear model with the `lm` function and stick it into a summary function to get our parameter estimates and standard errors. I'm a big fan of using `summary()` rather than `anova()` for personal reasons, but here are both results.
 
 ```r
 out.diamonds <- lm(lnprice~lncarat,data=lndiamonds)
-# anova(out.diamonds)
 summary(out.diamonds)
 
 1-sum((diamonds1$price - exp(predict(out.diamonds)))^2) / sum((diamonds1$price -mean(diamonds1$price))^2) 
@@ -137,8 +136,10 @@ Now from here, we can see that our ß<sub>o</sub> value is 8.448661 and our ß<s
 Our linear prediction model now looks like: 
 
 log Price of a 1 carat diamond = 8.449 + (1.68)X<sub>i<sub/>
-	
-Interesting fact about taking the log of both the explanatory and predictor, is that the ß coefficients can be explained as a % change (ie. for a 1% increase in carat size, the will be a 1.67% increase in price).
+
+### Assumptions and Interpretation
+
+Interesting fact about taking the log of both the explanatory and predictor, is that the ß coefficients can be explained as a % change (ie. for a 1% increase in carat size, the will be a 1.67% increase in price). This is the same as calculating elasticity.
 
 Another important note to look at is the R^2 value for this model. You can see how R^2 may be manually calculated for the non-logged value (the logged one is part of the linear model). The logged values seem to explain more of the variability than the unlogged one (no-log = 0.828, logged = 0.933). For those that are not familiar with R^2, this indicates the percentage of variability that is explained by the model. For the most case, the higher, the better as long as the residuals are normally distributed. If you want more information, take a look at this [site](http://statisticsbyjim.com/regression/interpret-r-squared-regression/).
 
@@ -159,9 +160,9 @@ Let' also take a look at the histogram of residuals to see if we have violated a
 
 ![](https://tykiww.github.io/img/slr/slr3.png)
 
-Not bad, it looks like we have a roughly normal distribution of errors, which satisfies our assumptions! K-S tests are short for the Kolmogorov–Smirnov test, and is a hypothesis test with Ho: Residuals are not normally distributed. Our p-value from this output shows a p-value of <.001, so we can safely say that the residuals are indeed normally distributed.
+Not bad, it looks like we have a roughly normal distribution of errors which satisfies one of our assumptions! The K-S test is short for the Kolmogorov–Smirnov test, and is a hypothesis test with Ho: Residuals are not normally distributed. Our p-value from this output shows a p-value of <.001, so we can safely say that the residuals are indeed normally distributed.
 
-Now going back to the summary output, we observe a p-value < 2.2e-16 and F statistic of 7.51e+05 df(1,53938). This corresponds to the "Ho: the size of a diamond does NOT have a statistically significant effect on the cost." Therefore, at a p-value less than 0.0001, we have sufficient evidence to reject the null hypothesis and say that there is a statistically significant effect in price from carat to offspring and for a 1% increase in Carat size, we estimate an expected increase in Price of 1.676% in offspring sweet pea diameter (95% CI: 1.672%,1.679%).
+Now returning to the summary output, we observe a p-value < 2.2e-16 and F statistic of 7.51e+05 df(1,53938). This corresponds to the "Ho: the size of a diamond does NOT have a statistically significant effect on the cost." Therefore, at a p-value less than 0.0001, we have sufficient evidence to reject the null hypothesis and say that there is a statistically significant effect in price from carat to offspring and for a 1% increase in Carat size, we estimate an expected increase in Price of 1.676% in offspring sweet pea diameter (95% CI: 1.672%,1.679%).
 
 ```r
 confint(out.diamonds)
@@ -183,6 +184,8 @@ qplot(lncarat,lnprice,data=lndiamonds,
 ![](https://tykiww.github.io/img/slr/slr4.png)
 
 Our confidence interval is so small. Practically invisible. However, don't freak out. This due to the data being loggedand a high number of observations (54,000). If you were a jewelry store manager we may see how useful this information is to predict, in our range, the price of the diamond from the size.
+
+### Plotly Predictions
 
 Now, if you were a newly-wed couple trying to look for a ring and wanted to see the predicted price for a 1 carat diamond, we just need to use the `predict()` functionality and insert a new dataframe containing the desired x-value. If you transformed the data, make sure to un-transform the information to correctly interpret (using `exp()`)!
 
@@ -220,6 +223,8 @@ Here's the actual plot below with the prediction output.
 ![](https://tykiww.github.io/img/slr/slr6.png)
 
 For a one carat diamond, we can expect a price of about 24946.22 with a 95% prediction interval between 14907.68, 41744.49. These large prediction intervals are pretty expected as they are not the same as confidence intervals (for more information on the differences, click [here](https://statisticsbyjim.com/hypothesis-testing/confidence-prediction-tolerance-intervals/)). Also we should note that the carat amount rises, there is more volitility in price. This means that there is more of a chance for someone to rip you off! Of course, this data is not including the fitting and cutting of the ring, the other C's included (cut, color, clarity), but it is rather relevant information. 
+
+### Conclusion
 
 Remember, this is *not* a perfect model to predict price. Just one simple linear regression does not tell any other information we are missing! Later, we will cover more detailed analyses with more covariates.
 
