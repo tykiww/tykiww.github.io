@@ -10,8 +10,7 @@ At times, clustering can get subjective. Our goal is to use quantitative model e
 
 ![](http://anthony.liekens.net/images/datamining-dogbert.png)
 
-There are so many clustering techniques, sometimes we get confused on which ones to use. If we are to be mutually exclusive about our techniques, we can separate them into 3 groups: Partitional methods, heiarchial methods, and symbolic methods.
-
+There are so many clustering techniques, sometimes we get confused on which ones to use. If we are to be try to be mutually exclusive about our techniques, we may separate them into 3 groups: Partitional methods, heiarchial methods, and symbolic methods.
 
 <hr>
 **Partitional methods** produce a single partition or clustering of the data elements. Some examples include k-means, PAM, CLARA, [CLARANS](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=1033770), etc.. Each methodology created for their uniquity in computing time, efficiency, or performance.
@@ -176,7 +175,7 @@ I'm not going to show how close we were to the original dataset, however this me
 
 Let's move on to heiarchial clustering. 
 
-In simple terms, heiarchial clustering assigns a data item to it's own cluster, computes pairwise distances (min, maxm group average, centroids, etc.), merges the clusters, and repeats pairwise distances until there is no more than 1 cluster (creates a tree). The technique I will use is a "complete link" which is a maximum distance between two cluster items. This is justified because we already know that the clusters are already in globular form and not in overly large clusters. Furthermore, from what I understand we are using an agglomorative technique. For this, an f1-score is not too necessary. 
+In simple terms, heiarchial clustering assigns a data item to it's own cluster, computes pairwise distances (min, maxm group average, centroids, etc.), merges the clusters, and repeats pairwise distances until there is no more than 1 cluster (creates a tree). The technique we will use is a "complete link" which is a maximum distance between two cluster items. This is justified because we already know that the clusters are already in globular form and not in overly large clusters. For this, an f1-score is not too necessary. 
 
 ```r
 d <- dist(sets) # dist for distance matrix.
@@ -189,7 +188,7 @@ clusterCut <- cutree(fit, 3)
 
 ![](https://tykiww.github.io/img/clustereval/two.png)
 
-Looking at the display, I would assume that the optimal threshold will be around 3 or 4 clusters. This is because the clusters are tightly bound until the number of clusters get to 4. However, because there is a slight jump from 3 to 4, we can reasonably conclude 3. In principle, we would do this by computing some quality measure, but for simplicity, we can just eyeball here. This case is not too difficult.
+Looking at the display, The optimal threshold will be around 3 or 4 clusters. This is because the clusters are tightly bound until the number of clusters get to 4. However, because there is a slight jump from 3 to 4, we can reasonably conclude 3. In principle, we would do this by computing some quality measure, but for simplicity, we can just eyeball here. This case is not too difficult.
 
 If you want to see a vizual representation of how close our clusters are, here is a quick ggplot.
 
@@ -266,7 +265,7 @@ lapply(1:2, function(x) which(dbscanss==x)) # Datapoints of each dbscan cluster 
     ## [1] 50  72  28
     ## [1] 50  100 
 
-With unsupervised learning, we have to be very careful in our approach with data. We have been able to take a look at a few methods. Hopefully we can get a chance to do even more.
+With unsupervised learning, we have to be very careful in our approach with data. It's more of an art than anything else. Sometimes clustering takes a bit to get used to, however, it will be a useful tool for any type of segmentation analysis!
 
 
 
