@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Clustering Techniques"
-fb-img: 
+title: "Decision Tree Recursive Partitioning"
+fb-img: https://unemamandanslaville.files.wordpress.com/2014/01/arbre-gc3a9nc3a9alogique.jpg
 tags:
 comments: true
 ---
