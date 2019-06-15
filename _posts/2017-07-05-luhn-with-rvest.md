@@ -44,19 +44,19 @@ library(rvest)
 
 The only place I could find useful information about typical credit network values was on [wikipedia](https://en.wikipedia.org/wiki/Payment_card_number#Major_Industry_Identifier_.28MII.29). The table I want to retrieve looks like this. 
 
-![](https://tykiww.github.io/img/luhn/luhn1.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/luhn/luhn1.png)
 
 Before we read anything in, let's grab the xpath from our inspect element of the table. Right click on your chrome or firefox window on the page and select "inspect". This will pull up a sidebar that shows us the html, css, and other properties in the window.  
 
-![](https://tykiww.github.io/img/luhn/luhn2.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/luhn/luhn2.png)
 
 From there, start clicking on the html elements that highlight the specific portions of the page. If you do it well, it will narrow down so you only have the table showing up.
 
-![](https://tykiww.github.io/img/luhn/luhn3.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/luhn/luhn3.png)
 
 Once you get to the portion that highlights the desired table (usually in between the section that specifies "<table...), just right click and copy the xtable value! This will make sure exact table you are searching for. 
 
-![](https://tykiww.github.io/img/luhn/luhn4.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/luhn/luhn4.png)
 
 Interesting huh? I guess we can apply this in many other situations where we are scanning and grabbing lots of information from many pages. It's also possible to search multiple volumes of values on google from rvest and compile data from multiple sources not on one page. This will be shown on a [future](https://tykiww.github.io/2018-04-05-Selenium-Scraping/) post using `rselenium`.
 
@@ -81,7 +81,7 @@ credit <- credit[[1]] # first list element.
 head(credit)
 ```
 
-![](https://tykiww.github.io/img/luhn/luhn5.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/luhn/luhn5.png)
 
 Now I'll just clean up the information really quick. This one shouldn't be too difficult.
 
