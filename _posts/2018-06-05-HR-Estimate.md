@@ -9,7 +9,7 @@ Hiring talent is critical for any business; find the right one and they will hel
     ##   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
     ##  21230   36675   50480   58887   72245  265990 
 
-![](https://tykiww.github.io/assets/HR-Estimate/1.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/assets/HR-Estimate/1.png)
 
 Suppose we consider the average employee to be at the median of $50,480 and the [average
 benefit per employee](https://www.bls.gov/news.release/pdf/ecec.pdf) to be roughly $18,000. We see how the typical (median) employer will be losing a rough estimate of 68-70 thousand dollars for every new employee hired then lost per year. Furthermore, the [average](https://www.bls.gov/news.release/archives/nlsoy_06272008.pdf) individual born after the baby boom held around 10.8 jobs from age 18 to age 42. Making it more likely that people will change offices while employed at "your company". Since it is so difficult to really know the marginal impact each employee has on their firm, you don't necessarily know how much you are losing.
@@ -31,7 +31,8 @@ Here is my [R script](https://raw.githubusercontent.com/tykiww/projectpage/maste
 
 If you want to see it done in excel, you can download it [here](https://github.com/tykiww/projectpage/raw/master/datasets/hr-cost/Employee%20Cost%20Estimation.xlsx). It looks like this.
 
-![](https://tykiww.github.io/assets/HR-Estimate/4.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/assets/HR-Estimate/4.png)
+
 
 Otherwise, please source it by running this in your command line.
 
@@ -159,7 +160,8 @@ c
  
 Our first output is the dataset. Then our estimate will include our employee annual tax.
 
-![](https://tykiww.github.io/assets/HR-Estimate/3.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/assets/HR-Estimate/3.png)
+
 
     ## [[2]]
     ## Employee Annual Tax 
