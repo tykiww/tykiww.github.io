@@ -30,7 +30,7 @@ summary(modelss(n=12, p=10))
 summary(modelss(n=11, p=10)) # nrows = ncols, need more rows! undefined SSE.
 ```
 
-![](https://tykiww.github.io/img/step/step1.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/step/step1.png)
 
 Remember, number of columns is p+1. Some call it k. We notice that we just have perfect fit models if the rows don't exceed the columns.
 
@@ -117,7 +117,7 @@ heart$education <- relevel(heart$education,ref="college")
 lapply(heart[cols],levels) # checking levels
 ```
 
-![](https://tykiww.github.io/img/step/step2.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/step/step2.png)
 
 Now, one of the key details not to miss is to create both train and test datasets. For prediction, we want to make sure that our values will extend to other situations. Remember to keep about 70-80% of the data in the training set and start working. 
 
@@ -144,7 +144,7 @@ biggestmodel.forward <- formula(glm(CVD~.,data=h.train, family = "binomial"))
 out.framforward <- step(minmodel.forward,direction="forward",scope=biggestmodel.forward)
 ```
 
-![](https://tykiww.github.io/img/step/step3.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/step/step3.png)
 
 I've done a lot of explaining earlier, so I won't write much here. Just know that the forward case starts with the minimum model, with no variables and builds the model until they have a model that creates the lowest AIC values. 
 
@@ -153,7 +153,7 @@ I've done a lot of explaining earlier, so I won't write much here. Just know tha
 out.frambackward <- step(glm(CVD~.,data=h.train,family="binomial"))
 ```
 
-![](https://tykiww.github.io/img/step/step4.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/step/step4.png)
 
 The backwards selection takes the whole model by specifying `~ .` and works backwards by taking out the worst variables. Remember, we cannot do a backwards selection if number of columns don't exceed the number of rows!
 
@@ -166,7 +166,7 @@ biggestmodel.stepwise<-formula(glm(CVD~.,data=h.train, family = "binomial"))
 out.framstepwise<-step(minmodel.stepwise,direction="both", scope=biggestmodel.stepwise)
 ```
 
-![](https://tykiww.github.io/img/step/step5.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/step/step5.png)
 
 The output is large, so I will spare you the information besides the most important details. Our stepwise regression pulled out the most important variables. Our seemingly "best" model is shown as:
 
@@ -205,7 +205,7 @@ exp(coef(out.framstepwise))-1
 exp(confint(out.framstepwise))-1
 ```
 
-![](https://tykiww.github.io/img/step/step6.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/step/step6.png)
 
 Instead of taking a look at more interpretations, constructing our ROC curve will help us see how our model prediction is doing for us. Our AUC value is 0.7461639, not bad, but not great. We see how the curve does not cover all of our interpreted values.
 
@@ -217,7 +217,7 @@ plot(train.perf,xlab = "1-specificity",ylab = "sensitivity", main = "ROC Curve")
 performance(train.pred,measure="auc") # 0.7461639
 ```
 
-![](https://tykiww.github.io/img/step/step7.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/step/step7.png)
 
 We'll now compare both the Train and test AUC and plots together. Make sure to specify `add=TRUE` to lay one plot over the other.
 
@@ -231,7 +231,7 @@ plot(test.perf,xlab = "1-specificity",ylab = "sensitivity",
 performance(test.pred,measure="auc") # 0.7285064 pretty good but not great. 
 ```
 
-![](https://tykiww.github.io/img/step/step8.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/step/step8.png)
 
 Not bad, our test case does not predict as great as our training data. This isn't a bad thing since it's so close. Just know that there is variation when we are trying to predict out of this example!
 
