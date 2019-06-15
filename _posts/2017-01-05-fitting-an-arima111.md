@@ -50,7 +50,7 @@ plot(RecreationVisitors~Year,
      ylab = "Yosemite Annual Visitors (In millions)")
 ```
 
-![](https://tykiww.github.io/img/arima111/yos1.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/arima111/yos1.png)
 
 We notice a slight multiplicative curvature of the graph. This may not be in our interest. To fit any linear-type model,we should make our information additive to predict future values. Fortunately, this is a simple fix. By performing a log transformation, we can see how the data becomes more readable (any other transformations will work as well).
 
@@ -64,7 +64,7 @@ abline(v=1941, col="red")
 abline(v=1946, col="red")
 ```
 
-![](https://tykiww.github.io/img/arima111/yos2.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/arima111/yos2.png)
 
 How simple! The graph appears to be additive from 1930s to present but has a dip between 1940-1950. Looking closely, Non-constant mean changes occur from 1941 to 1946. The dip seen from 1940-1946 roughly fits the time period of world war 2. This may suggest that wartime may have changed opportunities or interest of individuals. Some other possible causes for the curvature from 1920s to 1946 may be due to an increase in exposure, interest, and transportation. Good to think about.
 
@@ -81,7 +81,7 @@ plot(lnvisitors~Year,
      ylab= "Yosemite Log Annual Visitors (In millions)")								
 ```
 
-![](https://tykiww.github.io/img/arima111/yos3.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/arima111/yos3.png)
 
 Everything looks great! Now that we have an additive model subsetted to the recent past, we will continue with the forecasting.
 
@@ -123,7 +123,7 @@ Prediction estimate values
     ## Frequency = 1 
     ## [1] 5.096657 5.301227 5.421584 5.606032 5.755369
  
-![](https://tykiww.github.io/img/arima111/yos4.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/arima111/yos4.png)
  
 Now all we need to do is represent the forecast values and the 95% confidence estimates along with a better looking graph. ggplot may be better looking, but for the sake of functionality we will stick to base R.
 
@@ -168,7 +168,7 @@ Table of the unlogged 95% parameter estimates and CI.
     ## 75  5.606032 4.376368 7.181205
     ## 76  5.755369 4.362865 7.592320
 
-![](https://tykiww.github.io/img/arima111/yos5.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/arima111/yos5.png)
  
 As you may notice, we now have both a table with predictions and a good-looking graph of those future values. Simple huh? This type of analysis is handy for forecasting future performance whether it be for marketing or tourism trends (any type of data that does not involve too much volitility). Oftentimes, you may also see exchange rates are modelled using ARIMA in place of randomwalks and neural networks. **_Yet there is always a catch!_** Don't use this model if you are certain of seasonal trends. The ACF plots that we ignored at the beginning are a good indicator of seasonality (if they cross the threshold). Those situations will be covered in another [post](https://tykiww.github.io/2017-03-05-fitting-a-seasonal-arima/).
 
