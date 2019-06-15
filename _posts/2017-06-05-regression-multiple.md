@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Let's just run a regression 笑"
-fb-img: https://tykiww.github.io/img/reg/reg1.png
+fb-img: https://raw.githubusercontent.com/tykiww/imgbucket/master/img/reg/reg1.png
 comments: true
 ---
 
@@ -149,7 +149,7 @@ e <- qplot(y=temp,x=sf6,data=climate) + geom_smooth(method='lm', formula=y~x)
 grid.arrange(a,b,c,d,e,ncol = 2)
 ```
 
-![](https://tykiww.github.io/img/reg/reg1.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/reg/reg1.png)
 
 ### The Model
 
@@ -204,7 +204,7 @@ plot(~co2 + methane + n2o + hcfc + sf6,data=climate)
     ##       co2    methane        n2o       hcfc        sf6 
     ## 21.018098   4.778693 375.061627  17.433294 373.859809 
 
-![](https://tykiww.github.io/img/reg/reg2.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/reg/reg2.png)
 
 
 Unfortunately, there is high collinearity with this data. The visual shows a tight correlation of values within each other. At first glance, it may seem like this isn't that big of a deal, but this actually makes analysis difficult to perform. In a matrix algebra standpoint, we are looking to find orthogonal data where values that can be predicted at any combination of values of each explanatory variable. In layman's terms, this correlation is bad. We are searching for data that looks more like the top 4 boxes in the left-top corner. Data that is spread out lets us calculate every possible scenario rather than just tightly correlated variables like hcfc and sf6.
@@ -256,8 +256,8 @@ cd.out <- cooks.distance(out.clim)
 climates[2 * (p + 1) / n < leverage.out,]
 climates[4 / (n - (p+1) ) < cd.out,]
 ```
-![](https://tykiww.github.io/img/reg/reg3.png)
-![](https://tykiww.github.io/img/reg/reg4.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/reg/reg3.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/reg/reg4.png)
 
 Now that we know which points are influential, let's check whether or not these are good or bad points. These can be seen in our plots by hovering over the points.
 
@@ -280,7 +280,7 @@ out.clims <- lm(temp~co2+methane,data=climates)
 summary(out.clims)
 ```
 
-![](https://tykiww.github.io/img/reg/reg5.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/reg/reg5.png)
 
     ## Coefficients:
     ##               Estimate Std. Error t value Pr(>|t|)    
@@ -302,7 +302,7 @@ ha <- rstudent(out.clims)[7]
 # We want to leave about 5% in the dataset. For our data to be 95%.
 ```
 
-![](https://tykiww.github.io/img/reg/reg6.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/reg/reg6.png)
 
 ```r
 # Check points with plots. Use ggplotly to look at individual points.
@@ -330,7 +330,7 @@ out.clims <- lm(temp~co2+methane,data=climates) # Last time refitting model!
 summary(out.clims)
 ```
 
-![](https://tykiww.github.io/img/reg/reg7.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/reg/reg7.png)
 
 Now, taking out outliers is more of an art than anything. Outliers that are most recent (ie. < 10 years) were kept in. Depending on the situation, it may be very important. When predicting future uncertainty, we will never know what is going to happen. Maybe times will change in the future where volatile levels of methane and co2 become even more dangerous for the environment (of course, that depends. The most likely reason for global warming is from the earth's milankovitch cycles. This still doesn't mean we aren't making things worse though).
 
@@ -356,7 +356,7 @@ Good luck in your future data endeavors.
 -------------
 
 #Climate Data:
-Retrieved by Below: 12/20/2017
+Retrieved by Below: 12/03/2017
 - Monthly Global Mean Land-Ocean Temperature Data (1880-Present)
 * http://data.giss.nasa.gov/gistemp/tabledata_v3/GLB.Ts+dSST.txt
 
