@@ -45,7 +45,7 @@ plot(energy,
      )
 ```
 
-![](https://tykiww.github.io/img/arima12/ener1.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/arima12/ener1.png)
 
 Well, how odd! The values seem like they move in a periodic pattern. Most likely due to seasonal consumption of energy. The two peaks may be explained by the energy used to heat homes in the winter and air conditioning during the summer. Otherwise, the plot doesn't seem to have many abnormalities.
 
@@ -89,7 +89,7 @@ energy.future$pred
     ## [15] 2028.283 1807.156 1356.549 1299.898 1477.043 1725.974 1674.827
     ## [22] 1403.306 1309.507 1545.331 2134.530 2427.380 2024.174
 
-![](https://tykiww.github.io/img/arima12/ener2.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/arima12/ener2.png)
 
 Now look at that! We have a simple graphic forcasting the next 27 months and the individual values. This was definitely less coding than a non-seasonal arima despite how fearful the data looks. There was no need to transform the data, and it takes half the lines of code. 
 
@@ -117,7 +117,7 @@ polygon(c(322:348,rev(322:348)),c(L,rev(U)),col = "light gray", border=NA)# Fill
 lines(322:348,energy.future$pred,col="red",type="b",pch=8)                # and lower bounds in the prediction.
 ```
 
-![](https://tykiww.github.io/img/arima12/ener3.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/arima12/ener3.png)
 
 ### Conclusion
 
