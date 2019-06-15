@@ -9,8 +9,8 @@ I finally took the time to look at a soccer dataset!
 
 Growing up, the sport I lived day by day for was soccer. There was nothing that was more exciting for me (at that time) than to be outside and playing. Unfortunately, priorities shift and other things get in the way. 
 
-_This is me a couple of months ago_
-![](https://tykiww.github.io/img/soccer/fut1.jpg)
+_a couple of months ago.._
+![](https://github.com/tykiww/imgbucket/blob/master/img/soccer/fut1.jpg)
 
 Today, we're going to visit two things. 
 
@@ -111,11 +111,11 @@ points(11,max(correls), col = "red", pch = 19) +
 text(14,.82,"reactions", col = "red")
 ```
 
-![](https://tykiww.github.io/img/soccer/fut2.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/soccer/fut2.png)
 
 We see that the highest few variables were **Reactions**, **Ball Control**, **Composure**, and **Short Pass**.
 
-![](https://tykiww.github.io/img/soccer/fut3.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/soccer/fut3.png)
 
 To be honest, I don't really see the practical application of the line plot when we already have a frequency graph. There really isn't a 'point' of connecting the 'points' together if they aren't related to each other. My opinion is that it is improper to do something like this. I guess you can use whichever one your employer seems to like more.
 
@@ -164,7 +164,7 @@ plot(range, elbow,
      ylab="Total within-cluster SS")
 ```
 
-![](https://tykiww.github.io/img/soccer/fut4.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/soccer/fut4.png)
 
 Great! The plot seems to show that around 3 is the optimum tradeoff value. Now we can specify and run our model and plot out the values. The `cusplot()` function comes from the `cluster` library.
 
@@ -175,7 +175,7 @@ clusplot(foot, fitted$cluster, color=TRUE, shade=TRUE,
          labels=2, lines=0)
 ```
 
-![](https://tykiww.github.io/img/soccer/fut5.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/soccer/fut5.png)
 
 Now as we take a look at this plot, we observe a huge blob between 3 distinct groups. It seems that we have so much data, that it converges on top of each other. That's not a problem though. We can see that the data was plotted between 2 principle components. This is great as we notice that 78.85% of the variability was explained by using 2 of these components. Within these x-y values we have 3 groups that separate our 'blob'. If we want to see the groups separated within rankings, we can see how our players were separated into Top, middle, and worst players. Let's take a look at how these were exactly segmented in a table
 
@@ -184,7 +184,7 @@ Now as we take a look at this plot, we observe a huge blob between 3 distinct gr
 table(fut$Rating,fitted$cluster)
 ```
 
-![](https://tykiww.github.io/img/soccer/fut6.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/soccer/fut6.png)
 
 Now I'm not going to print out this whole table as it is a little too large for this post. You can just take a look at this snippet. Now obviously, when playing our game we want to maximize the rating of our players so we have, practically, the best team to play with. Unfortunately, we know that not every team has all the best players, so let's take a look at "what is the lowest rating that I could settle with so I still have a high-average rated team". We can see that the second group captures most of the highest rated players and starts to converge until we hit about 78 on the rating scale. Therefore, we can say that as long as our players are above 78, we have a pretty solid team of 'top players'.
 
@@ -194,7 +194,7 @@ Here is another diagram of the clusters separating the groups using the `plotclu
 plotcluster(foot, fitted$cluster)
 ```
 
-![](https://tykiww.github.io/img/soccer/fut7.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/soccer/fut7.png)
 
 We see that our values are along a range from 40-99, so the values are closely arranged together. This lets see how our data has been separated into 3 different groups along that range.
 
