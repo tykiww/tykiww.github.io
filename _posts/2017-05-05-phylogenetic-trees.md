@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Phylogenetic Trees"
-fb-img: https://tykiww.github.io/img/Narrative phylogeny.png
+fb-img: https://tykiww.github.io/assets/Phyl/prog.csv
 tags: [hard-coding, ape, base R, evolutionary biology]
 ---
 
@@ -9,7 +9,7 @@ Several month ago, I was cruising on the packages folder of my Rstudio when I "a
 
 Turns out, "ape" happened to be an acronym for Analysis of Phylogenetic and Evolution (how creative). Of course, that meant nothing to me, but I decided to look up what this was. Soon after, I ran into [this](https://image.slidesharecdn.com/phylogeneticanalysis-111117220939-phpapp01/95/phylogenetic-analysis-7-728.jpg?cb=1321568578).
 
-![](https://tykiww.github.io/img/phyl/phyl%20check.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/phyl/phyl%20check.png)
 
 If you want to read up on more detail about this event, click [here](http://www.nytimes.com/1993/06/06/weekinreview/aids-and-a-dentist-s-secrets.html?pagewanted=all).
 
@@ -165,7 +165,7 @@ Finally, we are combining the functions and plotting the tree. Using the `read.t
 plotTree("prog.csv")
 ```
 
-![](https://tykiww.github.io/img/phyl/phylcode.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/phyl/phylcode.png)
 
 All that for a simple tree.
 
