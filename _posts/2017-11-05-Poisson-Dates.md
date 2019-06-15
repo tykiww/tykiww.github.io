@@ -18,7 +18,7 @@ library(tidyr)
 library(tidyverse) # Do this instead for more packages
 ```
 
-![](https://tykiww.github.io/img/poisson/ps1.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/poisson/ps1.png)
 
 The data comes from my github repository. I got the first file from the [utah avalanche center](https://utahavalanchecenter.org) and downloaded avalanches from all regions in Utah. The second, I had to order from an [airport](https://www.ncdc.noaa.gov/cdo-web/search?datasetid=GSOM). The information is sorted on a government site and allows you to extract information and send it to your email. I have the Salt Lake City international airport weather data. I decided to use `read_csv()` information form `readr` package. Not much is different for now. It's probably because the columns are already rather clean. One plus is definitely the information output you get of the `NA`s that appear. Always nice to have extra information.
 
@@ -27,7 +27,7 @@ ava <- read_csv("http://tykiww.github.io/assets/Poisson/reco-download.csv", col_
 cli <- read_csv("http://tykiww.github.io/assets/Poisson/1299199.csv", col_names = T)
 ```
 
-![](https://tykiww.github.io/img/poisson/ps2.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/poisson/ps2.png)
 
 Alright, now for the dates. There was actually a lot more scrubbing that had to be done previously, but here is what I did. R doesn't automatically recognize dates pretty often, so you have to coerce it using `as.Date()`. Make sure to format it correctly with `"%m/%d/%Y"`. I also used the `substr` function to cut out the date variables. We are only looking at the year and month
 
@@ -88,9 +88,9 @@ ggplot(avalanches,aes(DT32,count)) + geom_point(col = "dark blue")
 ggplot(avalanches,aes(TMIN,count)) + geom_point(col = "dark blue")
 ```
 
-![](https://tykiww.github.io/img/poisson/ps3.png)
-![](https://tykiww.github.io/img/poisson/ps4.png)
-![](https://tykiww.github.io/img/poisson/ps5.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/poisson/ps3.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/poisson/ps4.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/poisson/ps5.png)
 
 If you look very carefully, you'll notice that the variables are not technically continuous, but discrete. You can't have .5 avalanches, neither can you have negative avalanches. Usually, we can perform a regular regression with this data and it will be fine for this case. Yet, we run into a problem when we try and assume that the errors are normally distributed. Unfortunately, the errors cannot go below 0. Therefore, we will have a non-normal error distribution. Let's take it a step further and use an already-known distribution for this data! 
 
