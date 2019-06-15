@@ -42,9 +42,9 @@ This actually didn't take so long. Now I had a function that printed a vector of
 Glinks("Pluralsight")
 ```
 
-![](https://tykiww.github.io/img/scrape/scrape1.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/scrape/scrape1.png)
 
-![](https://tykiww.github.io/img/scrape/scrape2.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/scrape/scrape2.png)
 
 You can see how the links associated with this page displays all types of links shown on the main page. I guess I could tweak it a bit, so it pulls up links from the top box on the right, but I will look at that later.
 
@@ -71,7 +71,7 @@ cars1 <- data.frame(names,wikis)
 cars1
 ```
 
-![](https://tykiww.github.io/img/scrape/scrape3.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/scrape/scrape3.png)
 
 It looks nicely compiled! Now I revisited one of the `rvest` posts that I wrote a while back and extracted the main table that supplies the information I need. You can take a look at it [here](https://tykiww.github.io/2017-07-05-luhn-with-rvest/). I looked to table the important information. During the process, I realized that Nissan had an extra table that made the xpath the 2nd table in the page. I guess if the Wikipedia page changes, it will revert back to the top. I should keep that in mind when revisiting this specific scraping method for information. 
 
@@ -89,7 +89,7 @@ for (i in 1:nrow(cars1)) {
 }
 ```
 
-![](https://tykiww.github.io/img/scrape/scrape4.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/scrape/scrape4.png)
 
 The list cc has 10 elements with a table of dimensions 2 X 22. I then proceeded to create the variables of interest (using more regex, just for fun). There is definitely a quicker and easier way to create the columns, but I guess I just wanted to do something fun. I then took elements of list and used the `do.call()` function. Very useful when trying to perform any function over a list.
 
@@ -110,7 +110,7 @@ colnames(car.datas) <- coln
 glimpse(car.datas)
 ```
 
-![](https://tykiww.github.io/img/scrape/scrape5.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/scrape/scrape5.png)
 
 Now I have a table with a bunch of information I need to perform an analysis. Now we run into the problem of having to clean out information. With lots of unimportant boxes, units, and currencies it can get a little hairy with creating useful and expansive information. We'll proceed to clean the info and make it useful for anyone that needs it! 
 
@@ -214,7 +214,7 @@ Now take a look at our table.
 car.datas.dol[,1:9]
 ```
 
-![](https://tykiww.github.io/img/scrape/scrape6.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/scrape/scrape6.png)
 
 Neat huh? The table is neat and organized all without having to visit a single website! Let's now make a pretty graphic to show summary statistics.
 
@@ -238,7 +238,7 @@ subplot(
   layout(dragmode = "select")
 ```
 
-![](https://tykiww.github.io/img/scrape/scrape7.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/scrape/scrape7.png)
 
 There have been several times when I wondered how to do something like this. Especially with an interactive graph. I hope you find this to be useful. I will most likely be working more with interactive plots in the future! If you are interested in checking out more about how to use plotly and simple interactive graphs, [click here](https://tykiww.github.io/2017-02-05-SLR-Plotly/)
 
