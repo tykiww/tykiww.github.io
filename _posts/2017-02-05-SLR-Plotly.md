@@ -71,7 +71,7 @@ plot(diamonds1$carat, diamonds1$price)
     ## $ y       <dbl> 3.98, 3.84, 4.07, 4.23, 4.35, 3.96, 3.98, 4.11, 3.78, 4.05, 4.28...
     ## $ z       <dbl> 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39, 2.73...
 
-![](https://tykiww.github.io/img/slr/slr1.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/slr/slr1.png)
 
 A lot more data than we thought. The trend of this information looks rather multiplicative rather than additive and the data is *fan-shaped*. This probably requires a transformation of some sorts. The fan shape is usually mitigated by a log transformation, so we will proceed to create a new variable below and plot the data.
 
@@ -82,7 +82,7 @@ lndiamonds$lnprice <- log(diamonds1$price)
 plot(lndiamonds$lncarat, lndiamonds$lnprice)
 ```
 
-![](https://tykiww.github.io/img/slr/slr2.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/slr/slr2.png)
 
 ### The Model
 
@@ -158,7 +158,7 @@ Let' also take a look at the histogram of residuals to see if we have violated a
   hist(R.hills)
 ```
 
-![](https://tykiww.github.io/img/slr/slr3.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/slr/slr3.png)
 
 Not bad, it looks like we have a roughly normal distribution of errors which satisfies one of our assumptions! The K-S test is short for the Kolmogorov–Smirnov test, and is a hypothesis test with Ho: Residuals are not normally distributed. Our p-value from this output shows a p-value of <.001, so we can safely say that the residuals are indeed normally distributed.
 
@@ -181,7 +181,7 @@ qplot(lncarat,lnprice,data=lndiamonds,
     ## (Intercept) 8.445986 8.451336
     ## lncarat     1.672026 1.679607
 
-![](https://tykiww.github.io/img/slr/slr4.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/slr/slr4.png)
 
 Our confidence interval is so small. Practically invisible. However, don't freak out. This due to the data being loggedand a high number of observations (54,000). If you were a jewelry store manager we may see how useful this information is to predict, in our range, the price of the diamond from the size.
 
@@ -213,14 +213,14 @@ The plot above is rather neat huh? Click around and you notice how you can check
 
 Here's a secret.. this isn't the actual data. You could probably tell by the lack of data points and the axis labels. This was from the first mentioned dataset from amstat.org. If you try to publish the `ggplotly()`, it will slow down your machine without some serious RAM.
 
-![](https://tykiww.github.io/img/slr/slr5.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/slr/slr5.png)
 
 Here's the actual plot below with the prediction output.
 
     ##       fit      lwr      upr
     ##1 24946.22 14907.68 41744.49
 
-![](https://tykiww.github.io/img/slr/slr6.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/slr/slr6.png)
 
 For a one carat diamond, we can expect a price of about 24946.22 with a 95% prediction interval between 14907.68, 41744.49. These large prediction intervals are pretty expected as they are not the same as confidence intervals (for more information on the differences, click [here](https://statisticsbyjim.com/hypothesis-testing/confidence-prediction-tolerance-intervals/)). Also we should note that the carat amount rises, there is more volitility in price. This means that there is more of a chance for someone to rip you off! Of course, this data is not including the fitting and cutting of the ring, the other C's included (cut, color, clarity), but it is rather relevant information. 
 
