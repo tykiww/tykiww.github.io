@@ -81,7 +81,7 @@ hist(unlist(sims[,2]))
 ```
     ## 4.998482    5.001254    5.004026
 
-![](https://raw.githubusercontent.com/tykiww/tykiww.github.io/master/img/boot/one.png?token=AjQRCpsDKIdzMC3cUdTaOQMZn2tBTALPks5coWhDwA%3D%3D)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/boot/one.png)
 
 We see a rather normal plot of the number of times it takes to get in a door ~5 doors until a sale (not bad!)
 
