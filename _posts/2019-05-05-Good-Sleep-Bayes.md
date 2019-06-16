@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Is My Sleep Good enough?"
-fb-img: https://raw.githubusercontent.com/tykiww/tykiww.github.io/master/img/sleep/three.png?token=AI2BCCUIVWH2VFJTUGP5HJK45ME3A
+fb-img: ![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/sleep/three.png)
 comments: true
 ---
 
@@ -38,7 +38,7 @@ plot(xx,prior,type="l", main="Prior Beta Distribution",xlab=expression(theta),
 abline(col = "red", v = beta_mean)
 ```
 
-![](https://raw.githubusercontent.com/tykiww/tykiww.github.io/master/img/sleep/one.png?token=AI2BCCR2LRJIYOYP3MYRPZ245MEXI)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/sleep/one.png)
 
     ## [1] 0.375042
 
@@ -93,7 +93,7 @@ abline(h = mean(sleep$Quality), col = "dark red")
 par(mfrow=c(1,1))
 ```
 
-![](https://raw.githubusercontent.com/tykiww/tykiww.github.io/master/img/sleep/two.png?token=AI2BCCXWTZSPZDOKFCPGRJC45MEY6)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/sleep/two.png)
 
 There seems to be a slight-regular pattern, but this may be for a different analysis. It is good to know that our data is not too out of place. We also notice that we seem to actually be sleeping above 60% quality. Our guess doesn't seem so bad.
 
@@ -147,10 +147,9 @@ c("lower" = qbeta(.025, astar, bstar), "upper" = qbeta(.975, astar, bstar))
     ##     lower     upper 
     ## 0.6312536 0.7144191
 
-![](https://raw.githubusercontent.com/tykiww/tykiww.github.io/master/img/sleep/three.png?token=AI2BCCUIVWH2VFJTUGP5HJK45ME3A)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/sleep/three.png)
 
-
-We notice here that our prior beliefs were *not* as correct as we thought they were, however, we see from the math that it had an influence on our data with some intuitive feel of how we actually slept. Here, we can say that probability that the proportion of our sleep time is within this interval (0.6312536, 0.7144191 ) 95% of the time.
+We notice here that our prior beliefs were *not* as correct as we thought they were, however, we see from the math that it had an influence on our data with some intuitive feel of how we actually slept. Here, we can say that probability that the proportion of our sleep time is within this interval (0.6312536, 0.7144191) 95% of the time.
 
 Now, when we make predictions, we can use the new distribution to make our guesses! The probability that we sleep at 70% efficiency more than 80% of the time is..
 
@@ -164,5 +163,3 @@ Remember now that the data we specify is not expressed in terms of confidence, r
 
 
 Next time you spot an occurance of a binomial likelihood, give this distribution a try! It's a neat way to model our next "best" guess.
-
-
