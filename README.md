@@ -11,7 +11,7 @@ Posts will be re-published every 2 weeks on linkedin to gain following.
 - https://tykiww.github.io/CV/
 - Possibly Change font to match blog page.*
 ### Resume
-- https://tykiww.github.io/CV/about/
+- https://github.com/tykiww/projectpage/raw/master/Resume/LI-05-19-2019.pdf
 - Create PDF version link starting May*
 ### About Pages
 - https://tykiww.github.io/who
@@ -19,10 +19,10 @@ Posts will be re-published every 2 weeks on linkedin to gain following.
 - Quick edits to match current situation*
 ### Posts
 - https://tykiww.github.io
-- New post up by Jan 5*
+- New post up by Jul 5*
 #### Project Portfolio
 - https://tykiww.github.io/CV/projects/
-- New post up by Jan 5*
+- New post up by Jul 5*
 - Find a way to link posts from tykiww to CV.**
 #### Archives
 - https://tykiww.github.io/archive
