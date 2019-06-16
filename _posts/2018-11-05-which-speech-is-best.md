@@ -120,7 +120,7 @@ a <- data.frame("lambda" = possible_lambdas, "rpmse" = lambda_rpmses) %>%
 ggplotly(a)
 ```
 
-![](https://tykiww.github.io/img/lasso/one.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/lasso/one.png)
 
 We notice here that the best lambda value is 160, minimizing our error at the optimal rate. We'll stick that back in and view our most important coefficients.
 
@@ -138,7 +138,7 @@ With a lambda of 160 (log lambda of 5.075), here is what our variable trace char
 plot(cv.glmnet(x,y)$glmnet.fit,"lambda",label = TRUE)
 ```
 
-![](https://tykiww.github.io/img/lasso/two.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/lasso/two.png)
 
 It is keeping many of the variables with only lambda of 200. However, we will see which ones go to 0 fastest.
 
