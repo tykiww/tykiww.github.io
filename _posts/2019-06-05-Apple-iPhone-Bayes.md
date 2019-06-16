@@ -45,7 +45,8 @@ c("lower" = qbeta(.025, a, b), "estimate" = a/(a + b), "upper" = qbeta(.975, a, 
 c("lower" = qbeta(.025, a1, b1), "estimate" =  a1/(a1 + b1) ,"upper" = qbeta(.975, a1, b1))
 ```
 
-![](https://raw.githubusercontent.com/tykiww/tykiww.github.io/master/img/iphone/one.png?token=AI2BCCUSXXIDTO6WIHNLSL25ALMU2)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/iphone/one.png)
+
 
     ##      lower   estimate      upper 
     ## 0.03130947 0.03440945 0.03764830 
@@ -90,7 +91,7 @@ Now let's make some posterior inferences from the information we have now.
 2. With this new information, how much better is one iphone doing in comparison to the other?
 3. What is the new posterior predictive probability given a new sales forecast?
 
-Again, we may answer the first questions as such (if you are at all puzzled at how this is done, take a look at [this post](https://raw.githubusercontent.com/tykiww/Bayesian_Analytics/master/personal_projects/Did-I-Get-A-Good-Sleep.Rmd)):
+Again, we may answer the first questions as such (if you are at all puzzled at how this is done, take a look at [this post](https://tykiww.github.io/2019-05-05-Good-Sleep-Bayes/)):
 
 ```{r}
 # Creating posterior distribution
