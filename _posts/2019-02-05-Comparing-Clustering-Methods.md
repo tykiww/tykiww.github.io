@@ -166,8 +166,7 @@ hullplot(sets, iris.models[[2]], main = "k-means") # graphical representation of
 # fviz_cluster(iris.models[[2]], data=sets,geom='point')
 ```
 
-
-![](https://raw.githubusercontent.com/tykiww/tykiww.github.io/master/img/clustereval/one.png?token=AjQRCvlEtM69Ui7eUyw-RSDMlfEVYzL_ks5cbJFbwA%3D%3D)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/clustereval/one.png)
 
 I'm not going to show how close we were to the original dataset, however this method probably fits the best out of the 3 other algorithms.
 
@@ -186,7 +185,7 @@ rect.hclust(fit,k=3) # we see 3 or 4 clusters in this dendogram
 clusterCut <- cutree(fit, 3)
 ```
 
-![](https://tykiww.github.io/img/clustereval/two.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/clustereval/two.png)
 
 Looking at the display, The optimal threshold will be around 3 or 4 clusters. This is because the clusters are tightly bound until the number of clusters get to 4. However, because there is a slight jump from 3 to 4, we can reasonably conclude 3. In principle, we would do this by computing some quality measure, but for simplicity, we can just eyeball here. This case is not too difficult.
 
@@ -198,7 +197,7 @@ ggplot(iris, aes(Petal.Length, Petal.Width, color = iris$Species)) +
   scale_color_manual(values = c('black', 'red', 'green'))
 ```
 
-![](https://tykiww.github.io/img/clustereval/three.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/clustereval/three.png)
 
 It looks a bit more mixed with some heiarchial divides (mostly in virginica and versicolor), which suggest some close relationships.
 
@@ -225,7 +224,7 @@ which.max(db.fmez) # maximum F score given by epsilon of 1 to 1.6
 factoextra::fviz_cluster(dbscans[[2]], data=sets,geom='point')
 ```
 
-![](https://tykiww.github.io/img/clustereval/four.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/clustereval/four.png)
 
 Here, we notice the downfall of dbscan for simple clustering. We notice that our accuracy decreases with values past 1.6 However, even with epsilon of 1, we only get 2 clusters.
 
@@ -266,11 +265,4 @@ lapply(1:2, function(x) which(dbscanss==x)) # Datapoints of each dbscan cluster 
     ## [1] 50  100 
 
 With unsupervised learning, we have to be very careful in our approach with data. It's more of an art than anything else. Sometimes clustering takes a bit to get used to, however, it will be a useful tool for any type of segmentation analysis!
-
-
-
-
-
-
-
 
