@@ -5,7 +5,7 @@ fb-img: ![](https://raw.githubusercontent.com/tykiww/imgbucket/master/img/sleep/
 comments: true
 ---
 
-How well do you usually sleep? The average adult gets about [7-9 hours](https://www.sleepfoundation.org/excessivesleepiness/content/how-much-sleep-do-we-really-need-0) of sleep. Does that feel like enought to you? 
+How well do you usually sleep? The average adult gets about [7-9 hours](https://www.sleepfoundation.org/excessivesleepiness/content/how-much-sleep-do-we-really-need-0) of sleep. Does that feel like enough to you? 
 
 ![](http://ryandow.com/ic/comics/2009-04-15-5d77e77.jpg)
 
