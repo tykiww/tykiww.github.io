@@ -5,7 +5,7 @@ tags: [rvest, base R, web scraping, credit card, credit network, visa, luhn algo
 comments: true
 ---
 
-_Webscraping with `Rvest` and investigating mod 10 (A personal project).
+_Webscraping with `Rvest` and investigating mod 10.
 
 So, I have this McDonalds app. Really convenient, especially for any hungry college student looking for ways to save money. Yet, there's a problem with my card. It just doesn't register with the app. How disappointing! Usually they have those 1 dollar deals to get any sandwich. That's my favorite one (This is in no way a paid add, I'm just always ready for some cheap food 笑).
 
