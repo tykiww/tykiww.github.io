@@ -27,7 +27,8 @@ You know that the historical response rate for sending non-personal messages is 
 
 You don't want to be keeping the clients waiting on your one by one responses, but you have a list of 150 client relationships you want to keep. It will take too long to write too many personal messages. What do you do?
 
-![](https://tykiww.github.io/assets/mass-email/1.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/assets/mass-email/1.png)
+
 
 The solution is to create your own mass email macro product (holy, I made a long winded situation for such a small problem).
 
@@ -41,7 +42,7 @@ Let's begin with the layout of the google sheet.
 
 Mine looks a bit like this. You're welcome to organize this to your own liking. I put in the special message before and after just in case it fit my style and the way I communicated with them. I also randomly generated text from this [site](http://www.randomtextgenerator.com/) for the body, so don't judge me.
 
-![](https://tykiww.github.io/assets/mass-email/2.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/assets/mass-email/2.png)
 
 For recurring sections, I added an Email body and signature. I also didn't want to forget a comma after addressing their name, so I used `CONCATENATE()` to get the job done. That tab is hidden. Get creative with how you want to work it!
 
@@ -94,11 +95,11 @@ The `Mailapp.sendEmail()` function is a part of google scripts. If I am certain,
 
 The final touches are made by clicking the three dots on the right corner of the image, then selecting "Assign script". This will take you to a text box where you enter the script name. Mine is "SendEmail".
 
-![](https://tykiww.github.io/assets/mass-email/3.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/assets/mass-email/3.png)
 
 Now what this button will do, is send an email to all your recipients with a custom and base message every single time you click on it. If you did it right, your email will look like this!
 
-![](https://tykiww.github.io/assets/mass-email/4.png)
+![](https://raw.githubusercontent.com/tykiww/imgbucket/master/assets/mass-email/4.png)
 
 Now your company is happy, you're happy, and so are your clients. Win Win Win.
 
