@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Optimum Pricing using Cross-Price Elasticity"
+title: "Poisson-Gamma Analysis of Eden Hazard"
 fb-img: 
 comments: true
 ---
