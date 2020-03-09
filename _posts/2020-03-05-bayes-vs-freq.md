@@ -6,7 +6,7 @@ comments: true
 ---
 
 
-Intuition vs. Pure Data (with a ton of assumptions..)
+Intuition vs. Pure Data (with a ton of assumptions..) 
 
 I have posted a [few](https://tykiww.github.io/archive) basic bayesian analysis techniques that are simple in terms of code. I even have a whole [analytical collection](https://github.com/tykiww/Bayesian_Analytics) if you're curious of anything past the basics. However, I have never written a detailed explanation for why a Bayesian method differs so much compared to the traditional frequentist method. It's quite simple. However, it really isn't trivial. We will be doing a shallow dig into why Bayes trumps Frequentists (not being partisan here at all..).
 
