@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How Much Data Are you using?"
+title: "How Much Data Are you Using?"
 fb-img: 
 comments: true
 ---
