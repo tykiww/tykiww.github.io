@@ -1,4 +1,4 @@
-# [www.inform-analytics.com](https://tykiww.github.io)
+# [tykiww.github.io](https://tykiww.github.io)
 
 Personal Repo and project display. 
 
