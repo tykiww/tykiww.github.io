@@ -34,13 +34,14 @@ plugins:
 # List of links in the navigation bar
 navbar-links:
   Home: "https://tykiww.github.io/CV/"
-  Blog: "index"
+  #Blog: "index"
   Info: 
     - Who: "https://tykiww.github.io/CV/about/"
-    - What: "aboutme"
+    #- What: "aboutme"
     
   Portfolio: 
     - Portfolio: "https://tykiww.github.io/CV/projects/"
+    - AI: "https://huggingface.co/tykiww"
     # - Archive: "archive"
   
 
